@@ -6,7 +6,7 @@
 # include "SDL2\SDL_ttf.h"
 
 // system include 
-# include  <stdbool.h>
+# include <stdbool.h>
 # include <string.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -23,12 +23,15 @@
 
 // t_sdl.tabs define 
 # define MAP 1
-# define PERSO 2
-# define INV 3
+# define INV 2
+# define PERSO 3
 
 // ressource path
 # define PERSO_PATH "ressource/Perso"
 # define BACKGROUND_PATH "ressource/image/background.bmp"
+// # define FONT_PATH "ressource/font/Nasa21-l23X.ttf"
+# define FONT_PATH "ressource/font/sf-distant-galaxy.outline.ttf"
+# define FONT_SIZE 24
 
 
 //
@@ -43,6 +46,8 @@ typedef struct      s_sdl
     SDL_Window      *window;
     SDL_Surface     *window_surface;
     SDL_Event       event;
+
+    TTF_Font        *font;
 }                   t_sdl;
 
 // sdl image struct
@@ -157,7 +162,10 @@ typedef struct      s_jdr
 //
 // init struc jdr 
 void init_jdr(t_jdr *jdr);
+// free and quit all 
 void destroy_all(t_jdr *jdr);
+// main event loop
+int loop(t_sdl *sdl, t_jdr *jdr);
 
 //
 // WINDOW 

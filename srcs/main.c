@@ -6,9 +6,9 @@ void move_stick(double time, t_sdl_image *image)
     image->position.x = image->pos_x;
 }
 
-int loop(t_sdl *sdl)
+int loop(t_sdl *sdl, t_jdr *jdr)
 {
-
+    // load background
     t_sdl_image background;
     background.position.x = 0;
     background.position.y = 0;
@@ -31,7 +31,7 @@ int loop(t_sdl *sdl)
                 {
                     keepWindow = false;
                     destroy_window(sdl);
-                    SDL_Quit();
+                    destroy_all(jdr);
                 }
                 break;
                 case SDL_KEYDOWN:
@@ -40,7 +40,7 @@ int loop(t_sdl *sdl)
                     {
                         keepWindow = false;
                         destroy_window(sdl);
-                        SDL_Quit();
+                        destroy_all(jdr);
                     }
                     // if(keys[SDL_SCANCODE_I] == 1)
                     // insert inventaire
@@ -64,25 +64,36 @@ int loop(t_sdl *sdl)
 
 int WinMain(int argc, char* argv[])
 {
-   t_perso     perso;
+    t_jdr       jdr;
+    init_jdr(&jdr);
+
+//  initialisation de perso
+    t_perso     perso;
     if (init_perso(&perso) == -1)
         return exit_char("Impossible de charger le perso", -1);
     ft_putendl("init_perso done !");
-    t_sdl       sdl;
-
-    sdl.tabs = MAP;
+    jdr.perso = true;
 
 //  initialisation de la fenetre;
-
+    t_sdl       sdl;
+    sdl.tabs = MAP;
     if (init_window(&sdl) == -1)
         return -1;
+    jdr.sdl = true;
     ft_putendl("init_window done !");
 
-
+//  initialisation de tff
+    if(TTF_Init() == -1)
+    {
+        fprintf(stderr, "Erreur d'initialisation de TTF_Init : %s\n", TTF_GetError());
+        exit(EXIT_FAILURE); 
+    }
+    jdr.ttf = true;
     ft_putendl("TTF_init done !");
     
-    if (loop(&sdl)== -1)
+// loop sdl
+    if (loop(&sdl, &jdr)== -1)
         return-1;
-// */
+
     return 0;
 }

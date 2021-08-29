@@ -20,105 +20,105 @@ int init_perso(t_perso *perso)
         if (i == 2)
             perso->name = strdup(line);    
         if(i == 5)
-            perso->skill.carrure = atoi(line);
+            perso->skill.carrure = ft_atoi(line);
         if(i == 6)
-            perso->skill.charisme = atoi(line);    
+            perso->skill.charisme = ft_atoi(line);    
         if(i == 7)
-            perso->skill.coordination = atoi(line); 
+            perso->skill.coordination = ft_atoi(line); 
         if(i == 8)
-            perso->skill.education = atoi(line);
+            perso->skill.education = ft_atoi(line);
         if(i == 9)
-            perso->skill.perception = atoi(line);
+            perso->skill.perception = ft_atoi(line);
         if(i == 10)
-            perso->skill.reflexe = atoi(line);
+            perso->skill.reflexe = ft_atoi(line);
         if(i == 11)
-            perso->skill.sang_froid = atoi(line);
+            perso->skill.sang_froid = ft_atoi(line);
         if(i == 12)
-            perso->skill.vehicule_terrestre = atoi(line);
+            perso->skill.vehicule_terrestre = ft_atoi(line);
         if(i == 13)
-            perso->skill.pilotage_Leger = atoi(line);
+            perso->skill.pilotage_Leger = ft_atoi(line);
         if(i == 14)
-            perso->skill.pilotage_combat = atoi(line);
+            perso->skill.pilotage_combat = ft_atoi(line);
         if(i == 15)
-            perso->skill.pilotage_Lourd = atoi(line);
+            perso->skill.pilotage_Lourd = ft_atoi(line);
         if(i == 16)
-            perso->skill.tourelle = atoi(line);
+            perso->skill.tourelle = ft_atoi(line);
         if(i == 17)
-            perso->skill.discretion = atoi(line);
+            perso->skill.discretion = ft_atoi(line);
         if(i == 18)
-            perso->skill.fouille = atoi(line);
+            perso->skill.fouille = ft_atoi(line);
         if(i == 19)
-            perso->skill.informatique = atoi(line);
+            perso->skill.informatique = ft_atoi(line);
         if(i == 20)
-            perso->skill.piratage = atoi(line);
+            perso->skill.piratage = ft_atoi(line);
         if(i == 21)
-            perso->skill.decryptage = atoi(line);
+            perso->skill.decryptage = ft_atoi(line);
         if(i == 22)
-            perso->skill.premier_secour = atoi(line);
+            perso->skill.premier_secour = ft_atoi(line);
         if(i == 23)
-            perso->skill.athle = atoi(line);
+            perso->skill.athle = ft_atoi(line);
         if(i == 24)
-            perso->skill.acrobatie = atoi(line);
+            perso->skill.acrobatie = ft_atoi(line);
         if(i == 25)
-            perso->skill.escalade = atoi(line);
+            perso->skill.escalade = ft_atoi(line);
         if(i == 26)
-            perso->skill.endurence = atoi(line);
+            perso->skill.endurence = ft_atoi(line);
         if(i == 27)
-            perso->skill.eloquence = atoi(line);
+            perso->skill.eloquence = ft_atoi(line);
         if(i == 28)
-            perso->skill.intimidation = atoi(line);
+            perso->skill.intimidation = ft_atoi(line);
         if(i == 29)
-            perso->skill.bluff = atoi(line);
+            perso->skill.bluff = ft_atoi(line);
         if(i == 30)
-            perso->skill.psyco = atoi(line);
+            perso->skill.psyco = ft_atoi(line);
         if(i == 31)
-            perso->skill.brico = atoi(line);
+            perso->skill.brico = ft_atoi(line);
         if(i == 32)
-            perso->skill.metal = atoi(line);
+            perso->skill.metal = ft_atoi(line);
         if(i == 33)
-            perso->skill.reparation = atoi(line);
+            perso->skill.reparation = ft_atoi(line);
         if(i == 34)
-            perso->skill.cuisine = atoi(line);
+            perso->skill.cuisine = ft_atoi(line);
         if(i == 35)
-            perso->skill.survie = atoi(line);
+            perso->skill.survie = ft_atoi(line);
         if(i == 36)
-            perso->skill.epaule = atoi(line);
+            perso->skill.epaule = ft_atoi(line);
         if(i == 37)
-            perso->skill.pompe = atoi(line);
+            perso->skill.pompe = ft_atoi(line);
         if(i == 38)
-            perso->skill.sniper = atoi(line);
+            perso->skill.sniper = ft_atoi(line);
         if(i == 39)
-            perso->skill.poing = atoi(line);
+            perso->skill.poing = ft_atoi(line);
         if(i == 40)
-            perso->skill.contact = atoi(line);
+            perso->skill.contact = ft_atoi(line);
         if(i == 41)
-            perso->skill.lourde = atoi(line);
+            perso->skill.lourde = ft_atoi(line);
         if(i == 42)
-            perso->skill.CAC = atoi(line);
+            perso->skill.CAC = ft_atoi(line);
         if(i == 43)
-            perso->skill.lancer = atoi(line);
+            perso->skill.lancer = ft_atoi(line);
         if(i == 44)
-            perso->skill.explosif = atoi(line);
+            perso->skill.explosif = ft_atoi(line);
         if(i == 45)
-            perso->skill.pouvoir1 = atoi(line); 
+            perso->skill.pouvoir1 = ft_atoi(line); 
         if(i == 46)
-            perso->skill.pouvoir2 = atoi(line);
+            perso->skill.pouvoir2 = ft_atoi(line);
         if(i == 47)
-            perso->skill.pouvoir3 = atoi(line);
+            perso->skill.pouvoir3 = ft_atoi(line);
         if(i == 48)
-            perso->skill.pouvoir4 = atoi(line);
+            perso->skill.pouvoir4 = ft_atoi(line);
         if(i == 49)
-            perso->skill.pouvoir5 = atoi(line);
+            perso->skill.pouvoir5 = ft_atoi(line);
         if(i == 50)
-            perso->skill.pouvoir6 = atoi(line);
+            perso->skill.pouvoir6 = ft_atoi(line);
         if(i == 51)
-            perso->skill.pouvoir7 = atoi(line);
+            perso->skill.pouvoir7 = ft_atoi(line);
         if(i == 52)
-            perso->skill.pouvoir8 = atoi(line);
+            perso->skill.pouvoir8 = ft_atoi(line);
         if(i == 53)
-            perso->skill.pouvoir9 = atoi(line);
+            perso->skill.pouvoir9 = ft_atoi(line);
         if(i == 55)
-            perso->skill.exp = atoi(line);
+            perso->skill.exp = ft_atoi(line);
         if(i == 60)
             perso->skill.power1 = strdup(line);
         if(i == 61)
@@ -139,12 +139,12 @@ int init_perso(t_perso *perso)
             perso->skill.power9 = strdup(line);
         i++;
     }
-           printf("honK 4\n");
-     ft_putstr("exp init : ");
-     ft_putnbr_endl(perso->skill.exp);
-    perso->skill.carrure = 9;
+    //  test print_perso
+    //  ft_putstr("exp init : ");
+    //  ft_putnbr_endl(perso->skill.exp);
+    // perso->skill.carrure = 9;
     close(fd);
-    print_perso(perso);
+    // print_perso(perso);
     return 0;
 }
 

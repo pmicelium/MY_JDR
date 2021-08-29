@@ -40,6 +40,7 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
+			<Add library="C:/Users/Admin/Documents/x86SDL2/lib/libSDL2_ttf.dll.a" />
 			<Add directory="C:/Users/Admin/Documents/x86SDL2/lib" />
 		</Linker>
 		<ExtraCommands>
@@ -53,6 +54,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="srcs/graphic/init_window.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="srcs/init_jdr.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="srcs/main.c">

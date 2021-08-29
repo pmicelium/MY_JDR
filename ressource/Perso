@@ -2,55 +2,55 @@
 John "Volt" Phyto
 
 // inserer vos competences //
-carrure                 9
-charisme                0
-coordination            0
-eduaction               0
-perception              0
-reflexe                 0
-sang_froid              0
-vehicule_terrestre      0
-pilotage_Leger          0
-pilotage_combat         0
-pilotage_Lourd          0
-tourelle                0
-discretion              0
-fouille                 0
-informatique            0
-piratage                0
-decryptage              0
-premier_secour          0
-athle                   0
-acrobatie               0
-escalade                0
-endurence               0
-eloquence               0
-intimidation            0
-bluff                   0
-psyco                   0
-brico                   0
-metal                   0
-reparation              0
-cuisine                 0
-survie                  0
-epaule                  0
-pompe                   0
-sniper                  0
-poing                   0
-contact                 0
-lourde                  0
-CAC                     0
-lancer                  0
-explosif                0
-pouvoir un              0
-pouvoir deux            0
-pouvoir trois           0
-pouvoir quatre          0
-pouvoir cinq            0
-pouvoir six             0
-pouvoir sept            0
-pouvoir huit            0
-pouvoir neuf            0
+carrure                 2
+charisme                2
+coordination            5
+eduaction               3
+perception              4
+reflexe                 3
+sang_froid              4
+vehicule_terrestre      5
+pilotage_Leger          4
+pilotage_combat         4
+pilotage_Lourd          8
+tourelle                5
+discretion              7
+fouille                 8
+informatique            7
+piratage                9
+decryptage              9
+premier_secour          9
+athle                   9
+acrobatie               8
+escalade                7
+endurence               9
+eloquence               9
+intimidation            9
+bluff                   8
+psyco                   8
+brico                   5
+metal                   9
+reparation              6
+cuisine                 9
+survie                  9
+epaule                  7
+pompe                   9
+sniper                  9
+poing                   4
+contact                 8
+lourde                  9
+CAC                     9
+lancer                  9
+explosif                5
+pouvoir un              6
+pouvoir deux            7
+pouvoir trois           7
+pouvoir quatre          7
+pouvoir cinq            9
+pouvoir six             9
+pouvoir sept            9
+pouvoir huit            9
+pouvoir neuf            9
 
 Point d'experience      0
 

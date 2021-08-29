@@ -390,15 +390,18 @@
 1630173025 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
 	"jdr.h"
 
-1630176050 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
+1630232715 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
 	"jdr.h"
 
 1630228491 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\print_perso.c
 	"jdr.h"
 
-1630228505 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
+1630238579 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
 	"jdr.h"
 
-1630179454 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
+1630238561 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
+	"jdr.h"
+
+1630238571 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
 	"jdr.h"
 

@@ -30,6 +30,12 @@
 # define PERSO_PATH "ressource/Perso"
 # define BACKGROUND_PATH "ressource/image/background.bmp"
 
+
+//
+// STRUCT
+// 
+
+// sdl struct
 typedef struct      s_sdl
 {
     int             tabs;
@@ -39,6 +45,7 @@ typedef struct      s_sdl
     SDL_Event       event;
 }                   t_sdl;
 
+// sdl image struct
 typedef struct      s_sdl_image
 {
     SDL_Surface     *image;
@@ -47,6 +54,7 @@ typedef struct      s_sdl_image
     double          pos_y;
 }                   t_sdl_image;
 
+// perso skill
 typedef struct      s_skill
 {
     // caracteristique
@@ -128,6 +136,7 @@ typedef struct      s_skill
     char*           power9;
 }                   t_skill;
 
+// perso struct
 typedef struct      s_perso
 {
     char*           name;
@@ -135,17 +144,42 @@ typedef struct      s_perso
     t_sdl_image     profile_pict;
 }                   t_perso;
 
+// main struct
+typedef struct      s_jdr 
+{
+    bool             perso;
+    bool             sdl;
+    bool             ttf;
+}                   t_jdr;
 
+//
+// JDR 
+//
+// init struc jdr 
+void init_jdr(t_jdr *jdr);
+void destroy_all(t_jdr *jdr);
+
+//
+// WINDOW 
+// 
+// create a window
 int init_window(t_sdl *sdl);
-int init_perso(t_perso *perso);
-
+// destroy a window 
 void destroy_window(t_sdl *sdl);
-void destroy_perso(t_perso *perso);
 
+// 
+// PERSO 
+// 
+// get perso intel 
+int init_perso(t_perso *perso);
+// destroy t_perso
+void destroy_perso(t_perso *perso);
+// update ressource perso
 void print_perso(t_perso *perso);
 
-// libft //
-
+// 
+// LIBFT 
+// 
 void	            ft_putchar(char c);
 void	            ft_putstr(char const *str);
 void	            ft_putendl(char const *s);
@@ -153,13 +187,11 @@ void	            ft_putnbr(int nb);
 void	            ft_putnbr_endl(int nb);
 int                 exit_char(char* str, int i);
 int				    gnl(int fd, char **line);
-
-// gnl //
-
+int		            ft_atoi(char const *str);
+// gnl 
 # define GNL_EOL 1
 # define GNL_EOF 0
 # define GNL_ERR -1
-
 # define GNL_BUFF_SIZE 40000
 
 typedef struct		s_reader

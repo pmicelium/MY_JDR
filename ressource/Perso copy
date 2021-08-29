@@ -1,0 +1,69 @@
+// Inserer le nom de votre personage //
+John "Volt" Phyto
+
+// inserer vos competences //
+carrure                 2
+charisme                2
+coordination            5
+eduaction               3
+perception              4
+reflexe                 3
+sang_froid              4
+vehicule_terrestre      5
+pilotage_Leger          4
+pilotage_combat         4
+pilotage_Lourd          8
+tourelle                5
+discretion              7
+fouille                 8
+informatique            7
+piratage                9
+decryptage              9
+premier_secour          9
+athle                   9
+acrobatie               8
+escalade                7
+endurence               9
+eloquence               9
+intimidation            9
+bluff                   8
+psyco                   8
+brico                   5
+metal                   9
+reparation              6
+cuisine                 9
+survie                  9
+epaule                  7
+pompe                   9
+sniper                  9
+poing                   4
+contact                 8
+lourde                  9
+CAC                     9
+lancer                  9
+explosif                5
+pouvoir un              6
+pouvoir deux            7
+pouvoir trois           7
+pouvoir quatre          7
+pouvoir cinq            9
+pouvoir six             9
+pouvoir sept            9
+pouvoir huit            9
+pouvoir neuf            9
+
+Point d'experience      0
+
+// inserer les noms de vos pouvoirs (si vide, laissez (vide)) //
+// les characteres unicode ne sont pas aceptes, donc eviter les accents. //
+// attention a bien respecter l'orde au dessus //
+Controle informatique (8 mama)
+Influencer une IA (15 mana)
+Freeze une unitee (8 mana)
+Perturbation (8 mana)
+(vide)
+(vide)
+(vide)
+(vide)
+END POWER
+// merci //

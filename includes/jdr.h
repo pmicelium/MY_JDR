@@ -16,10 +16,9 @@
 
 
 // window size define 
-# define WIN_X 1920
+# define WIN_X 2048
 # define WIN_Y 1080
-// # define WIN_X 1080
-// # define WIN_Y 720
+
 
 // t_sdl.tabs define 
 # define MAP 1
@@ -28,27 +27,52 @@
 
 // ressource path
 # define PERSO_PATH "ressource/Perso"
-# define BACKGROUND_PATH "ressource/image/background.bmp"
-// # define FONT_PATH "ressource/font/Nasa21-l23X.ttf"
-# define FONT_PATH "ressource/font/sf-distant-galaxy.outline.ttf"
-# define FONT_SIZE 24
+
+// background path 
+# define MAP_BACKGROUND_PATH "ressource/image/map_background.bmp"
+# define PERSO_BACKGROUND_PATH "ressource/image/perso_background.bmp"
+# define PERSO_PP_PATH "ressource/image/persoPP.bmp"
+
+// font 
+# define FONT_SF_OUT_PATH "ressource/font/sf-distant-galaxy.outline.ttf"
+# define FONT_SF_R_PATH "ressource/font/sf-distant-galaxy.regular.ttf"
+# define FONT_TAB_SIZE 24
+
+# define FONT_CARAC_SIZE 30
+# define FONT_CARAC_T_SIZE 35
+
+# define FONT_SKILL_G_SIZE 30
+# define FONT_SKILL_SIZE 16
+
+// SDL COLOR
+# define MY_GREEN {45, 206, 69}
 
 
 //
 // STRUCT
 // 
 
+//  font struct
+typedef struct      s_font
+{
+    TTF_Font        *tab;
+    TTF_Font        *skill_groupe;
+    TTF_Font        *skill;
+    TTF_Font        *carac_titre;
+    TTF_Font        *carac;
+}                   t_font;
+
 // sdl struct
 typedef struct      s_sdl
 {
-    int             tabs;
-
     SDL_Window      *window;
     SDL_Surface     *window_surface;
     SDL_Event       event;
 
-    TTF_Font        *font;
+    t_font          font;
 }                   t_sdl;
+
+
 
 // sdl image struct
 typedef struct      s_sdl_image
@@ -152,9 +176,10 @@ typedef struct      s_perso
 // main struct
 typedef struct      s_jdr 
 {
-    bool             perso;
-    bool             sdl;
-    bool             ttf;
+    int             tab;
+    bool            perso;
+    bool            sdl;
+    bool            ttf;
 }                   t_jdr;
 
 //
@@ -164,16 +189,18 @@ typedef struct      s_jdr
 void init_jdr(t_jdr *jdr);
 // free and quit all 
 void destroy_all(t_jdr *jdr);
-// main event loop
-int loop(t_sdl *sdl, t_jdr *jdr);
 
 //
-// WINDOW 
+// GRAPHIC
 // 
 // create a window
 int init_window(t_sdl *sdl);
 // destroy a window 
 void destroy_window(t_sdl *sdl);
+// main event loop
+int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso);
+// display perso tab on screen 
+void display_perso(t_sdl *sdl, t_perso *perso);
 
 // 
 // PERSO 
@@ -196,6 +223,8 @@ void	            ft_putnbr_endl(int nb);
 int                 exit_char(char* str, int i);
 int				    gnl(int fd, char **line);
 int		            ft_atoi(char const *str);
+char	            *ft_itoa(int nb);
+char	            *ft_strjoin(char const *s1, char const *s2);
 // gnl 
 # define GNL_EOL 1
 # define GNL_EOF 0

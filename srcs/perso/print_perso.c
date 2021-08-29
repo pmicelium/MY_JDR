@@ -62,8 +62,8 @@ pouvoir neuf            %d\n\
 Point d'experience      %d\n\
 \n\
 // inserer les noms de vos pouvoirs (si vide, laissez (vide)) //\n\
-// les characteres unicode ne sont pas aceptes, donc eviter les accents. //\n\
 // attention a bien respecter l'orde au dessus //\n\
+// Pour un meilleur affichage, eviter les phrases trop longues //\n\
 %s\n\
 %s\n\
 %s\n\

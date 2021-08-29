@@ -20,7 +20,7 @@ int WinMain(int argc, char* argv[])
 
 //  initialisation de la fenetre;
     t_sdl       sdl;
-    sdl.tabs = MAP;
+
     if (init_window(&sdl) == -1)
         return -1;
     jdr.sdl = true;
@@ -32,12 +32,19 @@ int WinMain(int argc, char* argv[])
         fprintf(stderr, "Erreur d'initialisation de TTF_Init : %s\n", TTF_GetError());
         exit(EXIT_FAILURE); 
     }
-    jdr.ttf = true;
-    sdl.font = TTF_OpenFont(FONT_PATH, FONT_SIZE);
     ft_putendl("TTF_init done !");
+    jdr.ttf = true;
+    sdl.font.tab = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_TAB_SIZE);
+
+    sdl.font.skill_groupe = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_SKILL_G_SIZE);
+    sdl.font.skill = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_SKILL_SIZE);
+
+    sdl.font.carac_titre = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_CARAC_T_SIZE);
+    sdl.font.carac = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_CARAC_SIZE);
+    ft_putendl("TTF font done !");
     
 // loop sdl
-    if (loop(&sdl, &jdr)== -1)
+    if (loop(&sdl, &jdr, &perso)== -1)
         return-1;
 
     return 0;

@@ -15,7 +15,7 @@ int init_perso(t_perso *perso)
 
     while ((gnl(fd, &line) > 0))
     {
-        ft_putendl(line);
+        // ft_putendl(line);
 
         if (i == 2)
             perso->name = strdup(line);    
@@ -140,8 +140,8 @@ int init_perso(t_perso *perso)
         i++;
     }
     //  test print_perso
-    //  ft_putstr("exp init : ");
-    //  ft_putnbr_endl(perso->skill.exp);
+    // ft_putstr("carrure init : ");
+    // ft_putstr(ft_atoi(perso->skill.carrure));
     // perso->skill.carrure = 9;
     close(fd);
     // print_perso(perso);

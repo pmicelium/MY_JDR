@@ -30,7 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="C:/Users/Admin/Documents/x86SDL2/include" />
+			<Add directory="lib/x86SDL2/include" />
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
@@ -40,7 +40,13 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
-			<Add library="C:/Users/Admin/Documents/x86SDL2/lib/libSDL2_ttf.dll.a" />
+			<Add library="lib/x86SDL2/lib/libSDL2_ttf.dll.a" />
+			<Add library="lib/x86SDL2/lib/libSDL2.a" />
+			<Add library="lib/x86SDL2/lib/libSDL2.dll.a" />
+			<Add library="lib/x86SDL2/lib/libSDL2_test.a" />
+			<Add library="lib/x86SDL2/lib/libSDL2_ttf.a" />
+			<Add library="lib/x86SDL2/lib/libSDL2_ttf.dll.a" />
+			<Add library="lib/x86SDL2/lib/libSDL2main.a" />
 			<Add directory="C:/Users/Admin/Documents/x86SDL2/lib" />
 		</Linker>
 		<ExtraCommands>
@@ -53,7 +59,13 @@
 		<Unit filename="srcs/graphic/destroy_window.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="srcs/graphic/display_perso.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="srcs/graphic/init_window.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="srcs/graphic/loop.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="srcs/init_jdr.c">

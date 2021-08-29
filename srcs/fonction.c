@@ -112,3 +112,130 @@ int		ft_atoi(char const *str)
 		val = val * 10 + (str[i++] - '0');
 	return (sign * val);
 }
+
+// ft_itoa 
+
+char	*ft_strcpy(char *dest, char const *src)
+{
+	int		i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+void	*ft_memset(void *s, int k, size_t n)
+{
+	size_t			i;
+	unsigned char	*c;
+
+	c = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		c[i] = k;
+		i++;
+	}
+	s = c;
+	return (s);
+}
+
+void	*ft_memalloc(size_t size)
+{
+	void	*mem;
+
+	if (size == 0)
+		return (NULL);
+	if (!(mem = (void*)malloc(size)))
+		return (NULL);
+	ft_memset(mem, 0, size);
+	return (mem);
+}
+
+char	*ft_strnew(size_t size)
+{
+	char	*new;
+
+	new = ft_memalloc(size + 1);
+	return (new);
+}
+
+size_t		ft_intlen(int nb)
+{
+	int		len;
+
+	len = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+		len++;
+	while (nb != 0)
+	{
+		nb = nb / 10;
+		len++;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int nb)
+{
+	int		i;
+	char	*s;
+
+	i = ft_intlen(nb);
+	if (!(s = (char*)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	s[i] = '\0';
+	if (nb == 0)
+	{
+		s[0] = 48;
+		return (s);
+	}
+	if (nb == -2147483647 -1)
+		return (ft_strcpy(ft_strnew(11), "-2147483648"));
+	if (nb < 0)
+	{
+		s[0] = '-';
+		nb = -nb;
+	}
+	while (nb > 0)
+	{
+		s[--i] = 48 + (nb % 10);
+		nb = nb / 10;
+	}
+	return (s);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char		*new;
+	size_t		i;
+	size_t		k;
+	size_t		l;
+	size_t		len;
+
+	len = strlen(s1);
+	l = 0;
+	k = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	i = strlen(s1) + strlen(s2);
+	if (!(new = (char*)malloc(sizeof(char) * (i) + 1)))
+		return (NULL);
+	while (k < len)
+		new[k++] = s1[l++];
+	l = 0;
+	while (k < i)
+	{
+		new[k] = s2[l];
+		l++;
+		k++;
+	}
+	new[k] = '\0';
+	return (new);
+}

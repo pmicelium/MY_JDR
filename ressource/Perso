@@ -13,7 +13,7 @@ vehicule_terrestre      5
 pilotage_Leger          4
 pilotage_combat         4
 pilotage_Lourd          8
-tourelle                5
+tourelle                4
 discretion              7
 fouille                 8
 informatique            7
@@ -46,18 +46,18 @@ pouvoir un              6
 pouvoir deux            7
 pouvoir trois           7
 pouvoir quatre          7
-pouvoir cinq            9
-pouvoir six             9
-pouvoir sept            9
-pouvoir huit            9
-pouvoir neuf            9
+pouvoir cinq            0
+pouvoir six             0
+pouvoir sept            0
+pouvoir huit            0
+pouvoir neuf            0
 
 Point d'experience      0
 
 // inserer les noms de vos pouvoirs (si vide, laissez (vide)) //
-// les characteres unicode ne sont pas aceptes, donc eviter les accents. //
 // attention a bien respecter l'orde au dessus //
-Controle informatique (8 mama)
+// Pour un meilleur affichage, eviter les phrases trop longues //
+Controle informatique (8 mana)
 Influencer une IA (15 mana)
 Freeze une unitee (8 mana)
 Perturbation (8 mana)

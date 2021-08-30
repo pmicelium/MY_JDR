@@ -4,6 +4,7 @@ static void     display_str(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Col
 {
     SDL_Surface     *str_to_display = TTF_RenderText_Solid(font, str, Color);
     SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, rect);
+    SDL_FreeSurface(str_to_display);
     
 }
 
@@ -13,7 +14,7 @@ static void     display_carac_stat(t_sdl *sdl, t_perso *perso)
     SDL_Rect        rect;
 
     rect.x = 425;
-    rect.y = 445;
+    rect.y = 485;
     display_str(sdl, ft_itoa(perso->skill.carrure), &rect, MyGreen, sdl->font.carac);
     rect.y = rect.y + 50;
     display_str(sdl, ft_itoa(perso->skill.charisme), &rect, MyGreen, sdl->font.carac);
@@ -38,7 +39,7 @@ static void     display_carac(t_sdl *sdl, t_perso *perso)
     // rect.y = 395;
     // display_str(sdl, "CARACTERISTIQUE", &rect, MyGreen, sdl->font.carac_titre);
     rect.x = 125;
-    rect.y = 445;
+    rect.y = 487;
     display_str(sdl, "Carrure", &rect, MyGreen, sdl->font.carac);
     rect.y = rect.y + 50;
     display_str(sdl, "Charisme", &rect, MyGreen, sdl->font.carac);
@@ -218,7 +219,7 @@ static void     display_skill_stat(t_sdl *sdl, t_perso *perso, SDL_Color MyGreen
     display_str(sdl, ft_itoa(perso->skill.exp), &rect, MyGreen, sdl->font.skill_groupe);
     // Groupe Communication
     rect.x = 420;
-    rect.y = 835;
+    rect.y = 878;
     str = ft_strjoin(ft_itoa(perso->skill.eloquence), "+");
     display_str(sdl, str, &rect, MyGreen, sdl->font.skill_groupe);
     rect.y = rect.y + nl;
@@ -342,7 +343,7 @@ static void     display_skill(t_sdl *sdl, t_perso *perso)
     display_str(sdl, "Points d'experience", &rect, MyGreen, sdl->font.skill);
     // Groupe Com
     rect.x = 125;
-    rect.y = 840;
+    rect.y = 883;
     display_str(sdl, "Eloquence (CHARISME)", &rect, MyGreen, sdl->font.skill);
     rect.y = rect.y + nl;
     display_str(sdl, "Intimidation (CHARISME)", &rect, MyGreen, sdl->font.skill);
@@ -355,8 +356,46 @@ static void     display_skill(t_sdl *sdl, t_perso *perso)
     display_skill_stat(sdl, perso, MyGreen, nl);     
 }
 
+void            display_pp(t_sdl *sdl, t_perso *perso)
+{
+    t_sdl_image     perso_pp;
+
+    perso_pp.position.x = 130;
+    perso_pp.position.y = 130;
+    
+    if (!(perso_pp.image = SDL_LoadBMP(PERSO_PP_PATH)))
+    {
+        ft_putendl("load perso background fail");
+        return ;            
+    }
+
+    SDL_Rect rect;
+    rect.x = 177;
+    rect.y = 131;
+    rect.h = 322;
+    rect.w = 227;
+    SDL_BlitScaled(perso_pp.image, NULL, sdl->window_surface, &rect);
+}
+
+void            display_name(t_sdl *sdl, t_perso *perso)
+{
+    SDL_Rect rect;
+    SDL_Color       MyGreen = MY_GREEN;
+
+    rect.x = 98;
+    rect.y = 85;
+    rect.w = 385;
+    rect.h = 30;
+    SDL_Surface     *str_to_display = TTF_RenderText_Solid(sdl->font.carac_titre, perso->name, MyGreen);
+    // printf("name  h : %d\nname w:  %d\n", str_to_display->h, str_to_display->w);
+    SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+    SDL_FreeSurface(str_to_display);
+}
+
 void            display_perso(t_sdl *sdl, t_perso *perso)
 {
+    display_name(sdl, perso);
     display_carac(sdl, perso);
     display_skill(sdl, perso);
+    display_pp(sdl, perso);
 }

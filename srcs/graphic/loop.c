@@ -82,20 +82,24 @@ int         loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso)
                     }
                     if(keys[SDL_SCANCODE_I] == 1)
                     {
-                        jdr->tab = INV;
-                        need2draw =  true;
+                        if (jdr->tab != TAB_INV)
+                            need2draw = true;
+                        jdr->tab = TAB_INV;
                     }
                     // insert inventaire
                     if (keys[SDL_SCANCODE_P] == 1)
                     {
-                        jdr->tab = PERSO;
-                        need2draw = true;
+                        if (jdr->tab != TAB_PERSO)
+                            need2draw = true;
+                        jdr->tab = TAB_PERSO;
+                        
                     }
                     // insert Perso
                     if (keys[SDL_SCANCODE_M] == 1)
                     {
-                        jdr->tab = MAP;
-                        need2draw = true;
+                        if (jdr->tab != TAB_MAP)
+                            need2draw = true;
+                        jdr->tab = TAB_MAP;
                     }
                     // insert competence   
                 }
@@ -109,9 +113,9 @@ int         loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso)
                 // clear window
                 SDL_FillRect(sdl->window_surface, NULL, SDL_MapRGB(sdl->window_surface->format, 0, 0, 0));
                 // put background
-                if (jdr->tab == MAP)
+                if (jdr->tab == TAB_MAP)
                     SDL_BlitSurface(map_background.image, NULL, sdl->window_surface, &map_background.position);
-                else if (jdr->tab == PERSO)
+                else if (jdr->tab == TAB_PERSO)
                     SDL_BlitSurface(perso_background.image, NULL, sdl->window_surface, &perso_background.position);
                 else 
                     SDL_BlitSurface(map_background.image, NULL, sdl->window_surface, &map_background.position);
@@ -122,9 +126,9 @@ int         loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso)
                 SDL_BlitSurface(tab_NAME, NULL, sdl->window_surface, &NAME_rect);
 
                 // display tabs
-                if(jdr->tab == PERSO)
+                if(jdr->tab == TAB_PERSO)
                     display_perso(sdl, perso);
-                // else if (jdr->tab == INV)
+                // else if (jdr->tab == TAB_INV)
                 //     display_inv(sdl);
                 // else
                 //     display_map(sdl);

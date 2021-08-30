@@ -21,21 +21,22 @@
 
 
 // t_sdl.tabs define 
-# define MAP 1
-# define INV 2
-# define PERSO 3
+# define TAB_MAP 1
+# define TAB_INV 2
+# define TAB_PERSO 3
 
 // ressource path
 # define PERSO_PATH "ressource/Perso"
 
-// background path 
+// image path 
 # define MAP_BACKGROUND_PATH "ressource/image/map_background.bmp"
 # define PERSO_BACKGROUND_PATH "ressource/image/perso_background.bmp"
-# define PERSO_PP_PATH "ressource/image/persoPP.bmp"
+# define PERSO_PP_PATH "ressource/image/perso_pp.bmp"
 
 // font 
 # define FONT_SF_OUT_PATH "ressource/font/sf-distant-galaxy.outline.ttf"
 # define FONT_SF_R_PATH "ressource/font/sf-distant-galaxy.regular.ttf"
+
 # define FONT_TAB_SIZE 24
 
 # define FONT_CARAC_SIZE 30

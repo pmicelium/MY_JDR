@@ -11,6 +11,8 @@ int WinMain(int argc, char* argv[])
     t_jdr       jdr;
     init_jdr(&jdr);
 
+    // NEED TO CHECK PATH BEFORE ALL //
+
 //  initialisation de perso
     t_perso     perso;
     if (init_perso(&perso) == -1)

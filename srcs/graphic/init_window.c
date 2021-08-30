@@ -15,7 +15,7 @@ int init_window(t_sdl *sdl)
     sdl->window = SDL_CreateWindow("SDL2 Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, 
     //SDL_WINDOW_RESIZABLE);
     SDL_WINDOW_FULLSCREEN_DESKTOP);
-    //SDL_WINDOW_BORDERLESS);
+    // SDL_WINDOW_BORDERLESS);
     // 0);
      if(!sdl->window)
         return exit_char("fail to create window", -1);

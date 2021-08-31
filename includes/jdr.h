@@ -179,8 +179,11 @@ typedef struct      s_skill
 typedef struct      s_perso
 {
     char*           name;
-    t_skill         skill;
     t_sdl_image     profile_pict;
+
+    t_skill         skill;
+    t_skill         copy;
+
     int             levelup;
 }                   t_perso;
 
@@ -227,8 +230,6 @@ int init_perso(t_perso *perso);
 void destroy_perso(t_perso *perso);
 // update ressource perso
 void print_perso(t_perso *perso);
-// copy t_perso struct
-t_skill copy_skill(t_skill *skill);
 // free t_skill char
 void    free_skill(t_skill *skill);
 

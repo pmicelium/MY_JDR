@@ -83,10 +83,8 @@ int         loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso)
                 {
                     mouse = SDL_GetMouseState(&x, &y);
                     // LEFT BUTTON 
-                    printf("mouse_event\n");
                     if ((mouse & SDL_BUTTON_LMASK) != 0)
                     {
-                        printf("mouse_event\n");
                         mouse_event(jdr, perso, x, y);   
                     }
                     break;

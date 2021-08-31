@@ -16,14 +16,20 @@
 
 
 // window size define 
-# define WIN_X 2048
-# define WIN_Y 1080
+# define WIN_X      2048
+# define WIN_Y      1080
 
 
-// t_sdl.tabs define 
-# define TAB_MAP 1
-# define TAB_INV 2
-# define TAB_PERSO 3
+// t_jdr.tabs define 
+# define TAB_MAP    1
+# define TAB_INV    2
+# define TAB_PERSO  3
+
+// t_perso levelup define
+# define LEVELUP    1
+# define LEVELUP_O  2
+# define LEVELUP_R  3
+# define LEVELUP_V  4
 
 // ressource path
 # define PERSO_PATH "ressource/Perso"
@@ -45,6 +51,8 @@
 # define FONT_SKILL_G_SIZE 30
 # define FONT_SKILL_SIZE 16
 
+# define FONT_PLUS_SIZE 70
+
 // SDL COLOR
 # define MY_GREEN {45, 206, 69}
 
@@ -61,6 +69,7 @@ typedef struct      s_font
     TTF_Font        *skill;
     TTF_Font        *carac_titre;
     TTF_Font        *carac;
+    TTF_Font        *plus;
 }                   t_font;
 
 // sdl struct
@@ -172,6 +181,7 @@ typedef struct      s_perso
     char*           name;
     t_skill         skill;
     t_sdl_image     profile_pict;
+    int             levelup;
 }                   t_perso;
 
 // main struct
@@ -181,6 +191,7 @@ typedef struct      s_jdr
     bool            perso;
     bool            sdl;
     bool            ttf;
+    bool            need2draw;
 }                   t_jdr;
 
 //
@@ -202,6 +213,10 @@ void destroy_window(t_sdl *sdl);
 int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso);
 // display perso tab on screen 
 void display_perso(t_sdl *sdl, t_perso *perso);
+// manage mouse event 
+void mouse_event(t_jdr *jdr, t_perso *perso, int x, int y);
+// manage mouse event in perso tab
+void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y);
 
 // 
 // PERSO 
@@ -212,6 +227,10 @@ int init_perso(t_perso *perso);
 void destroy_perso(t_perso *perso);
 // update ressource perso
 void print_perso(t_perso *perso);
+// copy t_perso struct
+t_skill copy_skill(t_skill *skill);
+// free t_skill char
+void    free_skill(t_skill *skill);
 
 // 
 // LIBFT 
@@ -226,6 +245,7 @@ int				    gnl(int fd, char **line);
 int		            ft_atoi(char const *str);
 char	            *ft_itoa(int nb);
 char	            *ft_strjoin(char const *s1, char const *s2);
+char                *ft_strdup(char const *src);
 // gnl 
 # define GNL_EOL 1
 # define GNL_EOF 0

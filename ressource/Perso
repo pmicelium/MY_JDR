@@ -5,7 +5,7 @@ John "Volt" Phyto
 carrure                 2
 charisme                2
 coordination            5
-eduaction               3
+education               3
 perception              4
 reflexe                 3
 sang_froid              4
@@ -16,7 +16,7 @@ pilotage_Lourd          8
 tourelle                4
 discretion              7
 fouille                 8
-informatique            7
+informatique            6
 piratage                9
 decryptage              9
 premier_secour          9
@@ -52,7 +52,7 @@ pouvoir sept            0
 pouvoir huit            0
 pouvoir neuf            0
 
-Point d'experience      0
+Point d'experience      50
 
 // inserer les noms de vos pouvoirs (si vide, laissez (vide)) //
 // attention a bien respecter l'orde au dessus //

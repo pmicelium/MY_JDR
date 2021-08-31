@@ -12,7 +12,7 @@ void print_perso(t_perso *perso)
 carrure                 %d\n\
 charisme                %d\n\
 coordination            %d\n\
-eduaction               %d\n\
+education               %d\n\
 perception              %d\n\
 reflexe                 %d\n\
 sang_froid              %d\n\
@@ -30,7 +30,7 @@ premier_secour          %d\n\
 athle                   %d\n\
 acrobatie               %d\n\
 escalade                %d\n\
-endurence               %d\n\
+endurance               %d\n\
 eloquence               %d\n\
 intimidation            %d\n\
 bluff                   %d\n\

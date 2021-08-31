@@ -4,6 +4,103 @@
 // initialisation du personnage
 */
 
+void    free_skill(t_skill *skill)
+{
+    if (skill->power1)
+        free(skill->power1);
+    if (skill->power2)
+        free(skill->power2);
+    if (skill->power3)
+        free(skill->power3);
+    if (skill->power4)
+        free(skill->power4);
+    if (skill->power5)
+        free(skill->power5);
+    if (skill->power6)
+        free(skill->power6);
+    if (skill->power7)
+        free(skill->power7);
+    if (skill->power8)
+        free(skill->power8);
+    if (skill->power9)
+        free(skill->power9);
+}
+
+t_skill copy_skill(t_skill *old)
+{
+    t_skill new;
+
+    // caracteristique
+    new.carrure = old->carrure;
+    new.charisme = old->charisme;
+    new.coordination = old->coordination;
+    new.education = old->education;
+    new.perception = old->perception;
+    new.reflexe = old->reflexe;
+    new.sang_froid = old->sang_froid;
+    // Pilote
+    new.vehicule_terrestre = old->vehicule_terrestre;
+    new.pilotage_Leger = old->pilotage_Leger;
+    new.pilotage_combat = old->pilotage_combat;
+    new.pilotage_Leger = old->pilotage_Lourd;
+    new.tourelle = old->tourelle;
+    // explo
+    new.discretion = old->discretion;
+    new.fouille = old->fouille;
+    new.informatique = old->informatique;
+    new.piratage = old->piratage;
+    new.decryptage = old->decryptage;
+    new.premier_secour = old->premier_secour;
+    // phyisque 
+    new.athle = old->athle;
+    new.acrobatie = old->acrobatie;
+    new.escalade = old->escalade;
+    new.endurence = old->endurence;
+    // com
+    new.eloquence = old->eloquence;
+    new.intimidation = old->intimidation;
+    new.bluff = old->bluff;
+    new.psyco = old->psyco;
+    // craft
+    new.brico = old->brico;
+    new.metal = old->metal;
+    new.reparation = old->reparation;
+    new.cuisine = old->cuisine;
+    new.survie = old->cuisine;
+    // Arme
+    new.epaule = old->epaule;
+    new.pompe = old->pompe;
+    new.sniper = old->sniper;
+    new.poing = old->poing;
+    new.contact = old->contact;
+    new.lourde = old->lourde;
+    new.CAC = old->CAC;
+    new.lancer = old->lancer;
+    new.explosif = old->explosif;
+    new.exp = old->exp;
+    // Pouvoir
+    new.pouvoir1 = old->pouvoir1;
+    new.pouvoir2 = old->pouvoir2; 
+    new.pouvoir3 = old->pouvoir3; 
+    new.pouvoir4 = old->pouvoir4; 
+    new.pouvoir5 = old->pouvoir5; 
+    new.pouvoir6 = old->pouvoir6; 
+    new.pouvoir7 = old->pouvoir7; 
+    new.pouvoir8 = old->pouvoir8; 
+    new.pouvoir9 = old->pouvoir9;  
+    
+    new.power1 = ft_strdup(old->power1);
+    new.power2 = ft_strdup(old->power2);
+    new.power3 = ft_strdup(old->power3);
+    new.power4 = ft_strdup(old->power4);
+    new.power5 = ft_strdup(old->power5);
+    new.power6 = ft_strdup(old->power6);
+    new.power7 = ft_strdup(old->power7);
+    new.power8 = ft_strdup(old->power8);
+    new.power9 = ft_strdup(old->power9);
+    return new;
+}
+
 int init_perso(t_perso *perso)
 {
     int     fd;
@@ -13,6 +110,8 @@ int init_perso(t_perso *perso)
         return exit_char("cannot open perso_skill", -1);
     int     i = 1;
 
+    perso->levelup = LEVELUP;
+    
     while ((gnl(fd, &line) > 0))
     {
         // ft_putendl(line);

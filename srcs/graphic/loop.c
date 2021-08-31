@@ -56,59 +56,87 @@ int         loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso)
 
 
     bool keepWindow = true;
-    bool need2draw = true;
+    jdr->need2draw = true;
     Uint8 const *keys = SDL_GetKeyboardState(NULL);
-
+    Uint32 mouse;
+    int x;
+    int y;
     while (keepWindow)
     {
         while (SDL_PollEvent(&sdl->event) > 0)
         {
-            switch(sdl->event.type)                  //check le type d'event.
+            switch(sdl->event.type)
             {
-                case SDL_QUIT:                      // croix rouge 
+                // if prog end;
+                case SDL_QUIT: 
                 {
                     keepWindow = false;
                     destroy_window(sdl);
                     destroy_all(jdr);
                 }
                 break;
+
+                // 
+                // MOUSE EVENT
+                // 
+                case SDL_MOUSEBUTTONDOWN:
+                {
+                    mouse = SDL_GetMouseState(&x, &y);
+                    // LEFT BUTTON 
+                    printf("mouse_event\n");
+                    if ((mouse & SDL_BUTTON_LMASK) != 0)
+                    {
+                        printf("mouse_event\n");
+                        mouse_event(jdr, perso, x, y);   
+                    }
+                    break;
+                }
+                //  
+                // KEY EVENT 
+                // 
                 case SDL_KEYDOWN:
                 {
-                    if(keys[SDL_SCANCODE_ESCAPE]== 1) //keeped for testing;
+                    // keeped for testing;
+                    // quit prog;
+                    if(keys[SDL_SCANCODE_ESCAPE]== 1) 
                     {
                         keepWindow = false;
                         destroy_window(sdl);
                         destroy_all(jdr);
                     }
-                    if(keys[SDL_SCANCODE_I] == 1)
-                    {
-                        if (jdr->tab != TAB_INV)
-                            need2draw = true;
-                        jdr->tab = TAB_INV;
-                    }
-                    // insert inventaire
-                    if (keys[SDL_SCANCODE_P] == 1)
-                    {
-                        if (jdr->tab != TAB_PERSO)
-                            need2draw = true;
-                        jdr->tab = TAB_PERSO;
-                        
-                    }
-                    // insert Perso
-                    if (keys[SDL_SCANCODE_M] == 1)
+                    // MAP
+                    if (keys[SDL_SCANCODE_F1] == 1)
                     {
                         if (jdr->tab != TAB_MAP)
-                            need2draw = true;
+                            jdr->need2draw = true;
                         jdr->tab = TAB_MAP;
                     }
-                    // insert competence   
+                    // inventaire
+                    if(keys[SDL_SCANCODE_F2] == 1)
+                    {
+                        if (jdr->tab != TAB_INV)
+                            jdr->need2draw = true;
+                        jdr->tab = TAB_INV;
+                    }
+                    // Perso
+                    if (keys[SDL_SCANCODE_F3] == 1)
+                    {
+                        if (jdr->tab != TAB_PERSO)
+                        {
+                            perso->levelup = LEVELUP;
+                            jdr->need2draw = true;
+                        }
+                        jdr->tab = TAB_PERSO;
+                        
+                        
+                    }  
                 }
                 break;
             }
         }
         if (keepWindow == true)
         {
-            if(need2draw == true)
+            if(jdr->need2draw == true)
             {
                 // clear window
                 SDL_FillRect(sdl->window_surface, NULL, SDL_MapRGB(sdl->window_surface->format, 0, 0, 0));
@@ -135,7 +163,7 @@ int         loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso)
 
             }
             // update window
-            need2draw = false;
+            jdr->need2draw = false;
             SDL_UpdateWindowSurface(sdl->window);
         }
     }

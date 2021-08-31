@@ -52,8 +52,6 @@ void	ft_putnbr_endl(int nb)
 	ft_putchar('\n');
 }
 
-// GNL //
-
 static char		*ft_get_after(char **line, char *after)
 {
 	if (strchr(after, '\n'))
@@ -87,8 +85,6 @@ int				gnl(int fd, char **line)
 	return (0);
 }
 
-// ft_atoi
-
 int		ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
@@ -112,8 +108,6 @@ int		ft_atoi(char const *str)
 		val = val * 10 + (str[i++] - '0');
 	return (sign * val);
 }
-
-// ft_itoa 
 
 char	*ft_strcpy(char *dest, char const *src)
 {
@@ -165,7 +159,7 @@ char	*ft_strnew(size_t size)
 	return (new);
 }
 
-size_t		ft_intlen(int nb)
+size_t	ft_intlen(int nb)
 {
 	int		len;
 
@@ -238,4 +232,24 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	new[k] = '\0';
 	return (new);
+}
+
+char	*ft_strdup(char const *src)
+{
+	char	*src2;
+	int		i;
+
+	i = 0;
+	while (src[i])
+		i++;
+	if (!(src2 = (char*)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	if (i == 0)
+	{
+		src2[0] = '\0';
+		return (src2);
+	}
+	ft_strcpy(src2, src);
+	src2[i] = '\0';
+	return (src2);
 }

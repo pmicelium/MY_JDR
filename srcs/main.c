@@ -43,6 +43,7 @@ int WinMain(int argc, char* argv[])
 
     sdl.font.carac_titre = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_CARAC_T_SIZE);
     sdl.font.carac = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_CARAC_SIZE);
+    sdl.font.plus = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_PLUS_SIZE);
     ft_putendl("TTF font done !");
     
 // loop sdl

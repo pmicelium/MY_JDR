@@ -4,6 +4,18 @@
 // SDL2 include
 # include "SDL2\SDL.h"
 # include "SDL2\SDL_ttf.h"
+# include "SDL2\SDL_net.h"
+
+// SDL_net
+#include <string.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <time.h>
+
+# define MY_PORT "9999"
+# define MY_HOST "localhost"
+# define MAXLEN (10*1024) /* 10 KB - adequate for text! */
 
 // system include 
 # include <stdbool.h>
@@ -14,11 +26,9 @@
 # include <stdio.h>
 # include <math.h>
 
-
 // window size define 
 # define WIN_X      2048
 # define WIN_Y      1080
-
 
 // t_jdr.tabs define 
 # define TAB_MAP    1
@@ -82,6 +92,34 @@ typedef struct      s_sdl
     t_font          font;
 }                   t_sdl;
 
+// sdl_net client
+typedef struct      s_client
+{
+	TCPsocket       sock;
+	char            *name;
+}                   t_client;
+
+typedef struct      s_my_net 
+{
+    IPaddress       ip;
+    TCPsocket       sock;
+
+    char            message[MAXLEN];
+    bool            message_ready;
+    bool            rcaps;
+    bool            lcaps;
+
+    // int             numready;
+    Uint16          port;
+    SDLNet_SocketSet set;
+    fd_set          fdset;
+    int             result;
+
+    char            *name;
+    char            *str;
+    struct          timeval tv;
+
+}                   t_my_net;              
 
 
 // sdl image struct
@@ -195,6 +233,7 @@ typedef struct      s_jdr
     bool            sdl;
     bool            ttf;
     bool            need2draw;
+    bool            need2draw_chat;
 }                   t_jdr;
 
 //
@@ -204,6 +243,8 @@ typedef struct      s_jdr
 void init_jdr(t_jdr *jdr);
 // free and quit all 
 void destroy_all(t_jdr *jdr);
+// init client 
+void init_client(t_perso *perso, t_my_net *net);
 
 //
 // GRAPHIC
@@ -213,13 +254,18 @@ int init_window(t_sdl *sdl);
 // destroy a window 
 void destroy_window(t_sdl *sdl);
 // main event loop
-int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso);
+int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net);
 // display perso tab on screen 
 void display_perso(t_sdl *sdl, t_perso *perso);
 // manage mouse event 
-void mouse_event(t_jdr *jdr, t_perso *perso, int x, int y);
+void my_mouse_event(t_jdr *jdr, t_perso *perso, int x, int y);
 // manage mouse event in perso tab
 void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y);
+// displat chat on screen
+void display_chat(t_jdr *jdr, t_perso *perso);
+// get str from keybord event
+// finish str when press "ENTER"
+void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps);
 
 // 
 // PERSO 
@@ -232,6 +278,18 @@ void destroy_perso(t_perso *perso);
 void print_perso(t_perso *perso);
 // free t_skill char
 void    free_skill(t_skill *skill);
+
+//
+// CLIENT
+// 
+/* receive a buffer from a TCP socket with error checking */
+/* this function handles the memory, so it can't use any [] arrays */
+/* returns 0 on any errors, or a valid char* on success */
+char *getMsg(TCPsocket sock, char **buf);
+
+/* send a string buffer over a TCP socket with error checking */
+/* returns 0 on any errors, length sent on success */
+int putMsg(TCPsocket sock, char *buf);
 
 // 
 // LIBFT 
@@ -247,6 +305,7 @@ int		            ft_atoi(char const *str);
 char	            *ft_itoa(int nb);
 char	            *ft_strjoin(char const *s1, char const *s2);
 char                *ft_strdup(char const *src);
+void	            ft_strclr(char *s);
 // gnl 
 # define GNL_EOL 1
 # define GNL_EOF 0

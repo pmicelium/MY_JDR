@@ -253,3 +253,19 @@ char	*ft_strdup(char const *src)
 	src2[i] = '\0';
 	return (src2);
 }
+
+void	ft_strclr(char *s)
+{
+	size_t		i;
+	size_t		j;
+
+	i = 0;
+	if (s == NULL)
+		return ;
+	j = strlen(s);
+	while (i < j)
+	{
+		s[i] = '\0';
+		i++;
+	}
+}

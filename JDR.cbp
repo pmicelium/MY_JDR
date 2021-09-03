@@ -27,10 +27,17 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
+			<Target title="Server">
+				<Option output="bin/server/jdr_server" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".objs/server/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add directory="lib/x86SDL2/include" />
+			<Add directory="includes" />
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
@@ -41,44 +48,82 @@
 			<Add library="winmm" />
 			<Add library="dxguid" />
 			<Add library="lib/x86SDL2/lib/libSDL2_ttf.dll.a" />
-			<Add library="lib/x86SDL2/lib/libSDL2.a" />
-			<Add library="lib/x86SDL2/lib/libSDL2.dll.a" />
-			<Add library="lib/x86SDL2/lib/libSDL2_test.a" />
-			<Add library="lib/x86SDL2/lib/libSDL2_ttf.a" />
-			<Add library="lib/x86SDL2/lib/libSDL2_ttf.dll.a" />
-			<Add library="lib/x86SDL2/lib/libSDL2main.a" />
-			<Add directory="C:/Users/Admin/Documents/x86SDL2/lib" />
+			<Add library="lib/x86SDL2/lib/libSDL2_net.dll.a" />
+			<Add directory="lib/x86SDL2/lib" />
 		</Linker>
 		<ExtraCommands>
 			<Add after="XCOPY $(#sdl2)\bin\*.dll $(TARGET_OUTPUT_DIR) /D /Y" />
 		</ExtraCommands>
-		<Unit filename="includes/jdr.h" />
+		<Unit filename="includes/jdr.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/client/get_put_message.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="srcs/client/init_client.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="srcs/fonction.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="srcs/graphic/destroy_window.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="srcs/graphic/display_perso.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="srcs/graphic/init_window.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="srcs/graphic/loop.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/graphic/mouse_event.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/graphic/mouse_event_perso.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="srcs/init_jdr.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="srcs/main.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="srcs/perso/init_perso.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="srcs/perso/print_perso.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/tcpmultiserver.c">
+			<Option compilerVar="CC" />
+			<Option target="Server" />
 		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />

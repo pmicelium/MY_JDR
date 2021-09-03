@@ -1,6 +1,6 @@
 #include "jdr.h"
 
-void mouse_event(t_jdr *jdr, t_perso *perso, int x, int y)
+void my_mouse_event(t_jdr *jdr, t_perso *perso, int x, int y)
 {
     printf("cursor at %d / %d\n", x, y);
     // TAB

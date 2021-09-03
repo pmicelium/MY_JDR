@@ -5,7 +5,7 @@ John "Volt" Phyto
 carrure                 2
 charisme                2
 coordination            5
-eduaction               3
+education               3
 perception              4
 reflexe                 3
 sang_froid              4
@@ -23,7 +23,7 @@ premier_secour          9
 athle                   9
 acrobatie               8
 escalade                7
-endurence               9
+endurance               9
 eloquence               9
 intimidation            9
 bluff                   8
@@ -52,11 +52,11 @@ pouvoir sept            0
 pouvoir huit            0
 pouvoir neuf            0
 
-Point d'experience      99
+Point d'experience      100
 
 // inserer les noms de vos pouvoirs (si vide, laissez (vide)) //
-// les characteres unicode ne sont pas aceptes, donc eviter les accents. //
 // attention a bien respecter l'orde au dessus //
+// Pour un meilleur affichage, eviter les phrases trop longues //
 Controle informatique (8 mama)
 Influencer une IA (15 mana)
 Freeze une unitee (8 mana)

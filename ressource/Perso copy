@@ -46,13 +46,13 @@ pouvoir un              6
 pouvoir deux            7
 pouvoir trois           7
 pouvoir quatre          7
-pouvoir cinq            9
-pouvoir six             9
-pouvoir sept            9
-pouvoir huit            9
-pouvoir neuf            9
+pouvoir cinq            0
+pouvoir six             0
+pouvoir sept            0
+pouvoir huit            0
+pouvoir neuf            0
 
-Point d'experience      0
+Point d'experience      100
 
 // inserer les noms de vos pouvoirs (si vide, laissez (vide)) //
 // les characteres unicode ne sont pas aceptes, donc eviter les accents. //

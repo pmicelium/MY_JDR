@@ -1,9 +1,15 @@
 #include "jdr.h"
 
-void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps)
+void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
 {
     char c;
-    static int i = 0;
+    static unsigned int i = 0;
+
+    if (i == 0)
+    {
+        net->message[i] = '|';
+        net->message[i+1] = '\0';
+    }
 
     switch (event.key.keysym.sym)
     {
@@ -318,7 +324,7 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps)
     }
     case SDLK_0:
     {
-        net->message[i] = '9';
+        net->message[i] = '0';
         i++;
         break;
     }
@@ -332,8 +338,9 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps)
     }
     case SDLK_BACKSPACE:
     {
-        i--;
-        net->message[i] = '\0';
+        net->message[i] = '|';
+        if (i > 0)
+            i--;
         break;
     }
     case SDLK_EXCLAIM:
@@ -592,7 +599,11 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps)
     }
     }
 
-    if (i < MAXLEN)
-        net->message[i + 1] = '\0';
-    printf("%s\n", net->message);
+    static int tmp;
+    if (i != tmp)
+    {
+        tmp = i;
+        net->message[i] = '|';
+        net->message[i+1] = '\0';
+    }
 }

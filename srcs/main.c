@@ -29,14 +29,7 @@ int main(int argc, char *argv[])
     }
     ft_putendl("TTF_init done !");
     jdr.ttf = true;
-    sdl.font.tab = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_TAB_SIZE);
-
-    sdl.font.skill_groupe = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_SKILL_G_SIZE);
-    sdl.font.skill = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_SKILL_SIZE);
-
-    sdl.font.carac_titre = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_CARAC_T_SIZE);
-    sdl.font.carac = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_CARAC_SIZE);
-    sdl.font.plus = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_PLUS_SIZE);
+    init_ttf_font(&sdl);
     ft_putendl("TTF font done !");
 
     // //  initialisation de SDL_NET

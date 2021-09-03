@@ -52,6 +52,7 @@
 // font 
 # define FONT_SF_OUT_PATH "ressource/font/sf-distant-galaxy.outline.ttf"
 # define FONT_SF_R_PATH "ressource/font/sf-distant-galaxy.regular.ttf"
+# define FONT_NASA "ressource/font/Nasa21-l23X.ttf"
 
 # define FONT_TAB_SIZE 24
 
@@ -62,6 +63,9 @@
 # define FONT_SKILL_SIZE 16
 
 # define FONT_PLUS_SIZE 70
+
+# define FONT_CHAT_SIZE 20
+# define FONT_LOG_SIZE 20
 
 // SDL COLOR
 # define MY_GREEN {45, 206, 69}
@@ -80,6 +84,8 @@ typedef struct      s_font
     TTF_Font        *carac_titre;
     TTF_Font        *carac;
     TTF_Font        *plus;
+    TTF_Font        *message;
+    TTF_Font        *log;
 }                   t_font;
 
 // sdl struct
@@ -105,9 +111,6 @@ typedef struct      s_my_net
     TCPsocket       sock;
 
     char            message[MAXLEN];
-    bool            message_ready;
-    bool            rcaps;
-    bool            lcaps;
 
     // int             numready;
     Uint16          port;
@@ -233,7 +236,6 @@ typedef struct      s_jdr
     bool            sdl;
     bool            ttf;
     bool            need2draw;
-    bool            need2draw_chat;
 }                   t_jdr;
 
 //
@@ -245,6 +247,11 @@ void init_jdr(t_jdr *jdr);
 void destroy_all(t_jdr *jdr);
 // init client 
 void init_client(t_perso *perso, t_my_net *net);
+// get str from keybord event
+// call display message after new key pressed 
+void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl);
+// init ttf_font
+void    init_ttf_font(t_sdl *sdl);
 
 //
 // GRAPHIC
@@ -261,11 +268,9 @@ void display_perso(t_sdl *sdl, t_perso *perso);
 void my_mouse_event(t_jdr *jdr, t_perso *perso, int x, int y);
 // manage mouse event in perso tab
 void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y);
-// displat chat on screen
-void display_chat(t_jdr *jdr, t_perso *perso);
-// get str from keybord event
-// finish str when press "ENTER"
-void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps);
+// displat the message on screen before it is send
+void display_message(char *message, t_sdl *sdl);
+
 
 // 
 // PERSO 

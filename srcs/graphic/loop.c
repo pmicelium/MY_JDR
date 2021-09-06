@@ -55,9 +55,8 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     NAME_rect.h = 30;
 
     // init message
-    get_str_from_keybord(net, sdl->event, false, sdl);
+    get_str_from_keybord(net, sdl->event, false, sdl, perso);
     net->log_fd = init_log(net);
-    fprintf(net->log_fd, "=======\nNouvelle Session\n=======\n");
     net->log_whell = -100;
     jdr->log = true;
 
@@ -72,13 +71,20 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - check all comment, maybe some idea to implement.
     - make debug mode with printf of all fonction.
     - check if prog protected if log > 40.000 of message > 10.240
-    - center name in perso.
-    - cursor in message with arrow
+    - cursor in message with left and right arrow (ttf status je crois)
+
+    - protect /roll
+
+    - keep in mem old message to resend them.
+    - print command in log
+    - gerer les noms de perso a ralonge.
+
     - add color and shit like that in log if possible 
     - command before send message.
     - send message to server.
     - check error handling, and if prog quit proprelly
     - make text look nice in display_perso with ttf rt blended
+
     - get time and date for LOG (1 / months or 1 / sessions ?? )
 
     - keybord event not working proprelly -> shit+1 make "1" not "!"
@@ -166,10 +172,10 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 }
                 // Chat
                 else if (keys[SDL_SCANCODE_LSHIFT] == 1 || keys[SDL_SCANCODE_RSHIFT] == 1)
-                    get_str_from_keybord(net, sdl->event, true, sdl);
+                    get_str_from_keybord(net, sdl->event, true, sdl, perso);
 
                 else
-                    get_str_from_keybord(net, sdl->event, false, sdl);
+                    get_str_from_keybord(net, sdl->event, false, sdl, perso);
             }
             break;
             }

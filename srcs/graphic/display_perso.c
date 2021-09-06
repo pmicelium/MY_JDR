@@ -379,12 +379,13 @@ static void display_name(t_sdl *sdl, t_perso *perso)
 {
     SDL_Rect rect;
     SDL_Color MyGreen = MY_GREEN;
-
-    rect.x = 98;
+    
+    SDL_Surface *str_to_display = TTF_RenderText_Blended_Wrapped(sdl->font.carac_titre, perso->name, MyGreen, 363);
+    rect.x = 270 - (str_to_display->w / 2);
     rect.y = 85;
-    rect.w = 385;
+    rect.w = 450;
     rect.h = 30;
-    SDL_Surface *str_to_display = TTF_RenderText_Solid(sdl->font.carac_titre, perso->name, MyGreen);
+
     SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
     SDL_FreeSurface(str_to_display);
 }

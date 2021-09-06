@@ -6,6 +6,13 @@ FILE *init_log(t_my_net *net)
     FILE *fd = fopen(LOG_PATH, "a+");
     while (fgets(str, LOG_LEN - 1, fd))
         strcat(net->log, str);
+    char hello[112] = "=======\n\
+Nouvelle Session\n\n\
+Entrer \"/help \" pour voir tout les commandes.\n\n\
+Bon jeu !\n\
+=======\n";
+    strcat(net->log, hello);
+    printf("log ok \n");
     return (fd);
 }
 
@@ -14,11 +21,9 @@ void display_log(t_sdl *sdl, t_my_net *net)
     SDL_Color color = MY_GREEN;
     SDL_Rect rect;
     SDL_Rect scroll;
-    static int tmp;
 
     rect.x = 1640;
     rect.y = 45;
-
     rect.h = 950;
 
     SDL_Surface *log = TTF_RenderText_Blended_Wrapped(sdl->font.log, net->log, color, 269);
@@ -28,7 +33,7 @@ void display_log(t_sdl *sdl, t_my_net *net)
     if (log->h - 930 != net->max_log)
     {
         net->max_log = log->h - 930;
-        net->log_whell = net->max_log;   
+        net->log_whell = net->max_log;
     }
 
     scroll.x = 0;

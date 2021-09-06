@@ -9,7 +9,7 @@ static void add_msg_to_log(t_my_net *net)
     strcat(net->log, "\n");
 }
 
-void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
+void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl, t_perso *perso)
 {
     char c;
 
@@ -25,25 +25,37 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
     // ENTER
     case SDLK_RETURN:
     {
-        if (net->i < MAXLEN)
-            net->message[net->i] = '\0';
-        printf("%s : %s\n", net->name, net->message);
-        fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
-        add_msg_to_log(net);
-        net->i = 0;
-        ft_strclr(net->message);
+        if (net->i != 0)
+        {
+            if (net->i < MAXLEN)
+                net->message[net->i] = '\0';
+            printf("%s : %s\n", net->name, net->message);
+            if (net->message[0] == '/')
+                check_command(perso, net);
+            if (net->i != 0)
+                fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
+            add_msg_to_log(net);
+            net->i = 0;
+            ft_strclr(net->message);
+        }
         break;
     }
     case SDLK_KP_ENTER:
     {
-        if (net->i < MAXLEN)
-            net->message[net->i] = '\0';
-        printf("%s : %s\n", net->name, net->message);
-        fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
-        add_msg_to_log(net);
-        net->i = 0;
-        ft_strclr(net->message);
-        break;
+        if (net->i != 0)
+        {
+            if (net->i < MAXLEN)
+                net->message[net->i] = '\0';
+            printf("%s : %s\n", net->name, net->message);
+            if (net->message[0] == '/')
+                check_command(perso, net);
+            if (net->i != 0)
+                fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
+            add_msg_to_log(net);
+            net->i = 0;
+            ft_strclr(net->message);
+            break;
+        }
     }
     // AlphaNum
     case SDLK_a:
@@ -609,7 +621,6 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         net->i++;
         break;
     }
-
     }
 
     static int tmp;

@@ -399,7 +399,7 @@
 1630406586 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
 	"jdr.h"
 
-1630677472 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
+1630956475 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
 	"jdr.h"
 
 1630859311 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
@@ -408,10 +408,10 @@
 1630245028 source:c:\users\admin\desktop\jdr\jdr\srcs\loop.c
 	"jdr.h"
 
-1630941538 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
+1630955184 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
 	"jdr.h"
 
-1630863670 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
+1630955105 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
 	"jdr.h"
 
 1630702831 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event.c
@@ -423,10 +423,10 @@
 1630702765 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event_perso.c
 	"jdr.h"
 
-1630941977 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
+1630944364 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
 	"jdr.h"
 
-1630934093 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
+1630956455 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
 	"SDL2\SDL.h"
 	"SDL2\SDL_ttf.h"
 	"SDL2\SDL_net.h"
@@ -851,9 +851,20 @@
 1630593509 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
 	"jdr.h"
 
-1630941094 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
+1630955024 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
 	"jdr.h"
 
-1630866113 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
+1630955798 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
+	"jdr.h"
+
+1630955658 source:c:\users\admin\desktop\jdr\jdr\srcs\command\caracteristic.c
+	"jdr.h"
+
+1630953115 source:c:\users\admin\desktop\jdr\jdr\srcs\command\pmpv.c
+
+1630957288 source:c:\users\admin\desktop\jdr\jdr\srcs\command\roll.c
+	"jdr.h"
+
+1630956386 source:c:\users\admin\desktop\jdr\jdr\srcs\command\localisation.c
 	"jdr.h"
 

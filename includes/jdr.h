@@ -118,7 +118,7 @@ typedef struct      s_my_net
     FILE            *log_fd;
     char            log[LOG_LEN];
 
-    // whell 
+    // wheel 
     int             log_whell;
     int             max_log;
 
@@ -261,7 +261,7 @@ void destroy_all(t_jdr *jdr, t_my_net *net);
 void init_client(t_perso *perso, t_my_net *net);
 // get str from keybord event
 // call display message after new key pressed 
-void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl);
+void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl, t_perso *perso);
 // init ttf_font
 void    init_ttf_font(t_sdl *sdl);
 // init log 
@@ -304,6 +304,15 @@ void    free_skill(t_skill *skill);
 // COMMAMDS
 //
 void check_command(t_perso *perso, t_my_net *net);
+void command_loca(t_my_net *net);
+void command_roll(t_my_net *net, int i);
+void command_carr(t_perso *perso, t_my_net *net);
+void command_char(t_perso *perso, t_my_net *net);
+void command_coor(t_perso *perso, t_my_net *net);
+void command_educ(t_perso *perso, t_my_net *net);
+void command_perc(t_perso *perso, t_my_net *net);
+void command_refl(t_perso *perso, t_my_net *net);
+void command_sang(t_perso *perso, t_my_net *net);
 
 //
 // CLIENT
@@ -333,6 +342,7 @@ char	            *ft_itoa(int nb);
 char	            *ft_strjoin(char const *s1, char const *s2);
 char                *ft_strdup(char const *src);
 void	            ft_strclr(char *s);
+int		            ft_isalpha(int c);
 // gnl 
 # define GNL_EOL 1
 # define GNL_EOF 0

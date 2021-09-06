@@ -26,33 +26,40 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     SDL_Color MyGreen = MY_GREEN;
     int y_tab = 9;
     //          MAP
-    SDL_Surface *tab_MAP = TTF_RenderText_Solid(sdl->font.tab, "CARTE", MyGreen);
+    SDL_Surface *tab_MAP = TTF_RenderText_Blended(sdl->font.tab, "CARTE", MyGreen);
     SDL_Rect MAP_rect;
     MAP_rect.x = 110;
     MAP_rect.y = y_tab;
     MAP_rect.w = 300;
     MAP_rect.h = 30;
     //          INVENTAIRE
-    SDL_Surface *tab_INV = TTF_RenderText_Solid(sdl->font.tab, "INVENTAIRE", MyGreen);
+    SDL_Surface *tab_INV = TTF_RenderText_Blended(sdl->font.tab, "INVENTAIRE", MyGreen);
     SDL_Rect INV_rect;
     INV_rect.x = 400;
     INV_rect.y = y_tab;
     INV_rect.w = 300;
     INV_rect.h = 30;
     //          PERSO
-    SDL_Surface *tab_PERSO = TTF_RenderText_Solid(sdl->font.tab, "PERSO", MyGreen);
+    SDL_Surface *tab_PERSO = TTF_RenderText_Blended(sdl->font.tab, "PERSO", MyGreen);
     SDL_Rect PERSO_rect;
     PERSO_rect.x = 735;
     PERSO_rect.y = y_tab;
     PERSO_rect.w = 300;
     PERSO_rect.h = 30;
     //          NAME DISPLAY
-    SDL_Surface *tab_NAME = TTF_RenderText_Solid(sdl->font.tab, "JDR des French Retards", MyGreen);
+    SDL_Surface *tab_NAME = TTF_RenderText_Blended(sdl->font.tab, "JDR des French Retards", MyGreen);
     SDL_Rect NAME_rect;
     NAME_rect.x = 1200;
     NAME_rect.y = y_tab;
     NAME_rect.w = 300;
     NAME_rect.h = 30;
+
+    // init message
+    get_str_from_keybord(net, sdl->event, false, sdl);
+    net->log_fd = init_log(net);
+    fprintf(net->log_fd, "=======\nNouvelle Session\n=======\n");
+    net->log_whell = -100;
+    jdr->log = true;
 
     bool keepWindow = true;
     Uint32 mouse;
@@ -61,6 +68,21 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     int y;
     // int numready;
 
+    /* TO DO
+    - check all comment, maybe some idea to implement.
+    - make debug mode with printf of all fonction.
+    - check if prog protected if log > 40.000 of message > 10.240
+    - center name in perso.
+    - cursor in message with arrow
+    - add color and shit like that in log if possible 
+    - command before send message.
+    - send message to server.
+    - check error handling, and if prog quit proprelly
+    - make text look nice in display_perso with ttf rt blended
+    - get time and date for LOG (1 / months or 1 / sessions ?? )
+
+    - keybord event not working proprelly -> shit+1 make "1" not "!"
+    */
     while (keepWindow)
     {
         while (SDL_PollEvent(&sdl->event) > 0)
@@ -72,7 +94,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             {
                 keepWindow = false;
                 destroy_window(sdl);
-                destroy_all(jdr);
+                destroy_all(jdr, net);
             }
             break;
 
@@ -89,6 +111,31 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 }
                 break;
             }
+            case SDL_MOUSEWHEEL:
+            {
+                // scroll up
+                mouse = SDL_GetMouseState(&x, &y);
+                if (sdl->event.wheel.y > 0)
+                {
+                    if (x > 1625 && y > 30 && y < 985)
+                    {
+                        if (net->log_whell > 10)
+                            net->log_whell = net->log_whell - 25;
+                    }
+                    //     printf("DOWN : %d\nmax L : %d\n", net->log_whell, net->max_log);
+                }
+                // scroll down
+                else if (sdl->event.wheel.y < 0)
+                {
+                    if (x > 1625 && y > 30 && y < 985)
+                    {
+                        if (net->log_whell != net->max_log)
+                            net->log_whell = net->log_whell + 25;
+                    }
+                    //     printf("DOWN : %d\nmax L : %d\n", net->log_whell, net->max_log);
+                }
+                break;
+            }
             //
             // KEY EVENT
             //
@@ -100,7 +147,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 {
                     keepWindow = false;
                     destroy_window(sdl);
-                    destroy_all(jdr);
+                    destroy_all(jdr, net);
                 }
                 // MAP
                 if (keys[SDL_SCANCODE_F1] == 1)
@@ -117,10 +164,10 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                         perso->levelup = LEVELUP;
                     jdr->tab = TAB_PERSO;
                 }
+                // Chat
                 else if (keys[SDL_SCANCODE_LSHIFT] == 1 || keys[SDL_SCANCODE_RSHIFT] == 1)
                     get_str_from_keybord(net, sdl->event, true, sdl);
 
-                // Chat
                 else
                     get_str_from_keybord(net, sdl->event, false, sdl);
             }
@@ -155,28 +202,12 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             //     display_map(sdl);
 
             // display chat
-            display_message(net->message, sdl);
+            display_message(sdl, net);
+            display_log(sdl, net);
         }
         //
         // CLIENT LOOP
         //
-        // numready = SDLNet_CheckSockets(net->set, 100);
-        // if (numready == -1)
-        // {
-        //     printf("SDLNet_CheckSockets: %s\n", SDLNet_GetError());
-        //     break;
-        // }
-
-        // /* check to see if the server sent us data */
-        // if (numready && SDLNet_SocketReady(net->sock))
-        // {
-        //     /* getMsg is in tcputil.h, it gets a string from the socket */
-        //     /* with a bunch of error handling */
-        //     if (!getMsg(net->sock, &net->str))
-        //         break;
-        //     /* post it to the screen */
-        //     printf("%s\n", net->str);
-        // }
 
         // update window
         SDL_UpdateWindowSurface(sdl->window);

@@ -28,8 +28,8 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
     ft_putendl("TTF_init done !");
-    jdr.ttf = true;
     init_ttf_font(&sdl);
+    jdr.ttf = true;
     ft_putendl("TTF font done !");
 
     // //  initialisation de SDL_NET
@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
     }
     printf("SDL_NET init done !\n");
     init_client(&perso, &net);
+    jdr.net = true;
     printf("init client done !\n");
     
     

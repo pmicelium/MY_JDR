@@ -1,14 +1,22 @@
 #include "jdr.h"
 
+static void add_msg_to_log(t_my_net *net)
+{
+    // je sais pas si c'est tres rapide tout ca
+    strcat(net->log, net->name);
+    strcat(net->log, " : ");
+    strcat(net->log, net->message);
+    strcat(net->log, "\n");
+}
+
 void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
 {
     char c;
-    static unsigned int i = 0;
 
-    if (i == 0)
+    if (net->i == 0)
     {
-        net->message[i] = '|';
-        net->message[i+1] = '\0';
+        net->message[net->i] = '|';
+        net->message[net->i + 1] = '\0';
     }
 
     switch (event.key.keysym.sym)
@@ -17,19 +25,23 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
     // ENTER
     case SDLK_RETURN:
     {
-        if (i < MAXLEN)
-            net->message[i + 1] = '\0';
+        if (net->i < MAXLEN)
+            net->message[net->i] = '\0';
         printf("%s : %s\n", net->name, net->message);
-        i = 0;
+        fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
+        add_msg_to_log(net);
+        net->i = 0;
         ft_strclr(net->message);
         break;
     }
     case SDLK_KP_ENTER:
     {
-        if (i < MAXLEN)
-            net->message[i + 1] = '\0';
+        if (net->i < MAXLEN)
+            net->message[net->i] = '\0';
         printf("%s : %s\n", net->name, net->message);
-        i = 0;
+        fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
+        add_msg_to_log(net);
+        net->i = 0;
         ft_strclr(net->message);
         break;
     }
@@ -39,8 +51,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'a';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_b:
@@ -48,8 +60,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'b';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_c:
@@ -57,8 +69,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'c';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_d:
@@ -66,8 +78,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'd';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_e:
@@ -75,8 +87,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'e';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_f:
@@ -84,8 +96,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'f';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_g:
@@ -93,8 +105,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'g';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_h:
@@ -102,8 +114,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'h';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_i:
@@ -111,8 +123,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'i';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_j:
@@ -120,8 +132,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'j';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_k:
@@ -129,8 +141,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'k';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_l:
@@ -138,8 +150,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'l';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_m:
@@ -147,8 +159,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'm';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_n:
@@ -156,8 +168,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'n';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_o:
@@ -165,8 +177,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'o';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_p:
@@ -174,8 +186,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'p';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_q:
@@ -183,8 +195,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'q';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_r:
@@ -192,8 +204,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'r';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_s:
@@ -201,8 +213,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 's';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_t:
@@ -210,8 +222,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 't';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_u:
@@ -219,8 +231,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'u';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_v:
@@ -228,8 +240,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'v';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_w:
@@ -237,8 +249,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'w';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_x:
@@ -246,8 +258,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'x';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_y:
@@ -255,8 +267,8 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'y';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_z:
@@ -264,346 +276,347 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl)
         c = 'z';
         if (caps)
             c -= 32;
-        net->message[i] = c;
-        i++;
+        net->message[net->i] = c;
+        net->i++;
         break;
     }
     case SDLK_1:
     {
-        net->message[i] = '1';
-        i++;
+        net->message[net->i] = '1';
+        net->i++;
         break;
     }
     case SDLK_2:
     {
-        net->message[i] = '2';
-        i++;
+        net->message[net->i] = '2';
+        net->i++;
         break;
     }
     case SDLK_3:
     {
-        net->message[i] = '3';
-        i++;
+        net->message[net->i] = '3';
+        net->i++;
         break;
     }
     case SDLK_4:
     {
-        net->message[i] = '4';
-        i++;
+        net->message[net->i] = '4';
+        net->i++;
         break;
     }
     case SDLK_5:
     {
-        net->message[i] = '5';
-        i++;
+        net->message[net->i] = '5';
+        net->i++;
         break;
     }
     case SDLK_6:
     {
-        net->message[i] = '6';
-        i++;
+        net->message[net->i] = '6';
+        net->i++;
         break;
     }
     case SDLK_7:
     {
-        net->message[i] = '7';
-        i++;
+        net->message[net->i] = '7';
+        net->i++;
         break;
     }
     case SDLK_8:
     {
-        net->message[i] = '8';
-        i++;
+        net->message[net->i] = '8';
+        net->i++;
         break;
     }
     case SDLK_9:
     {
-        net->message[i] = '9';
-        i++;
+        net->message[net->i] = '9';
+        net->i++;
         break;
     }
     case SDLK_0:
     {
-        net->message[i] = '0';
-        i++;
+        net->message[net->i] = '0';
+        net->i++;
         break;
     }
 
     // OTHER
     case SDLK_SPACE:
     {
-        net->message[i] = ' ';
-        i++;
+        net->message[net->i] = ' ';
+        net->i++;
         break;
     }
     case SDLK_BACKSPACE:
     {
-        net->message[i] = '|';
-        if (i > 0)
-            i--;
+        net->message[net->i] = '|';
+        if (net->i > 0)
+            net->i--;
         break;
     }
     case SDLK_EXCLAIM:
     {
-        net->message[i] = '!';
-        i++;
+        net->message[net->i] = '!';
+        net->i++;
         break;
     }
     case SDLK_QUOTEDBL:
     {
-        net->message[i] = '\"';
-        i++;
+        net->message[net->i] = '\"';
+        net->i++;
         break;
     }
     case SDLK_HASH:
     {
-        net->message[i] = '#';
-        i++;
+        net->message[net->i] = '#';
+        net->i++;
         break;
     }
     case SDLK_DOLLAR:
     {
-        net->message[i] = '$';
-        i++;
+        net->message[net->i] = '$';
+        net->i++;
         break;
     }
     case SDLK_AMPERSAND:
     {
-        net->message[i] = '&';
-        i++;
+        net->message[net->i] = '&';
+        net->i++;
         break;
     }
     case SDLK_QUOTE:
     {
-        net->message[i] = '\'';
-        i++;
+        net->message[net->i] = '\'';
+        net->i++;
         break;
     }
     case SDLK_LEFTPAREN:
     {
-        net->message[i] = '(';
-        i++;
+        net->message[net->i] = '(';
+        net->i++;
         break;
     }
     case SDLK_RIGHTPAREN:
     {
-        net->message[i] = ')';
-        i++;
+        net->message[net->i] = ')';
+        net->i++;
         break;
     }
     case SDLK_ASTERISK:
     {
-        net->message[i] = '*';
-        i++;
+        net->message[net->i] = '*';
+        net->i++;
         break;
     }
     case SDLK_PLUS:
     {
-        net->message[i] = '+';
-        i++;
+        net->message[net->i] = '+';
+        net->i++;
         break;
     }
     case SDLK_COMMA:
     {
-        net->message[i] = ',';
-        i++;
+        net->message[net->i] = ',';
+        net->i++;
         break;
     }
     case SDLK_MINUS:
     {
-        net->message[i] = '-';
-        i++;
+        net->message[net->i] = '-';
+        net->i++;
         break;
     }
     case SDLK_PERIOD:
     {
-        net->message[i] = '.';
-        i++;
+        net->message[net->i] = '.';
+        net->i++;
         break;
     }
     case SDLK_SLASH:
     {
-        net->message[i] = '/';
-        i++;
+        net->message[net->i] = '/';
+        net->i++;
         break;
     }
     case SDLK_COLON:
     {
-        net->message[i] = ':';
-        i++;
+        net->message[net->i] = ':';
+        net->i++;
         break;
     }
     case SDLK_SEMICOLON:
     {
-        net->message[i] = ';';
-        i++;
+        net->message[net->i] = ';';
+        net->i++;
         break;
     }
     case SDLK_LESS:
     {
-        net->message[i] = '<';
-        i++;
+        net->message[net->i] = '<';
+        net->i++;
         break;
     }
     case SDLK_EQUALS:
     {
-        net->message[i] = '=';
-        i++;
+        net->message[net->i] = '=';
+        net->i++;
         break;
     }
     case SDLK_GREATER:
     {
-        net->message[i] = '>';
-        i++;
+        net->message[net->i] = '>';
+        net->i++;
         break;
     }
     case SDLK_QUESTION:
     {
-        net->message[i] = '?';
-        i++;
+        net->message[net->i] = '?';
+        net->i++;
         break;
     }
     case SDLK_AT:
     {
-        net->message[i] = '@';
-        i++;
+        net->message[net->i] = '@';
+        net->i++;
         break;
     }
     case SDLK_LEFTBRACKET:
     {
-        net->message[i] = '[';
-        i++;
+        net->message[net->i] = '[';
+        net->i++;
         break;
     }
     case SDLK_BACKSLASH:
     {
-        net->message[i] = '\\';
-        i++;
+        net->message[net->i] = '\\';
+        net->i++;
         break;
     }
     case SDLK_RIGHTBRACKET:
     {
-        net->message[i] = ']';
-        i++;
+        net->message[net->i] = ']';
+        net->i++;
         break;
     }
     case SDLK_CARET:
     {
-        net->message[i] = '^';
-        i++;
+        net->message[net->i] = '^';
+        net->i++;
         break;
     }
     case SDLK_UNDERSCORE:
     {
-        net->message[i] = '_';
-        i++;
+        net->message[net->i] = '_';
+        net->i++;
         break;
     }
     case SDLK_BACKQUOTE:
     {
-        net->message[i] = '`';
-        i++;
+        net->message[net->i] = '`';
+        net->i++;
         break;
     }
 
     // keypads
     case SDLK_KP_0:
     {
-        net->message[i] = '0';
-        i++;
+        net->message[net->i] = '0';
+        net->i++;
         break;
     }
     case SDLK_KP_1:
     {
-        net->message[i] = '1';
-        i++;
+        net->message[net->i] = '1';
+        net->i++;
         break;
     }
     case SDLK_KP_2:
     {
-        net->message[i] = '2';
-        i++;
+        net->message[net->i] = '2';
+        net->i++;
         break;
     }
     case SDLK_KP_3:
     {
-        net->message[i] = '3';
-        i++;
+        net->message[net->i] = '3';
+        net->i++;
         break;
     }
     case SDLK_KP_4:
     {
-        net->message[i] = '4';
-        i++;
+        net->message[net->i] = '4';
+        net->i++;
         break;
     }
     case SDLK_KP_5:
     {
-        net->message[i] = '5';
-        i++;
+        net->message[net->i] = '5';
+        net->i++;
         break;
     }
     case SDLK_KP_6:
     {
-        net->message[i] = '6';
-        i++;
+        net->message[net->i] = '6';
+        net->i++;
         break;
     }
     case SDLK_KP_7:
     {
-        net->message[i] = '7';
-        i++;
+        net->message[net->i] = '7';
+        net->i++;
         break;
     }
     case SDLK_KP_8:
     {
-        net->message[i] = '8';
-        i++;
+        net->message[net->i] = '8';
+        net->i++;
         break;
     }
     case SDLK_KP_9:
     {
-        net->message[i] = '9';
-        i++;
+        net->message[net->i] = '9';
+        net->i++;
         break;
     }
     case SDLK_KP_PERIOD:
     {
-        net->message[i] = '.';
-        i++;
+        net->message[net->i] = '.';
+        net->i++;
         break;
     }
     case SDLK_KP_DIVIDE:
     {
-        net->message[i] = '/';
-        i++;
+        net->message[net->i] = '/';
+        net->i++;
         break;
     }
     case SDLK_KP_MULTIPLY:
     {
-        net->message[i] = '*';
-        i++;
+        net->message[net->i] = '*';
+        net->i++;
         break;
     }
     case SDLK_KP_MINUS:
     {
-        net->message[i] = '-';
-        i++;
+        net->message[net->i] = '-';
+        net->i++;
         break;
     }
     case SDLK_KP_PLUS:
     {
-        net->message[i] = '+';
-        i++;
+        net->message[net->i] = '+';
+        net->i++;
         break;
     }
+
     }
 
     static int tmp;
-    if (i != tmp)
+    if (net->i != tmp)
     {
-        tmp = i;
-        net->message[i] = '|';
-        net->message[i+1] = '\0';
+        tmp = net->i;
+        net->message[net->i] = '|';
+        net->message[net->i + 1] = '\0';
     }
 }

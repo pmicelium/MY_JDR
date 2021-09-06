@@ -1,8 +1,8 @@
 #include "jdr.h"
 
-void    init_ttf_font(t_sdl *sdl)
+void init_ttf_font(t_sdl *sdl)
 {
-    //TAB
+    // TAB
     sdl->font.tab = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_TAB_SIZE);
 
     // PERSO
@@ -14,10 +14,10 @@ void    init_ttf_font(t_sdl *sdl)
 
     // CHAT
     sdl->font.message = TTF_OpenFont(FONT_NASA, FONT_CHAT_SIZE);
-    sdl->font.log =  TTF_OpenFont(FONT_NASA, FONT_LOG_SIZE);
+    sdl->font.log = TTF_OpenFont(FONT_NASA, FONT_LOG_SIZE);
 }
 
-void    init_jdr(t_jdr *jdr)
+void init_jdr(t_jdr *jdr)
 {
     jdr->perso = false;
     jdr->sdl = false;
@@ -25,10 +25,14 @@ void    init_jdr(t_jdr *jdr)
     jdr->tab = TAB_MAP;
 }
 
-void    destroy_all(t_jdr *jdr)
+void destroy_all(t_jdr *jdr, t_my_net *net)
 {
     if (jdr->sdl == true)
         SDL_Quit();
     if (jdr->ttf == true)
         TTF_Quit();
+    if (jdr->net == true)
+        SDLNet_Quit();
+    if (jdr->log == true)
+        fclose(net->log_fd);
 }

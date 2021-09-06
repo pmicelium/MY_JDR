@@ -16,6 +16,7 @@
 # define MY_PORT "9999"
 # define MY_HOST "localhost"
 # define MAXLEN (10*1024) /* 10 KB - adequate for text! */
+# define LOG_LEN 40000
 
 // system include 
 # include <stdbool.h>
@@ -43,6 +44,7 @@
 
 // ressource path
 # define PERSO_PATH "ressource/Perso"
+# define LOG_PATH "ressource/log"
 
 // image path 
 # define MAP_BACKGROUND_PATH "ressource/image/map_background.bmp"
@@ -110,7 +112,15 @@ typedef struct      s_my_net
     IPaddress       ip;
     TCPsocket       sock;
 
+    // message and log
     char            message[MAXLEN];
+    unsigned int    i;
+    FILE            *log_fd;
+    char            log[LOG_LEN];
+
+    // whell 
+    int             log_whell;
+    int             max_log;
 
     // int             numready;
     Uint16          port;
@@ -235,6 +245,8 @@ typedef struct      s_jdr
     bool            perso;
     bool            sdl;
     bool            ttf;
+    bool            net;
+    bool            log;
     bool            need2draw;
 }                   t_jdr;
 
@@ -244,7 +256,7 @@ typedef struct      s_jdr
 // init struc jdr 
 void init_jdr(t_jdr *jdr);
 // free and quit all 
-void destroy_all(t_jdr *jdr);
+void destroy_all(t_jdr *jdr, t_my_net *net);
 // init client 
 void init_client(t_perso *perso, t_my_net *net);
 // get str from keybord event
@@ -252,6 +264,8 @@ void init_client(t_perso *perso, t_my_net *net);
 void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl);
 // init ttf_font
 void    init_ttf_font(t_sdl *sdl);
+// init log 
+FILE*    init_log(t_my_net *net);
 
 //
 // GRAPHIC
@@ -268,8 +282,10 @@ void display_perso(t_sdl *sdl, t_perso *perso);
 void my_mouse_event(t_jdr *jdr, t_perso *perso, int x, int y);
 // manage mouse event in perso tab
 void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y);
-// displat the message on screen before it is send
-void display_message(char *message, t_sdl *sdl);
+// display the message on screen before it is send
+void display_message(t_sdl *sdl, t_my_net *net);
+// display logs on screen 
+void display_log(t_sdl *sdl, t_my_net *net);
 
 
 // 
@@ -285,16 +301,22 @@ void print_perso(t_perso *perso);
 void    free_skill(t_skill *skill);
 
 //
+// COMMAMDS
+//
+void check_command(t_perso *perso, t_my_net *net);
+
+//
 // CLIENT
 // 
 /* receive a buffer from a TCP socket with error checking */
 /* this function handles the memory, so it can't use any [] arrays */
 /* returns 0 on any errors, or a valid char* on success */
 char *getMsg(TCPsocket sock, char **buf);
-
 /* send a string buffer over a TCP socket with error checking */
 /* returns 0 on any errors, length sent on success */
 int putMsg(TCPsocket sock, char *buf);
+// send the message you enter to log 
+// void   send_message(t_my_net *net);
 
 // 
 // LIBFT 

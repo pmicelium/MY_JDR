@@ -68,26 +68,32 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     // int numready;
 
     /* TO DO
+    - map
+    - inventory
     - check all comment, maybe some idea to implement.
     - make debug mode with printf of all fonction.
     - check if prog protected if log > 40.000 of message > 10.240
     - cursor in message with left and right arrow (ttf status je crois)
 
-    - protect /roll
+    - remove limit in roll => make the output plusieurs messages ==>finsh print_log
+    - auto-completion des commandes
+    - don't print /help in log nor send it 
 
-    - keep in mem old message to resend them.
-    - print command in log
+    - command pv & pm
+
+    - keep in mem old message to resend them. =>liste chainée ou tableau de 10?
     - gerer les noms de perso a ralonge.
 
     - add color and shit like that in log if possible 
-    - command before send message.
     - send message to server.
     - check error handling, and if prog quit proprelly
     - make text look nice in display_perso with ttf rt blended
 
     - get time and date for LOG (1 / months or 1 / sessions ?? )
 
-    - keybord event not working proprelly -> shit+1 make "1" not "!"
+    - add custom command on the bottom of the screen (visible in map ?)
+
+    - keybord event not working proprelly -> shit+1 make "1" not "!" =>maybe sdk mod ???
     */
     while (keepWindow)
     {
@@ -125,8 +131,8 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 {
                     if (x > 1625 && y > 30 && y < 985)
                     {
-                        if (net->log_whell > 10)
-                            net->log_whell = net->log_whell - 25;
+                        if (net->log_whell > WHEEL_SPEED)
+                            net->log_whell = net->log_whell - WHEEL_SPEED;
                     }
                     //     printf("DOWN : %d\nmax L : %d\n", net->log_whell, net->max_log);
                 }
@@ -136,7 +142,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                     if (x > 1625 && y > 30 && y < 985)
                     {
                         if (net->log_whell != net->max_log)
-                            net->log_whell = net->log_whell + 25;
+                            net->log_whell = net->log_whell + WHEEL_SPEED;
                     }
                     //     printf("DOWN : %d\nmax L : %d\n", net->log_whell, net->max_log);
                 }

@@ -9,9 +9,47 @@ static void add_msg_to_log(t_my_net *net)
     strcat(net->log, "\n");
 }
 
+void print_log(t_my_net *net, t_sdl *sdl)
+{
+    char **str = ft_strsplit(net->message, '\n');
+    int i = 0;
+    int j = 0;
+    char tmp[LOG_LEN];
+    int nl;
+    fprintf(net->log_fd, "%s :", net->name);
+    int w, h, k, l;
+
+    while (str[i])
+    {
+        printf("str[%d] = %s\n", i, str[i]);
+        TTF_SizeText(sdl->font.log, str[i], &w, &h);
+        printf("w : %d\n", w);
+        if (w < 269)
+            fprintf(net->log_fd, "%s\n", str[i]);
+        else
+        {
+            k = 0;
+            j = 0;
+            while (str[i][j])
+            {
+                if (str[i][j] = ' ')
+                {
+                    while(str[i][j] != ' ')
+                        j++;
+                }
+                else 
+                    fputc(str[i][j], net->log_fd);
+                j++;
+            }
+        }
+        i++;
+    }
+}
+
 void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl, t_perso *perso)
 {
     char c;
+    int help;
 
     if (net->i == 0)
     {
@@ -31,9 +69,12 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl,
                 net->message[net->i] = '\0';
             printf("%s : %s\n", net->name, net->message);
             if (net->message[0] == '/')
-                check_command(perso, net);
-            if (net->i != 0)
+                help = check_command(perso, net);
+            if (net->i != 0 && help != -1)
+            {
                 fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
+                // print_log(net, sdl);
+            }
             add_msg_to_log(net);
             net->i = 0;
             ft_strclr(net->message);

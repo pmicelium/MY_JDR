@@ -72,6 +72,7 @@
 // SDL COLOR
 # define MY_GREEN {45, 206, 69}
 
+# define WHEEL_SPEED 30
 
 //
 // STRUCT
@@ -303,9 +304,10 @@ void    free_skill(t_skill *skill);
 //
 // COMMAMDS
 //
-void check_command(t_perso *perso, t_my_net *net);
+int check_command(t_perso *perso, t_my_net *net);
+void my_roll(t_my_net *net, int nb_d, int face, int win, bool re);
 void command_loca(t_my_net *net);
-void command_roll(t_my_net *net, int i);
+void command_roll(t_my_net *net);
 void command_carr(t_perso *perso, t_my_net *net);
 void command_char(t_perso *perso, t_my_net *net);
 void command_coor(t_perso *perso, t_my_net *net);
@@ -343,6 +345,8 @@ char	            *ft_strjoin(char const *s1, char const *s2);
 char                *ft_strdup(char const *src);
 void	            ft_strclr(char *s);
 int		            ft_isalpha(int c);
+char			    **ft_strsplit(char const *s, char c);
+
 // gnl 
 # define GNL_EOL 1
 # define GNL_EOF 0

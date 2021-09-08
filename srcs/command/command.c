@@ -17,7 +17,6 @@ void display_help(t_my_net *net)
 int check_command(t_perso *perso, t_my_net *net)
 {
     int i = 0;
-    int nb_d;
 
     char **word = ft_strsplit(net->message, ' ');
 
@@ -36,17 +35,11 @@ int check_command(t_perso *perso, t_my_net *net)
     else if (strcmp(word[0], "/localisation") == 0 || strcmp(word[0], "/l") == 0 || strcmp(word[0], "/loca") == 0)
         command_loca(net);
     else if (strcmp(word[0], "/carrure") == 0 || strcmp(word[0], "/ca") == 0 || strcmp(word[0], "/carr") == 0)
-    {
-        printf("HONK\n");
         my_roll(net, perso->skill.carrure, 10, 6, true);
-    }
     else if (strcmp(word[0], "/charisme") == 0 || strcmp(word[0], "/ch") == 0 || strcmp(word[0], "/char") == 0)
         my_roll(net, perso->skill.charisme, 10, 6, true);
     else if (strcmp(word[0], "/coordination") == 0 || strcmp(word[0], "/co") == 0 || strcmp(word[0], "/coor") == 0)
-    {
-        printf("coor :  %d\n", perso->skill.coordination);
         my_roll(net, perso->skill.coordination, 10, 6, true);
-    }
     else if (strcmp(word[0], "/education") == 0 || strcmp(word[0], "/ed") == 0 || strcmp(word[0], "/educ") == 0)
         my_roll(net, perso->skill.education, 10, 6, true);
     else if (strcmp(word[0], "/perception") == 0 || strcmp(word[0], "/pe") == 0 || strcmp(word[0], "/perc") == 0)

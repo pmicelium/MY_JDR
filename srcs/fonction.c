@@ -362,3 +362,65 @@ char			**ft_strsplit(char const *s, char c)
 	return (p);
 }
 
+t_list *list_init()
+{
+    t_list *liste = malloc(sizeof(*liste));
+    t_element *element = malloc(sizeof(*element));
+
+    if (liste == NULL || element == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
+
+    element->str = strdup("FIRST");
+    element->suivant = NULL;
+    liste->premier = element;
+
+    return liste;
+}
+
+void list_insert(t_list *liste, char *str)
+{
+    /* Création du nouvel élément */
+    t_element *nouveau = malloc(sizeof(*nouveau));
+    if (liste == NULL || nouveau == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
+    nouveau->str = strdup(str);
+
+    /* Insertion de l'élément au début de la liste */
+    nouveau->suivant = liste->premier;
+    liste->premier = nouveau;
+}
+
+void list_print(t_list *liste)
+{
+    if (liste == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
+
+    t_element *actuel = liste->premier;
+
+    while (actuel != NULL)
+    {
+        printf("-%s- -> ", actuel->str);
+        actuel = actuel->suivant;
+    }
+    printf("NULL\n");
+}
+void list_del(t_list *liste)
+{
+    if (liste == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
+
+    if (liste->premier != NULL)
+    {
+        t_element *aSupprimer = liste->premier;
+        liste->premier = liste->premier->suivant;
+        free(aSupprimer);
+    }
+}

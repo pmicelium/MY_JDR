@@ -9,6 +9,7 @@ static void add_msg_to_log(t_my_net *net)
     strcat(net->log, "\n");
 }
 
+/*
 void print_log(t_my_net *net, t_sdl *sdl)
 {
     char **str = ft_strsplit(net->message, '\n');
@@ -34,10 +35,10 @@ void print_log(t_my_net *net, t_sdl *sdl)
             {
                 if (str[i][j] = ' ')
                 {
-                    while(str[i][j] != ' ')
+                    while (str[i][j] != ' ')
                         j++;
                 }
-                else 
+                else
                     fputc(str[i][j], net->log_fd);
                 j++;
             }
@@ -45,11 +46,15 @@ void print_log(t_my_net *net, t_sdl *sdl)
         i++;
     }
 }
+// */
 
 void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl, t_perso *perso)
 {
     char c;
     int help;
+    static int j = 0;
+    static int k = 0;
+    static bool print = false;
 
     if (net->i == 0)
     {
@@ -68,6 +73,13 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl,
             if (net->i < MAXLEN)
                 net->message[net->i] = '\0';
             printf("%s : %s\n", net->name, net->message);
+
+            list_insert(sdl->hst, net->message);
+            list_print(sdl->hst);
+            k++;
+            j = 0;
+            print = true;
+
             if (net->message[0] == '/')
                 help = check_command(perso, net);
             if (net->i != 0 && help != -1)
@@ -662,13 +674,58 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl,
         net->i++;
         break;
     }
+    case SDLK_UP:
+    {
+        int i = k - j;
+        if (j < k)
+        {
+            j++;
+
+            t_element *actuel = sdl->hst->premier;
+
+            while (i < k && i != 0)
+            {
+                actuel = actuel->suivant;
+                i++;
+            }
+
+            ft_strclr(net->message);
+            strcpy(net->message, actuel->str);
+            net->i = strlen(net->message);
+        }
+        break;
+    }
+    case SDLK_DOWN:
+    {
+
+        if (j > 1 && print == true)
+        {
+            j--;
+            printf("DOWN : j : %d | k : %d\n", j, k);
+            int i = 0;
+
+            t_element *actuel = sdl->hst->premier;
+
+            while (i < j - 1)
+            {
+                actuel = actuel->suivant;
+                i++;
+            }
+
+            ft_strclr(net->message);
+            strcpy(net->message, actuel->str);
+            net->i = strlen(net->message);
+        }
+        else
+        {
+            j = 0;
+            net->i = 0;
+            ft_strclr(net->message);
+        }
+        break;
+    }
     }
 
-    static int tmp;
-    if (net->i != tmp)
-    {
-        tmp = net->i;
-        net->message[net->i] = '|';
-        net->message[net->i + 1] = '\0';
-    }
+    net->message[net->i] = '|';
+    net->message[net->i + 1] = '\0';
 }

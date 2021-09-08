@@ -60,6 +60,8 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     net->log_whell = -100;
     jdr->log = true;
 
+    sdl->hst = list_init();
+
     bool keepWindow = true;
     Uint32 mouse;
     Uint8 const *keys;
@@ -75,13 +77,13 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - check if prog protected if log > 40.000 of message > 10.240
     - cursor in message with left and right arrow (ttf status je crois)
 
+    - LEAKS IN PERSO !!!
+
     - remove limit in roll => make the output plusieurs messages ==>finsh print_log
     - auto-completion des commandes
-    - don't print /help in log nor send it 
+ 
+    - command pv & pm or not
 
-    - command pv & pm
-
-    - keep in mem old message to resend them. =>liste chainée ou tableau de 10?
     - gerer les noms de perso a ralonge.
 
     - add color and shit like that in log if possible 
@@ -106,7 +108,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             {
                 keepWindow = false;
                 destroy_window(sdl);
-                destroy_all(jdr, net);
+                destroy_all(jdr, net, sdl);
             }
             break;
 
@@ -159,7 +161,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 {
                     keepWindow = false;
                     destroy_window(sdl);
-                    destroy_all(jdr, net);
+                    destroy_all(jdr, net, sdl);
                 }
                 // MAP
                 if (keys[SDL_SCANCODE_F1] == 1)

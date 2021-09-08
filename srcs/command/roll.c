@@ -7,7 +7,7 @@ void my_roll(t_my_net *net, int nb_d, int face, int win, bool ire)
     int total = 0;
 
     if (nb_d > 100 || face > 1000)
-        return - 1;
+        return ;
     int d = 0;
     strcat(net->message, "\n==========================\n[");
     while (d < nb_d)
@@ -45,7 +45,6 @@ void my_roll(t_my_net *net, int nb_d, int face, int win, bool ire)
 // peut etre envoyer que net->essage
 void command_roll(t_my_net *net)
 {
-    int roll = 0;
     int j = 1;
     char re = '`';
     char **word = ft_strsplit(net->message, ' ');

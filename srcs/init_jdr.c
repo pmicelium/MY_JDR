@@ -25,7 +25,7 @@ void init_jdr(t_jdr *jdr)
     jdr->tab = TAB_MAP;
 }
 
-void destroy_all(t_jdr *jdr, t_my_net *net)
+void destroy_all(t_jdr *jdr, t_my_net *net, t_sdl *sdl)
 {
     if (jdr->sdl == true)
         SDL_Quit();
@@ -35,4 +35,6 @@ void destroy_all(t_jdr *jdr, t_my_net *net)
         SDLNet_Quit();
     if (jdr->log == true)
         fclose(net->log_fd);
+
+    list_del(sdl->hst);
 }

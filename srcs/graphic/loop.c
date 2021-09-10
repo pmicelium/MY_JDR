@@ -75,9 +75,9 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     // essential
     - map
     - inventory
-    - LEAKS IN PERSO !!!
+    - Little leaks in perso (not much but maybe strong if running 3h), can't see it thought, maybe sdl
     - send message to server. => maybe thread ? 
-    - gerer les noms de perso a ralonge.
+    - support long ass perso_name
     - keybord event not working proprelly -> SDL text input
             SDL_TextInputEvent
 
@@ -121,9 +121,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 mouse = SDL_GetMouseState(&x, &y);
                 // LEFT BUTTON
                 if ((mouse & SDL_BUTTON_LMASK) != 0)
-                {
                     my_mouse_event(jdr, perso, x, y);
-                }
                 break;
             }
             case SDL_MOUSEWHEEL:

@@ -396,7 +396,7 @@
 1630346751 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\print_perso.c
 	"jdr.h"
 
-1630406586 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
+1631272965 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
 	"jdr.h"
 
 1631112732 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
@@ -408,7 +408,7 @@
 1630245028 source:c:\users\admin\desktop\jdr\jdr\srcs\loop.c
 	"jdr.h"
 
-1631271369 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
+1631272700 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
 	"jdr.h"
 
 1630955105 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c

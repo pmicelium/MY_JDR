@@ -14,23 +14,56 @@ static void display_carac_stat(t_sdl *sdl, t_perso *perso)
 
     rect.x = 405;
     rect.y = 530;
-    display_str(sdl, ft_itoa(perso->skill.carrure), &rect, MyGreen, sdl->font.carac);
+    char *str;
+
+    str = ft_itoa(perso->skill.carrure);
+    display_str(sdl, str, &rect, MyGreen, sdl->font.carac);
+    if (str)
+        free(str);
     rect.y = rect.y + 50;
-    display_str(sdl, ft_itoa(perso->skill.charisme), &rect, MyGreen, sdl->font.carac);
+
+    str = ft_itoa(perso->skill.charisme);
+    display_str(sdl, str, &rect, MyGreen, sdl->font.carac);
+    if (str)
+        free(str);
     rect.y = rect.y + 50;
-    display_str(sdl, ft_itoa(perso->skill.coordination), &rect, MyGreen, sdl->font.carac);
+
+    str = ft_itoa(perso->skill.coordination);
+    display_str(sdl, str, &rect, MyGreen, sdl->font.carac);
+    if (str)
+        free(str);
     rect.y = rect.y + 50;
-    display_str(sdl, ft_itoa(perso->skill.education), &rect, MyGreen, sdl->font.carac);
+
+    str = ft_itoa(perso->skill.education);
+    display_str(sdl, str, &rect, MyGreen, sdl->font.carac);
+    if (str)
+        free(str);
     rect.y = rect.y + 50;
-    display_str(sdl, ft_itoa(perso->skill.perception), &rect, MyGreen, sdl->font.carac);
+
+    str = ft_itoa(perso->skill.perception);
+    display_str(sdl, str, &rect, MyGreen, sdl->font.carac);
+    if (str)
+        free(str);
     rect.y = rect.y + 50;
-    display_str(sdl, ft_itoa(perso->skill.reflexe), &rect, MyGreen, sdl->font.carac);
+
+    str = ft_itoa(perso->skill.reflexe);
+    display_str(sdl, str, &rect, MyGreen, sdl->font.carac);
+    if (str)
+        free(str);
     rect.y = rect.y + 50;
-    display_str(sdl, ft_itoa(perso->skill.sang_froid), &rect, MyGreen, sdl->font.carac);
+
+    str = ft_itoa(perso->skill.sang_froid);
+    display_str(sdl, str, &rect, MyGreen, sdl->font.carac);
+    if (str)
+        free(str);
+
     // Experience
     rect.y = 928;
     rect.x = 435;
-    display_str(sdl, ft_itoa(perso->skill.exp), &rect, MyGreen, sdl->font.skill_groupe);
+    str = ft_itoa(perso->skill.exp);
+    display_str(sdl, str, &rect, MyGreen, sdl->font.skill_groupe);
+    if (str)
+        free(str);
 }
 
 static void display_carac(t_sdl *sdl, t_perso *perso)
@@ -72,9 +105,11 @@ static void display_skill_stat(t_sdl *sdl, t_perso *perso, SDL_Color MyGreen, in
     // Groupe Pilote
     rect.x = 980;
     rect.y = 90;
+
     str = ft_strjoin(ft_itoa(perso->skill.vehicule_terrestre), "+");
     display_str(sdl, str, &rect, MyGreen, sdl->font.skill_groupe);
     rect.y = rect.y + nl;
+
     str = ft_strjoin(ft_itoa(perso->skill.pilotage_Leger), "+");
     display_str(sdl, str, &rect, MyGreen, sdl->font.skill_groupe);
     rect.y = rect.y + nl;
@@ -373,14 +408,15 @@ static void display_pp(t_sdl *sdl, t_perso *perso)
     rect.h = 371;
     rect.w = 262;
     SDL_BlitScaled(perso_pp.image, NULL, sdl->window_surface, &rect);
+    SDL_FreeSurface(perso_pp.image);
 }
 
 static void display_name(t_sdl *sdl, t_perso *perso)
 {
     SDL_Rect rect;
     SDL_Color MyGreen = MY_GREEN;
-    
-    SDL_Surface *str_to_display = TTF_RenderText_Blended_Wrapped(sdl->font.carac_titre, perso->name, MyGreen, 363);
+
+    SDL_Surface *str_to_display = TTF_RenderText_Blended(sdl->font.carac_titre, perso->name, MyGreen);
     rect.x = 270 - (str_to_display->w / 2);
     rect.y = 85;
     rect.w = 450;
@@ -404,42 +440,49 @@ static void display_levelup_plus(t_sdl *sdl, t_perso *perso)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= perso->skill.charisme * 6) && (perso->skill.charisme < 6))
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= perso->skill.coordination * 6) && (perso->skill.coordination < 6))
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= perso->skill.education * 6) && (perso->skill.education < 6))
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= perso->skill.perception * 6) && (perso->skill.perception < 6))
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= perso->skill.reflexe * 6) && (perso->skill.reflexe < 6))
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= perso->skill.sang_froid * 6) && (perso->skill.sang_froid < 6))
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     // Pilotage
     rect.x = 1055;
@@ -449,30 +492,35 @@ static void display_levelup_plus(t_sdl *sdl, t_perso *perso)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.pilotage_Leger) * 2) && perso->skill.pilotage_Leger > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.pilotage_combat) * 2) && perso->skill.pilotage_combat > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if (((perso->skill.exp >= (10 - perso->skill.pilotage_Lourd) * 2) && (perso->skill.pilotage_Leger <= 6 || perso->skill.pilotage_Lourd < 9)) && perso->skill.pilotage_Lourd > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.tourelle) * 2) && perso->skill.tourelle > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
 
     // physique
@@ -481,24 +529,28 @@ static void display_levelup_plus(t_sdl *sdl, t_perso *perso)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.acrobatie) * 2) && perso->skill.acrobatie > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.escalade) * 2) && perso->skill.escalade > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.endurence) * 2) && perso->skill.endurence > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
 
     // groupe explo
@@ -507,36 +559,42 @@ static void display_levelup_plus(t_sdl *sdl, t_perso *perso)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.fouille) * 2) && perso->skill.fouille > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.informatique) * 2) && perso->skill.informatique > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if (((perso->skill.exp >= (10 - perso->skill.piratage) * 2) && (perso->skill.informatique <= 6 || perso->skill.piratage < 9)) && perso->skill.piratage > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if (((perso->skill.exp >= (10 - perso->skill.decryptage) * 2) && (perso->skill.informatique <= 6 || perso->skill.decryptage < 9)) && perso->skill.decryptage > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.premier_secour) * 2) && perso->skill.premier_secour > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
 
     // groupe Crafting
@@ -545,30 +603,35 @@ static void display_levelup_plus(t_sdl *sdl, t_perso *perso)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.reparation) * 2) && perso->skill.reparation > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if (((perso->skill.exp >= (10 - perso->skill.metal) * 2) && (perso->skill.brico <= 6 || perso->skill.metal < 9)) && perso->skill.metal > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.cuisine) * 2) && perso->skill.cuisine > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.survie) * 2) && perso->skill.survie > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
 
     // groupe Arme
@@ -578,54 +641,63 @@ static void display_levelup_plus(t_sdl *sdl, t_perso *perso)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.epaule) * 2) && perso->skill.epaule > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.pompe) * 2) && perso->skill.pompe > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if (((perso->skill.exp >= (10 - perso->skill.sniper) * 2) && (perso->skill.epaule <= 6 || perso->skill.sniper < 9)) && perso->skill.sniper > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.lourde) * 2) && perso->skill.lourde > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.explosif) * 2) && perso->skill.explosif > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.lancer) * 2) && perso->skill.lancer > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.CAC) * 2) && perso->skill.CAC > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.contact) * 2) && perso->skill.contact > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
 
     //groupe pouvoir
@@ -634,54 +706,63 @@ static void display_levelup_plus(t_sdl *sdl, t_perso *perso)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.pouvoir2 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir2) * 2)) && perso->skill.pouvoir2 > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.pouvoir3 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir3) * 2)) && perso->skill.pouvoir3 > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.pouvoir4 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir4) * 2)) && perso->skill.pouvoir4 > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.pouvoir5 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir5) * 2)) && perso->skill.pouvoir5 > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.pouvoir6 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir6) * 2)) && perso->skill.pouvoir6 > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.pouvoir7 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir7) * 2)) && perso->skill.pouvoir7 > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.pouvoir8 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir8) * 2)) && perso->skill.pouvoir8 > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.pouvoir9 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir9) * 2)) && perso->skill.pouvoir9 > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
 
     // groupe Comm
@@ -691,24 +772,28 @@ static void display_levelup_plus(t_sdl *sdl, t_perso *perso)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.intimidation) * 2) && perso->skill.intimidation > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.bluff) * 2) && perso->skill.bluff > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
     rect.y = rect.y + nl;
     if ((perso->skill.exp >= (10 - perso->skill.psyco) * 2) && perso->skill.psyco > 2)
     {
         str_to_display = TTF_RenderText_Solid(sdl->font.plus, "+", MyGreen);
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
+        SDL_FreeSurface(str_to_display);
     }
 }
 
@@ -729,6 +814,8 @@ static void display_levelup(t_sdl *sdl, t_perso *perso)
         SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
         rect.x = x + 160;
         str_to_display = TTF_RenderText_Solid(sdl->font.carac_titre, "VALIDER", MyGreen);
+
+
         display_levelup_plus(sdl, perso);
     }
     SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, &rect);
@@ -739,7 +826,7 @@ void display_perso(t_sdl *sdl, t_perso *perso)
 {
     display_name(sdl, perso);
     display_carac(sdl, perso);
-    display_skill(sdl, perso);
     display_pp(sdl, perso);
+    display_skill(sdl, perso);
     display_levelup(sdl, perso);
 }

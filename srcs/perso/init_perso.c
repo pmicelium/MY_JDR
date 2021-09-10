@@ -112,6 +112,7 @@ int init_perso(t_perso *perso)
 
     perso->levelup = LEVELUP;
     
+    
     while ((gnl(fd, &line) > 0))
     {
         // ft_putendl(line);

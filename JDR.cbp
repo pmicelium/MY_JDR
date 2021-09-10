@@ -58,6 +58,11 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
+		<Unit filename="ressource/icon.rc">
+			<Option compilerVar="WINDRES" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="srcs/client/get_put_message.c">
 			<Option compilerVar="CC" />
 		</Unit>

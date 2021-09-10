@@ -387,7 +387,7 @@
 1630499984 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\destroy_window.c
 	"jdr.h"
 
-1630328336 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
+1631217679 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
 	"jdr.h"
 
 1630858962 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
@@ -408,7 +408,7 @@
 1630245028 source:c:\users\admin\desktop\jdr\jdr\srcs\loop.c
 	"jdr.h"
 
-1631115328 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
+1631271369 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
 	"jdr.h"
 
 1630955105 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
@@ -426,7 +426,7 @@
 1630944364 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
 	"jdr.h"
 
-1631112687 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
+1631271252 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
 	"SDL2\SDL.h"
 	"SDL2\SDL_ttf.h"
 	"SDL2\SDL_net.h"
@@ -851,7 +851,7 @@
 1630593509 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
 	"jdr.h"
 
-1631115047 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
+1631124721 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
 	"jdr.h"
 
 1631112008 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
@@ -867,4 +867,8 @@
 
 1630956386 source:c:\users\admin\desktop\jdr\jdr\srcs\command\localisation.c
 	"jdr.h"
+
+1631217270 source:c:\users\admin\desktop\jdr\jdr\ressource\icon.rc
+
+1631217270 source:c:\users\admin\desktop\jdr\jdr\resource\icon.rc
 

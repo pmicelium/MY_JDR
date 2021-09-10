@@ -100,14 +100,23 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl,
             if (net->i < MAXLEN)
                 net->message[net->i] = '\0';
             printf("%s : %s\n", net->name, net->message);
+
+            list_insert(sdl->hst, net->message);
+            list_print(sdl->hst);
+            k++;
+            j = 0;
+            print = true;
+
             if (net->message[0] == '/')
-                check_command(perso, net);
-            if (net->i != 0)
+                help = check_command(perso, net);
+            if (net->i != 0 && help != -1)
+            {
                 fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
+                // print_log(net, sdl);
+            }
             add_msg_to_log(net);
             net->i = 0;
             ft_strclr(net->message);
-            break;
         }
     }
     // AlphaNum

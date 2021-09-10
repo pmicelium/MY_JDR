@@ -67,35 +67,36 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     Uint8 const *keys;
     int x;
     int y;
+
     // int numready;
 
     /* TO DO
+
+    // essential
     - map
     - inventory
-    - check all comment, maybe some idea to implement.
-    - make debug mode with printf of all fonction.
-    - check if prog protected if log > 40.000 of message > 10.240
-    - cursor in message with left and right arrow (ttf status je crois)
-
     - LEAKS IN PERSO !!!
-
-    - remove limit in roll => make the output plusieurs messages ==>finsh print_log
-    - auto-completion des commandes
- 
-    - command pv & pm or not
-
+    - send message to server. => maybe thread ? 
     - gerer les noms de perso a ralonge.
+    - keybord event not working proprelly -> SDL text input
+            SDL_TextInputEvent
 
-    - add color and shit like that in log if possible 
-    - send message to server.
-    - check error handling, and if prog quit proprelly
-    - make text look nice in display_perso with ttf rt blended
-
+    // optional 
+    - cursor in message with left and right arrow (ttf status je crois)
     - get time and date for LOG (1 / months or 1 / sessions ?? )
-
+    - remove limit in roll => make the output plusieurs messages ==>finsh print_log
+    - auto-completion
+    - command pm & pv (not sure yet), if not remove form help
+    - add color and shit like that in log if possible 
+    - make text look nice in display_perso with ttf rt blended
     - add custom command on the bottom of the screen (visible in map ?)
 
-    - keybord event not working proprelly -> shit+1 make "1" not "!" =>maybe sdk mod ???
+    // to make prog clean 
+    - make debug mode with printf of all fonction.
+    - check if prog protected if log > 40.000 of message > 10.240
+    - check error handling, and if prog quit proprelly
+    - check all comment, maybe some idea to implement.
+
     */
     while (keepWindow)
     {

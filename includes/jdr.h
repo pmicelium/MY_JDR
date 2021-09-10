@@ -42,19 +42,19 @@
 #define LEVELUP_R 3
 #define LEVELUP_V 4
 
-// ressource path
-#define PERSO_PATH "ressource/Perso"
-#define LOG_PATH "ressource/log"
+// resource path
+#define PERSO_PATH "resource/Perso"
+#define LOG_PATH "resource/log"
 
 // image path
-#define MAP_BACKGROUND_PATH "ressource/image/map_background.bmp"
-#define PERSO_BACKGROUND_PATH "ressource/image/perso_background.bmp"
-#define PERSO_PP_PATH "ressource/image/perso_pp.bmp"
+#define MAP_BACKGROUND_PATH "resource/image/map_background.bmp"
+#define PERSO_BACKGROUND_PATH "resource/image/perso_background.bmp"
+#define PERSO_PP_PATH "resource/image/perso_pp.bmp"
 
 // font
-#define FONT_SF_OUT_PATH "ressource/font/sf-distant-galaxy.outline.ttf"
-#define FONT_SF_R_PATH "ressource/font/sf-distant-galaxy.regular.ttf"
-#define FONT_NASA "ressource/font/Nasa21-l23X.ttf"
+#define FONT_SF_OUT_PATH "resource/font/sf-distant-galaxy.outline.ttf"
+#define FONT_SF_R_PATH "resource/font/sf-distant-galaxy.regular.ttf"
+#define FONT_NASA "resource/font/Nasa21-l23X.ttf"
 
 #define FONT_TAB_SIZE 24
 
@@ -311,7 +311,7 @@ void display_log(t_sdl *sdl, t_my_net *net);
 int init_perso(t_perso *perso);
 // destroy t_perso
 void destroy_perso(t_perso *perso);
-// update ressource perso
+// update resource perso
 void print_perso(t_perso *perso);
 // free t_skill char
 void free_skill(t_skill *skill);

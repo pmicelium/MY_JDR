@@ -12,7 +12,7 @@ int init_window(t_sdl *sdl)
         return exit_char("Failed to initialize the SDL2 library", -1);
 
 //  creation de la fenetre 
-    sdl->window = SDL_CreateWindow("SDL2 Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, 
+    sdl->window = SDL_CreateWindow("JDR des French Retards", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, 
     //SDL_WINDOW_RESIZABLE);
     SDL_WINDOW_FULLSCREEN_DESKTOP);
     // SDL_WINDOW_BORDERLESS);

@@ -55,11 +55,10 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     NAME_rect.h = 30;
 
     // init message
-    get_str_from_keybord(net, sdl->event, sdl, perso, false, NULL);
+    get_str_from_keybord(net, sdl->event, sdl, perso, false, 0);
     net->log_fd = init_log(net);
     net->log_whell = -100;
     jdr->log = true;
-
     sdl->hst = list_init();
 
     bool keepWindow = true;
@@ -79,6 +78,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - send message to server. => maybe thread ? 
     - support long ass perso_name
     - Add chimie to skill or just to power ??
+    - support lunch without serv lunch 
 
     // optional 
     - cursor in message with left and right arrow (ttf status je crois)
@@ -177,7 +177,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                     jdr->tab = TAB_PERSO;
                 }
                 // Chat
-                get_str_from_keybord(net, sdl->event, sdl, perso, false, NULL);
+                get_str_from_keybord(net, sdl->event, sdl, perso, false, 0);
             }
             break;
             case SDL_TEXTINPUT:

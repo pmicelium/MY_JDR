@@ -851,7 +851,7 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
 	"jdr.h"
 
-1631536631 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
+1631541158 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
 	"jdr.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
@@ -862,10 +862,10 @@
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\pmpv.c
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\roll.c
+1631541740 source:c:\users\admin\desktop\jdr\jdr\srcs\command\roll.c
 	"jdr.h"
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\localisation.c
+1631541145 source:c:\users\admin\desktop\jdr\jdr\srcs\command\localisation.c
 	"jdr.h"
 
 1631217270 source:c:\users\admin\desktop\jdr\jdr\ressource\icon.rc

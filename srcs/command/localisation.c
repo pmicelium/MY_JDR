@@ -3,7 +3,7 @@
 void command_loca(t_my_net *net)
 {
     int loca = (rand() % 10) + 1;
-    strcat(net->message, " \n================================= \n[");
+    strcat(net->message, " \n========================== \n[");
     strcat(net->message, ft_itoa(loca));
     strcat(net->message, "]\n");
 
@@ -60,5 +60,5 @@ void command_loca(t_my_net *net)
         break;
     }
     }
-    strcat(net->message, "================================= \n");
+    strcat(net->message, "==========================");
 }

@@ -50,7 +50,6 @@ void print_log(t_my_net *net, t_sdl *sdl)
 
 void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *perso, bool charb, char c)
 {
-    // char c;
     int help;
     static int j = 0;
     static int k = 0;
@@ -80,7 +79,6 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *p
             printf("%s : %s\n", net->name, net->message);
 
             list_insert(sdl->hst, net->message);
-            // list_print(sdl->hst);
             k++;
             j = 0;
             print = true;
@@ -107,7 +105,6 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *p
             printf("%s : %s\n", net->name, net->message);
 
             list_insert(sdl->hst, net->message);
-            // list_print(sdl->hst);
             k++;
             j = 0;
             print = true;

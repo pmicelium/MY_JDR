@@ -46,7 +46,7 @@ void my_roll(t_my_net *net, int nb_d, int face, int win, bool ire)
 void command_roll(t_my_net *net)
 {
     int j = 1;
-    char re = '`';
+    char re = '!';
     char **word = ft_strsplit(net->message, ' ');
     int nb_word = 0;
     int win = -1;

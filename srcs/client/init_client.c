@@ -5,6 +5,7 @@ void init_client(t_perso *perso, t_my_net *net)
 {
     net->name=perso->name;
 
+
     net->set = SDLNet_AllocSocketSet(1);
     if (!net->set)
     {

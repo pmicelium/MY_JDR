@@ -390,7 +390,7 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
 	"jdr.h"
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
+1631544449 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
 	"jdr.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\print_perso.c
@@ -408,7 +408,7 @@
 1630245028 source:c:\users\admin\desktop\jdr\jdr\srcs\loop.c
 	"jdr.h"
 
-1631536423 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
+1631551425 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
 	"jdr.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
@@ -426,10 +426,11 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
 	"jdr.h"
 
-1631535788 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
+1631551366 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
 	"SDL2\SDL.h"
 	"SDL2\SDL_ttf.h"
 	"SDL2\SDL_net.h"
+	"SDL2\SDL_thread.h"
 	<string.h>
 	<stdarg.h>
 	<stdlib.h>
@@ -844,17 +845,17 @@
 	"SDL2/SDL_net.h"
 	"jdr.h"
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\client\init_client.c
+1631551433 source:c:\users\admin\desktop\jdr\jdr\srcs\client\init_client.c
 	"jdr.h"
 	"tcputil.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
 	"jdr.h"
 
-1631541158 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
+1631552561 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
 	"jdr.h"
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
+1631551442 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
 	"jdr.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\caracteristic.c

@@ -5,6 +5,7 @@
 #include "SDL2\SDL.h"
 #include "SDL2\SDL_ttf.h"
 #include "SDL2\SDL_net.h"
+#include "SDL2\SDL_thread.h"
 
 // SDL_net
 #include <string.h>

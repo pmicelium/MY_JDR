@@ -72,15 +72,19 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     /* TO DO
 
     // essential
+
     - map
     - inventory
     - Little leaks in perso (not much but maybe strong if running 3h), can't see it thought, maybe sdl
-    - send message to server. => maybe thread ? 
+    - get msg from serv; 
     - support long ass perso_name
     - Add chimie to skill or just to power ??
     - support lunch without serv lunch 
+    - copy enter into kp_enter when enter event finished 
 
     // optional 
+
+    - log et msg font doesn't support all char
     - cursor in message with left and right arrow (ttf status je crois)
     - get time and date for LOG (1 / months or 1 / sessions ?? )
     - remove limit in roll => make the output plusieurs messages ==>finsh print_log
@@ -91,6 +95,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - add custom command on the bottom of the screen (visible in map ?)
 
     // to make prog clean 
+
     - make debug mode with printf of all fonction.
     - check if prog protected if log > 40.000 of message > 10.240
     - check error handling, and if prog quit proprelly

@@ -48,6 +48,7 @@ void print_log(t_my_net *net, t_sdl *sdl)
 }
 // */
 
+
 void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *perso, bool charb, char c)
 {
     int help;
@@ -76,8 +77,7 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *p
         {
             if (net->i < MAXLEN)
                 net->message[net->i] = '\0';
-            printf("%s : %s\n", net->name, net->message);
-
+            // printf("%s : %s\n", net->name, net->message);
             list_insert(sdl->hst, net->message);
             k++;
             j = 0;
@@ -88,9 +88,13 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *p
             if (net->i != 0 && help != -1)
             {
                 fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
+                //check if message > LENMAX = error or not;
+                putMsg(net->sock, net->message);
+
                 // print_log(net, sdl);
             }
             add_msg_to_log(net);
+
             net->i = 0;
             ft_strclr(net->message);
         }
@@ -100,25 +104,7 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *p
     {
         if (net->i != 0)
         {
-            if (net->i < MAXLEN)
-                net->message[net->i] = '\0';
-            printf("%s : %s\n", net->name, net->message);
-
-            list_insert(sdl->hst, net->message);
-            k++;
-            j = 0;
-            print = true;
-
-            if (net->message[0] == '/')
-                help = check_command(perso, net);
-            if (net->i != 0 && help != -1)
-            {
-                fprintf(net->log_fd, "%s : %s\n", net->name, net->message);
-                // print_log(net, sdl);
-            }
-            add_msg_to_log(net);
-            net->i = 0;
-            ft_strclr(net->message);
+            // copy enter when finished 
         }
     }
     case SDLK_BACKSPACE:

@@ -5,6 +5,8 @@ int main(int argc, char *argv[])
     t_jdr jdr;
     init_jdr(&jdr);
 
+    SDL_Thread *net_thread=NULL, *local_thread=NULL;
+
     // NEED TO CHECK PATH BEFORE ALL //
 
     //  initialisation de perso
@@ -45,6 +47,9 @@ int main(int argc, char *argv[])
     init_client(&perso, &net);
     jdr.net = true;
     printf("init client done !\n");
+    
+    //thread
+
     
     
     // loop

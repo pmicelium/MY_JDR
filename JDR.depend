@@ -384,49 +384,49 @@
 	"SDL2\SDL.h"
 	<stdbool.h>
 
-1630499984 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\destroy_window.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\destroy_window.c
 	"jdr.h"
 
-1631217679 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
 	"jdr.h"
 
-1630858962 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
 	"jdr.h"
 
-1630346751 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\print_perso.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\print_perso.c
 	"jdr.h"
 
-1631272965 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
 	"jdr.h"
 
-1631112732 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
 	"jdr.h"
 
-1631112361 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
 	"jdr.h"
 
 1630245028 source:c:\users\admin\desktop\jdr\jdr\srcs\loop.c
 	"jdr.h"
 
-1631272700 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
+1631536423 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
 	"jdr.h"
 
-1630955105 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
 	"jdr.h"
 
-1630702831 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event.c
 	"jdr.h"
 
 1630333136 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\level_up.c
 	"jdr.h"
 
-1630702765 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event_perso.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event_perso.c
 	"jdr.h"
 
-1630944364 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
 	"jdr.h"
 
-1631271252 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
+1631535788 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
 	"SDL2\SDL.h"
 	"SDL2\SDL_ttf.h"
 	"SDL2\SDL_net.h"
@@ -443,7 +443,7 @@
 	<stdio.h>
 	<math.h>
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -479,12 +479,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_main.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_stdinc.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -513,28 +513,28 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_config.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<sdkddkver.h>
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_platform.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_platform.h
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\begin_code.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\begin_code.h
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\close_code.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\close_code.h
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_assert.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_assert.h
 	"SDL_config.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_atomic.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -542,7 +542,7 @@
 	<mbarrier.h>
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_audio.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -552,12 +552,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_error.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_endian.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_endian.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<endian.h>
@@ -566,13 +566,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_mutex.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_thread.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
@@ -583,18 +583,18 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_rwops.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_clipboard.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_cpuinfo.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -614,7 +614,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_events.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -628,7 +628,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_video.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -636,13 +636,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_pixels.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_pixels.h
 	"SDL_stdinc.h"
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_rect.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -650,7 +650,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_surface.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -659,11 +659,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_blendmode.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_keyboard.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -671,27 +671,27 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_keycode.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_scancode.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_scancode.h
 	"SDL_stdinc.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_mouse.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_joystick.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_gamecontroller.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -700,17 +700,17 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_sensor.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_sensor.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_quit.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_gesture.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -718,65 +718,65 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_touch.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_filesystem.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_haptic.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_hints.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_loadso.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_log.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_messagebox.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_metal.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_power.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_render.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_shape.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_shape.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -785,7 +785,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_system.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -793,34 +793,34 @@
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_timer.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_version.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_locale.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_locale.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1628610877 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_misc.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_misc.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1547325890 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_ttf.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_ttf.h
 	"SDL.h"
 	"begin_code.h"
 	"close_code.h"
 
-1451811457 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_net.h
+1631531960 c:\users\admin\desktop\jdr\jdr\lib\x86sdl2\include\sdl2\sdl_net.h
 	<stdint.h>
 	"SDL.h"
 	"SDL_endian.h"
@@ -839,36 +839,36 @@
 	"SDL2/SDL_net.h"
 	"tcputil.h"
 
-1630626523 c:\users\admin\desktop\jdr\jdr\includes\tcputil.h
+1631531960 c:\users\admin\desktop\jdr\jdr\includes\tcputil.h
 	"SDL2\SDL.h"
 	"SDL2/SDL_net.h"
 	"jdr.h"
 
-1630701445 source:c:\users\admin\desktop\jdr\jdr\srcs\client\init_client.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\client\init_client.c
 	"jdr.h"
 	"tcputil.h"
 
-1630593509 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
 	"jdr.h"
 
-1631124721 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
+1631536631 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
 	"jdr.h"
 
-1631112008 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
 	"jdr.h"
 
-1630955658 source:c:\users\admin\desktop\jdr\jdr\srcs\command\caracteristic.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\caracteristic.c
 	"jdr.h"
 
-1630953115 source:c:\users\admin\desktop\jdr\jdr\srcs\command\pmpv.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\pmpv.c
 
-1631111988 source:c:\users\admin\desktop\jdr\jdr\srcs\command\roll.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\roll.c
 	"jdr.h"
 
-1630956386 source:c:\users\admin\desktop\jdr\jdr\srcs\command\localisation.c
+1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\localisation.c
 	"jdr.h"
 
 1631217270 source:c:\users\admin\desktop\jdr\jdr\ressource\icon.rc
 
-1631217270 source:c:\users\admin\desktop\jdr\jdr\resource\icon.rc
+1631531960 source:c:\users\admin\desktop\jdr\jdr\resource\icon.rc
 

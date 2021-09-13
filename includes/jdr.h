@@ -278,7 +278,7 @@ void destroy_all(t_jdr *jdr, t_my_net *net, t_sdl *sdl);
 void init_client(t_perso *perso, t_my_net *net);
 // get str from keybord event
 // call display message after new key pressed
-void get_str_from_keybord(t_my_net *net, SDL_Event event, bool caps, t_sdl *sdl, t_perso *perso);
+void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *perso, bool charb, char c);
 // init ttf_font
 void init_ttf_font(t_sdl *sdl);
 // init log

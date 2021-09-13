@@ -55,7 +55,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     NAME_rect.h = 30;
 
     // init message
-    get_str_from_keybord(net, sdl->event, false, sdl, perso);
+    get_str_from_keybord(net, sdl->event, sdl, perso, false, NULL);
     net->log_fd = init_log(net);
     net->log_whell = -100;
     jdr->log = true;
@@ -78,8 +78,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - Little leaks in perso (not much but maybe strong if running 3h), can't see it thought, maybe sdl
     - send message to server. => maybe thread ? 
     - support long ass perso_name
-    - keybord event not working proprelly -> SDL text input
-            SDL_TextInputEvent
+    - Add chimie to skill or just to power ??
 
     // optional 
     - cursor in message with left and right arrow (ttf status je crois)
@@ -98,6 +97,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - check all comment, maybe some idea to implement.
 
     */
+   SDL_StartTextInput();
     while (keepWindow)
     {
         while (SDL_PollEvent(&sdl->event) > 0)
@@ -107,6 +107,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             // if prog end;
             case SDL_QUIT:
             {
+                SDL_StopTextInput();
                 keepWindow = false;
                 destroy_window(sdl);
                 destroy_all(jdr, net, sdl);
@@ -135,7 +136,6 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                         if (net->log_whell > WHEEL_SPEED)
                             net->log_whell = net->log_whell - WHEEL_SPEED;
                     }
-                    //     printf("DOWN : %d\nmax L : %d\n", net->log_whell, net->max_log);
                 }
                 // scroll down
                 else if (sdl->event.wheel.y < 0)
@@ -145,7 +145,6 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                         if (net->log_whell != net->max_log)
                             net->log_whell = net->log_whell + WHEEL_SPEED;
                     }
-                    //     printf("DOWN : %d\nmax L : %d\n", net->log_whell, net->max_log);
                 }
                 break;
             }
@@ -178,13 +177,14 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                     jdr->tab = TAB_PERSO;
                 }
                 // Chat
-                else if (keys[SDL_SCANCODE_LSHIFT] == 1 || keys[SDL_SCANCODE_RSHIFT] == 1)
-                    get_str_from_keybord(net, sdl->event, true, sdl, perso);
-
-                else
-                    get_str_from_keybord(net, sdl->event, false, sdl, perso);
+                get_str_from_keybord(net, sdl->event, sdl, perso, false, NULL);
             }
             break;
+            case SDL_TEXTINPUT:
+            {
+                get_str_from_keybord(net, sdl->event, sdl, perso, true, sdl->event.text.text[0]);
+                break;
+            }
             }
         }
 

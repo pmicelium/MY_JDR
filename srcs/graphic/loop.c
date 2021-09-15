@@ -22,31 +22,31 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
         return -1;
     }
 
-    // load tab_name
+    // TAB
     SDL_Color MyGreen = MY_GREEN;
     int y_tab = 9;
-    //          MAP
+    // map
     SDL_Surface *tab_MAP = TTF_RenderText_Blended(sdl->font.tab, "CARTE", MyGreen);
     SDL_Rect MAP_rect;
     MAP_rect.x = 110;
     MAP_rect.y = y_tab;
     MAP_rect.w = 300;
     MAP_rect.h = 30;
-    //          INVENTAIRE
+    // inv
     SDL_Surface *tab_INV = TTF_RenderText_Blended(sdl->font.tab, "INVENTAIRE", MyGreen);
     SDL_Rect INV_rect;
     INV_rect.x = 400;
     INV_rect.y = y_tab;
     INV_rect.w = 300;
     INV_rect.h = 30;
-    //          PERSO
+    // perso
     SDL_Surface *tab_PERSO = TTF_RenderText_Blended(sdl->font.tab, "PERSO", MyGreen);
     SDL_Rect PERSO_rect;
     PERSO_rect.x = 735;
     PERSO_rect.y = y_tab;
     PERSO_rect.w = 300;
     PERSO_rect.h = 30;
-    //          NAME DISPLAY
+    // name
     SDL_Surface *tab_NAME = TTF_RenderText_Blended(sdl->font.tab, "JDR des French Retards", MyGreen);
     SDL_Rect NAME_rect;
     NAME_rect.x = 1200;
@@ -54,20 +54,41 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     NAME_rect.w = 300;
     NAME_rect.h = 30;
 
-    // init message
+    // MESSAGE AND LOG
     get_str_from_keybord(net, sdl->event, sdl, perso, false, 0);
     net->log_fd = init_log(net);
     net->log_whell = -100;
     jdr->log = true;
     sdl->hst = list_init();
+    SDL_StartTextInput();
+    // CLIENT
+    SDLNet_SocketSet set;
+    int numready;
+    char *str = NULL;
 
+    set = SDLNet_AllocSocketSet(1);
+    if (!set)
+    {
+        printf("SDLNet_AllocSocketSet: %s\n", SDLNet_GetError());
+        SDLNet_Quit();
+        SDL_Quit();
+        return -1;
+    }
+
+    if (SDLNet_TCP_AddSocket(set, net->sock) == -1)
+    {
+        printf("SDLNet_TCP_AddSocket: %s\n", SDLNet_GetError());
+        SDLNet_Quit();
+        SDL_Quit();
+        return -1;
+    }
+
+    // LOOP
     bool keepWindow = true;
     Uint32 mouse;
     Uint8 const *keys;
     int x;
     int y;
-
-    // int numready;
 
     /* TO DO
 
@@ -76,18 +97,21 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - map
     - inventory
     - Little leaks in perso (not much but maybe strong if running 3h), can't see it thought, maybe sdl
-    - get msg from serv; 
     - support long ass perso_name
     - Add chimie to skill or just to power ??
     - support lunch without serv lunch 
-    - copy enter into kp_enter when enter event finished 
+    - escape = option. 
+    - optional : add shell prog, lunchable directly in the prog 
+    - check path before start 
+    - /GM et /GMRoll not supported
 
     // optional 
 
-    - log et msg font doesn't support all char
+    - Change Perso skill font 
+    - better handling of /quit (maybe quit prog )
     - cursor in message with left and right arrow (ttf status je crois)
     - get time and date for LOG (1 / months or 1 / sessions ?? )
-    - remove limit in roll => make the output plusieurs messages ==>finsh print_log
+    - remove limit in roll => make the output plusieurs messages ==> finsh print_log
     - auto-completion
     - command pm & pv (not sure yet), if not remove form help
     - add color and shit like that in log if possible 
@@ -96,13 +120,13 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
 
     // to make prog clean 
 
+    - check for doublon or not essential var in struct
     - make debug mode with printf of all fonction.
     - check if prog protected if log > 40.000 of message > 10.240
     - check error handling, and if prog quit proprelly
     - check all comment, maybe some idea to implement.
 
     */
-   SDL_StartTextInput();
     while (keepWindow)
     {
         while (SDL_PollEvent(&sdl->event) > 0)
@@ -159,18 +183,18 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             case SDL_KEYDOWN:
             {
                 keys = SDL_GetKeyboardState(NULL);
-                // quit prog;
+                // quit
                 if (keys[SDL_SCANCODE_ESCAPE] == 1)
                 {
                     keepWindow = false;
                     destroy_window(sdl);
                     destroy_all(jdr, net, sdl);
                 }
-                // MAP
+                // Map
                 if (keys[SDL_SCANCODE_F1] == 1)
                     jdr->tab = TAB_MAP;
 
-                // inventaire
+                // Inv
                 else if (keys[SDL_SCANCODE_F2] == 1)
                     jdr->tab = TAB_INV;
 
@@ -192,7 +216,32 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             }
             }
         }
+        //
+        // CLIENT LOOP
+        //
+        numready = SDLNet_CheckSockets(set, 0);
+        if (numready == -1)
+        {
+            printf("SDLNet_CheckSockets: %s\n", SDLNet_GetError());
+            break;
+        }
 
+        /* check to see if the server sent us data */
+        if (numready && SDLNet_SocketReady(net->sock))
+        {
+            if (!getMsg(net->sock, &str))
+            {
+                char *errstr = SDLNet_GetError();
+                printf("getMsg: %s\n", strlen(errstr) ? errstr : "Server disconnected");
+                break;
+            }
+            /* post it to the screen */
+            // need to check for /join et / quit 
+            strcat(net->log, str);
+            strcat(net->log, "\n");
+            fprintf(net->log_fd, "%s\n", str);
+            printf("%s\n", str);
+        }
         if (keepWindow == true)
         {
 
@@ -213,19 +262,16 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
 
             // display tabs
             if (jdr->tab == TAB_PERSO)
-                display_perso(sdl, perso); //need to center name
+                display_perso(sdl, perso);
             // else if (jdr->tab == TAB_INV)
             //     display_inv(sdl);
             // else
             //     display_map(sdl);
 
-            // display chat
+            // display message and log
             display_message(sdl, net);
             display_log(sdl, net);
         }
-        //
-        // CLIENT LOOP
-        //
 
         // update window
         SDL_UpdateWindowSurface(sdl->window);

@@ -58,7 +58,7 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="ressource/icon.rc">
+		<Unit filename="resource/icon.rc">
 			<Option compilerVar="WINDRES" />
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -67,6 +67,11 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="srcs/client/init_client.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/client/net_thread.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
 			<Option target="Release" />

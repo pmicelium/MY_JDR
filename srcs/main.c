@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
     t_jdr jdr;
     init_jdr(&jdr);
 
-    SDL_Thread *net_thread=NULL, *local_thread=NULL;
+    // SDL_Thread *net_thread=NULL;
 
     // NEED TO CHECK PATH BEFORE ALL //
 
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     jdr.ttf = true;
     ft_putendl("TTF font done !");
 
-    // //  initialisation de SDL_NET
+    //  initialisation de SDL_NET
     t_my_net net;
     if (SDLNet_Init() == -1)
     {
@@ -49,8 +49,17 @@ int main(int argc, char *argv[])
     printf("init client done !\n");
     
     //thread
-
+    // net_thread=SDL_CreateThread(net_thread_main,sock);
+	// if(!net_thread)
+	// {
+	// 	printf("SDL_CreateThread: %s\n",SDL_GetError());
+	// 	SDLNet_Quit();
+	// 	SDL_Quit();
+	// 	exit(9);
+	// }
     
+	// SDL_WaitThread(net_thread,NULL);
+
     
     // loop
     if (loop(&sdl, &jdr, &perso, &net) == -1)

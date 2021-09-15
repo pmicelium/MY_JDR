@@ -13,8 +13,8 @@ void init_ttf_font(t_sdl *sdl)
     sdl->font.plus = TTF_OpenFont(FONT_SF_OUT_PATH, FONT_PLUS_SIZE);
 
     // CHAT
-    sdl->font.message = TTF_OpenFont(FONT_NASA, FONT_CHAT_SIZE);
-    sdl->font.log = TTF_OpenFont(FONT_NASA, FONT_LOG_SIZE);
+    sdl->font.message = TTF_OpenFont(FONT_NOVA, FONT_CHAT_SIZE);
+    sdl->font.log = TTF_OpenFont(FONT_NOVA, FONT_LOG_SIZE);
 }
 
 void init_jdr(t_jdr *jdr)

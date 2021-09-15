@@ -56,6 +56,12 @@
 #define FONT_SF_OUT_PATH "resource/font/sf-distant-galaxy.outline.ttf"
 #define FONT_SF_R_PATH "resource/font/sf-distant-galaxy.regular.ttf"
 #define FONT_NASA "resource/font/Nasa21-l23X.ttf"
+#define FONT_PLANETN "resource/font/planetncompact.ttf"
+#define FONT_DEMERON "resource/font/dameroncondital.ttf "
+#define FONT_DNA "resource/font/MrDna0.ttf"
+#define FONT_GRISH "resource/font/grishenko_nbp.ttf"
+#define FONT_FURMA "resource/font/Furmanite.ttf"
+#define FONT_NOVA "resource/font/novamono.ttf"
 
 #define FONT_TAB_SIZE 24
 
@@ -67,8 +73,8 @@
 
 #define FONT_PLUS_SIZE 70
 
-#define FONT_CHAT_SIZE 20
-#define FONT_LOG_SIZE 20
+#define FONT_CHAT_SIZE 25
+#define FONT_LOG_SIZE 25
 
 // SDL COLOR
 #define MY_GREEN    \
@@ -77,6 +83,7 @@
     }
 
 #define WHEEL_SPEED 30
+
 
 //
 // STRUCT
@@ -117,6 +124,8 @@ typedef struct s_sdl
 
     t_font font;
     t_list *hst;
+
+    // bool keepWindow;
 } t_sdl;
 
 // sdl_net client
@@ -150,6 +159,7 @@ typedef struct s_my_net
     char *name;
     char *str;
     struct timeval tv;
+    // int done;
 
 } t_my_net;
 
@@ -335,8 +345,8 @@ char *getMsg(TCPsocket sock, char **buf);
 /* send a string buffer over a TCP socket with error checking */
 /* returns 0 on any errors, length sent on success */
 int putMsg(TCPsocket sock, char *buf);
-// send the message you enter to log
-// void   send_message(t_my_net *net);
+// main thread for client
+int net_thread_main(t_my_net *net);
 
 //
 // LIBFT

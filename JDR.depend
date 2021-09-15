@@ -387,10 +387,10 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\destroy_window.c
 	"jdr.h"
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
+1631629250 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
 	"jdr.h"
 
-1631544449 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
+1631697982 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
 	"jdr.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\print_perso.c
@@ -402,13 +402,13 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
 	"jdr.h"
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
+1631697676 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
 	"jdr.h"
 
 1630245028 source:c:\users\admin\desktop\jdr\jdr\srcs\loop.c
 	"jdr.h"
 
-1631551425 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
+1631669851 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
 	"jdr.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
@@ -426,7 +426,7 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
 	"jdr.h"
 
-1631551366 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
+1631697519 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
 	"SDL2\SDL.h"
 	"SDL2\SDL_ttf.h"
 	"SDL2\SDL_net.h"
@@ -852,10 +852,10 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
 	"jdr.h"
 
-1631552561 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
+1631698115 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
 	"jdr.h"
 
-1631551442 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
+1631669318 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
 	"jdr.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\caracteristic.c
@@ -872,4 +872,7 @@
 1631217270 source:c:\users\admin\desktop\jdr\jdr\ressource\icon.rc
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\resource\icon.rc
+
+1631629868 source:c:\users\admin\desktop\jdr\jdr\srcs\client\net_thread.c
+	"jdr.h"
 

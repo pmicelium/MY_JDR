@@ -101,14 +101,14 @@ char *mformat(char *format, ...)
 	return (str);
 }
 
-/* terminate the nick at "bad" characters... */
-void fix_nick(char *s)
-{
-	unsigned int i;
-
-	if ((i = strspn(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ|_=+.,:;/\\?!@#$%^&*()~` ")) != strlen(s))
-		s[i] = '\0';
-}
+// /* terminate the nick at "bad" characters... */
+// void fix_nick(char *s)
+// {
+// 	unsigned int i;
+// 
+// 	if ((i = strspn(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ|_=+.,:;/\\?!@#$%^&*()~` ")) != strlen(s))
+// 		s[i] = '\0';
+// }
 
 /* test for nice name uniqueness among already connected users */
 int unique_nick(char *s)
@@ -139,7 +139,7 @@ Client *add_client(TCPsocket sock, char *name)
 	/* server side info */
 	printf("--> %s\n", name);
 	/* inform all clients, including the new one, of the joined user */
-	send_all(mformat("ss", "--> ", name));
+	send_all(mformat("ss", "/joined ", name));
 	return (&clients[num_clients - 1]);
 }
 
@@ -183,7 +183,7 @@ void remove_client(int i)
 	/* server side info */
 	printf("<-- %s\n", name);
 	/* inform all clients, excluding the old one, of the disconnected user */
-	send_all(mformat("ss", "<-- ", name));
+	send_all(mformat("ss", "/quit ", name));
 	if (name)
 		free(name);
 }
@@ -238,31 +238,31 @@ void do_command(char *msg, Client *client)
 	p = msg;
 	command = strsep(&p, " \t");
 	/* /NICK : change the clients name */
-	if (!strcasecmp(command, "NICK"))
-	{
-		if (p && strlen(p))
-		{
-			char *old_name = client->name;
+	// if (!strcasecmp(command, "NICK"))
+	// {
+	// 	if (p && strlen(p))
+	// 	{
+	// 		char *old_name = client->name;
 
-			fix_nick(p);
-			if (!strlen(p))
-			{
-				putMsg(client->sock, "--- Invalid Nickname!");
-				return;
-			}
-			if (!unique_nick(p))
-			{
-				putMsg(client->sock, "--- Duplicate Nickname!");
-				return;
-			}
-			client->name = strdup(p);
-			send_all(mformat("ssss", "--- ", old_name, " --> ", p));
-			free(old_name);
-		}
-		else
-			putMsg(client->sock, "--- /NICK nickname");
-		return;
-	}
+	// 		fix_nick(p);
+	// 		if (!strlen(p))
+	// 		{
+	// 			putMsg(client->sock, "--- Invalid Nickname!");
+	// 			return;
+	// 		}
+	// 		if (!unique_nick(p))
+	// 		{
+	// 			putMsg(client->sock, "--- Duplicate Nickname!");
+	// 			return;
+	// 		}
+	// 		client->name = strdup(p);
+	// 		send_all(mformat("ssss", "--- ", old_name, " --> ", p));
+	// 		free(old_name);
+	// 	}
+	// 	else
+	// 		putMsg(client->sock, "--- /NICK nickname");
+	// 	return;
+	// }
 	/* MSG : client to client message */
 	if (!strcasecmp(command, "MSG"))
 	{
@@ -289,31 +289,31 @@ void do_command(char *msg, Client *client)
 		return;
 	}
 	/* /ME : emote! to everyone */
-	if (!strcasecmp(command, "ME"))
-	{
-		if (p && strlen(p))
-		{
-			send_all(mformat("sss", client->name, " ", p));
-		}
-		else
-			putMsg(client->sock, "--- /ME message...");
-		return;
-	}
+	// if (!strcasecmp(command, "ME"))
+	// {
+	// 	if (p && strlen(p))
+	// 	{
+	// 		send_all(mformat("sss", client->name, " ", p));
+	// 	}
+	// 	else
+	// 		putMsg(client->sock, "--- /ME message...");
+	// 	return;
+	// }
 	/* /QUIT : quit the server with a message */
-	if (!strcasecmp(command, "QUIT"))
-	{
-		if (!p || strcasecmp(p, "-h"))
-		{
-			if (p)
-				send_all(mformat("ssss", "--- ", client->name, " quits : ", p));
-			else
-				send_all(mformat("sss", "--- ", client->name, " quits"));
-			remove_client(find_client(client->sock));
-		}
-		else
-			putMsg(client->sock, "--- /QUIT [message...]");
-		return;
-	}
+	// if (!strcasecmp(command, "QUIT"))
+	// {
+	// 	if (!p || strcasecmp(p, "-h"))
+	// 	{
+	// 		if (p)
+	// 			send_all(mformat("ssss", "--- ", client->name, " quits : ", p));
+	// 		else
+	// 			send_all(mformat("sss", "--- ", client->name, " quits"));
+	// 		remove_client(find_client(client->sock));
+	// 	}
+	// 	else
+	// 		putMsg(client->sock, "--- /QUIT [message...]");
+	// 	return;
+	// }
 	/* /WHO : list the users online back to the client */
 	if (!strcasecmp(command, "WHO"))
 	{
@@ -340,21 +340,21 @@ void do_command(char *msg, Client *client)
 		return;
 	}
 	/* /HELP : tell the client all the supported commands */
-	if (!strcasecmp(command, "HELP"))
-	{
-		putMsg(client->sock, "--- Begin /HELP");
-		putMsg(client->sock, "--- /HELP : this text");
-		putMsg(client->sock, "--- /ME message... : emote!");
-		putMsg(client->sock, "--- /MSG nickname message... : personal messaging");
-		putMsg(client->sock, "--- /NICK nickname : change nickaname");
-		putMsg(client->sock, "--- /QUIT [message...] : disconnect this client");
-		putMsg(client->sock, "--- /WHO : list who is logged on");
-		putMsg(client->sock, "--- End /HELP");
-		return;
-	}
+	// if (!strcasecmp(command, "HELP"))
+	// {
+	// 	putMsg(client->sock, "--- Begin /HELP");
+	// 	putMsg(client->sock, "--- /HELP : this text");
+	// 	putMsg(client->sock, "--- /ME message... : emote!");
+	// 	putMsg(client->sock, "--- /MSG nickname message... : personal messaging");
+	// 	putMsg(client->sock, "--- /NICK nickname : change nickaname");
+	// 	putMsg(client->sock, "--- /QUIT [message...] : disconnect this client");
+	// 	putMsg(client->sock, "--- /WHO : list who is logged on");
+	// 	putMsg(client->sock, "--- End /HELP");
+	// 	return;
+	// }
 
 	/* invalid command...respond appropriately */
-	putMsg(client->sock, mformat("sss", "--- What does the '", command, "' command do?"));
+	// putMsg(client->sock, mformat("sss", "--- What does the '", command, "' command do?"));
 }
 
 int main(int argc, char **argv)
@@ -475,7 +475,7 @@ int main(int argc, char **argv)
 					char *str;
 
 					numready--;
-					printf("<%s> %s\n", clients[i].name, message);
+					printf("%s : %s\n", clients[i].name, message);
 					/* interpret commands */
 					// if(message[0]=='/' && strlen(message)>1)
 					// {
@@ -484,7 +484,7 @@ int main(int argc, char **argv)
 					// else /* it's a regular message */
 					// {
 					/* forward message to ALL clients... */
-					str = mformat("ssss", "<", clients[i].name, "> ", message);
+					str = mformat("sss", clients[i].name, " : ", message);
 					if (str)
 						send_all(str);
 					// }

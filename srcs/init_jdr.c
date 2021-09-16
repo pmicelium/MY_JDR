@@ -15,6 +15,9 @@ void init_ttf_font(t_sdl *sdl)
     // CHAT
     sdl->font.message = TTF_OpenFont(FONT_NOVA, FONT_CHAT_SIZE);
     sdl->font.log = TTF_OpenFont(FONT_NOVA, FONT_LOG_SIZE);
+
+    // MAP
+    sdl->font.player = TTF_OpenFont(FONT_NOVA, FONT_PLAYER_SIZE); 
 }
 
 void init_jdr(t_jdr *jdr)
@@ -36,5 +39,5 @@ void destroy_all(t_jdr *jdr, t_my_net *net, t_sdl *sdl)
     if (jdr->log == true)
         fclose(net->log_fd);
 
-    list_del(sdl->hst);
+    list_del(net->hst);
 }

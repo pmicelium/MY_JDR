@@ -1,11 +1,26 @@
 #include "jdr.h"
 
-static void display_str(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Color, TTF_Font *font)
+void display_str(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Color, TTF_Font *font)
 {
     SDL_Surface *str_to_display = TTF_RenderText_Solid(font, str, Color);
     SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, rect);
     SDL_FreeSurface(str_to_display);
 }
+
+void display_str_blended(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Color, TTF_Font *font)
+{
+    SDL_Surface *str_to_display = TTF_RenderText_Blended(font, str, Color);
+    SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, rect);
+    SDL_FreeSurface(str_to_display);
+}
+
+void display_str_blended_wrapped(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Color, TTF_Font *font, Uint32 length)
+{
+    SDL_Surface *str_to_display = TTF_RenderText_Blended_Wrapped(font, str, Color, length);
+    SDL_BlitSurface(str_to_display, NULL, sdl->window_surface, rect);
+    SDL_FreeSurface(str_to_display);
+}
+
 
 static void display_carac_stat(t_sdl *sdl, t_perso *perso)
 {
@@ -398,7 +413,7 @@ static void display_pp(t_sdl *sdl, t_perso *perso)
 
     if (!(perso_pp.image = SDL_LoadBMP(PERSO_PP_PATH)))
     {
-        ft_putendl("load perso background fail");
+        ft_putendl("load perso pp fail");
         return;
     }
 

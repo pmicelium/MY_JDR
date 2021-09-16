@@ -2,8 +2,7 @@
 
 int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
 {
-    // load background
-    // MAP
+    // background MAP
     t_sdl_image map_background;
     map_background.position.x = 0;
     map_background.position.y = 0;
@@ -12,7 +11,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
         ft_putendl("load map background fail");
         return -1;
     }
-    // PERSO
+    // background PERSO
     t_sdl_image perso_background;
     perso_background.position.x = 0;
     perso_background.position.y = 0;
@@ -24,33 +23,32 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
 
     // TAB
     SDL_Color MyGreen = MY_GREEN;
-    int y_tab = 9;
-    // map
+    // tab map
     SDL_Surface *tab_MAP = TTF_RenderText_Blended(sdl->font.tab, "CARTE", MyGreen);
     SDL_Rect MAP_rect;
     MAP_rect.x = 110;
-    MAP_rect.y = y_tab;
+    MAP_rect.y = 9;
     MAP_rect.w = 300;
     MAP_rect.h = 30;
-    // inv
+    // tab inv
     SDL_Surface *tab_INV = TTF_RenderText_Blended(sdl->font.tab, "INVENTAIRE", MyGreen);
     SDL_Rect INV_rect;
     INV_rect.x = 400;
-    INV_rect.y = y_tab;
+    INV_rect.y = 9;
     INV_rect.w = 300;
     INV_rect.h = 30;
-    // perso
+    // tab perso
     SDL_Surface *tab_PERSO = TTF_RenderText_Blended(sdl->font.tab, "PERSO", MyGreen);
     SDL_Rect PERSO_rect;
     PERSO_rect.x = 735;
-    PERSO_rect.y = y_tab;
+    PERSO_rect.y = 9;
     PERSO_rect.w = 300;
     PERSO_rect.h = 30;
-    // name
+    // tab name
     SDL_Surface *tab_NAME = TTF_RenderText_Blended(sdl->font.tab, "JDR des French Retards", MyGreen);
     SDL_Rect NAME_rect;
     NAME_rect.x = 1200;
-    NAME_rect.y = y_tab;
+    NAME_rect.y = 9;
     NAME_rect.w = 300;
     NAME_rect.h = 30;
 
@@ -58,14 +56,14 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     get_str_from_keybord(net, sdl->event, sdl, perso, false, 0);
     net->log_fd = init_log(net);
     net->log_whell = -100;
+    net->hst = list_init();
     jdr->log = true;
-    sdl->hst = list_init();
     SDL_StartTextInput();
+
     // CLIENT
     SDLNet_SocketSet set;
     int numready;
     char *str = NULL;
-
     set = SDLNet_AllocSocketSet(1);
     if (!set)
     {
@@ -74,7 +72,6 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
         SDL_Quit();
         return -1;
     }
-
     if (SDLNet_TCP_AddSocket(set, net->sock) == -1)
     {
         printf("SDLNet_TCP_AddSocket: %s\n", SDLNet_GetError());
@@ -83,12 +80,20 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
         return -1;
     }
 
-    // LOOP
-    bool keepWindow = true;
-    Uint32 mouse;
-    Uint8 const *keys;
-    int x;
-    int y;
+    // MAP
+    t_map map;
+    map.player = list_init();
+    map.nb_player = 0;
+
+    if (!(map.player_img = SDL_LoadBMP(PLAYER_PATH)))
+    {
+        ft_putendl("load player fail");
+        return -1;
+    }
+    // make all white pixel transparent
+    SDL_SetColorKey(map.player_img, SDL_TRUE, SDL_MapRGB(map.player_img->format, 255, 255, 255));
+
+    SDL_Surface *main_player_pp = SDL_LoadBMP(PERSO_PP_PATH);
 
     /* TO DO
 
@@ -96,7 +101,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
 
     - map
     - inventory
-    - Little leaks in perso (not much but maybe strong if running 3h), can't see it thought, maybe sdl
+    - Little leaks in perso (not much but maybe strong if running 3h)
     - support long ass perso_name
     - Add chimie to skill or just to power ??
     - support lunch without serv lunch 
@@ -127,6 +132,13 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - check all comment, maybe some idea to implement.
 
     */
+
+    // LOOP
+    bool keepWindow = true;
+    Uint32 mouse;
+    Uint8 const *keys;
+    int x;
+    int y;
     while (keepWindow)
     {
         while (SDL_PollEvent(&sdl->event) > 0)
@@ -236,11 +248,32 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 break;
             }
             /* post it to the screen */
-            // need to check for /join et / quit 
-            strcat(net->log, str);
-            strcat(net->log, "\n");
-            fprintf(net->log_fd, "%s\n", str);
-            printf("%s\n", str);
+            if (str[0] == '$')
+            {
+                if (str[1] == 'j')
+                {
+                    //insertion du nouveau player
+
+                    add_player(&map, &str[3], main_player_pp);
+                    map.nb_player++;
+                    // list_insert(map.player, &str[3]);
+                    printf("player %s has joined !\n\n\n", &str[3]);
+                }
+                else if (str[1] == 'q')
+                {
+                    remove_player(&map, &str[3]);
+                    map.nb_player--;
+                    list_print(map.player);
+                    printf("player %s has quit !\n\n\n", &str[3]);
+                }
+            }
+            else
+            {
+                strcat(net->log, str);
+                strcat(net->log, "\n");
+                fprintf(net->log_fd, "%s\n", str);
+                printf("%s\n", str);
+            }
         }
         if (keepWindow == true)
         {
@@ -263,10 +296,10 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             // display tabs
             if (jdr->tab == TAB_PERSO)
                 display_perso(sdl, perso);
+            else if (jdr->tab == TAB_MAP)
+                display_player(sdl, &map);
             // else if (jdr->tab == TAB_INV)
             //     display_inv(sdl);
-            // else
-            //     display_map(sdl);
 
             // display message and log
             display_message(sdl, net);

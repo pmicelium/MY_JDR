@@ -79,7 +79,7 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *p
         {
             if (net->i < MAXLEN)
                 net->message[net->i] = '\0';
-            list_insert(sdl->hst, net->message);
+            list_insert(net->hst, net->message);
             k++;
             j = 0;
             print = true;
@@ -115,7 +115,7 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *p
         {
             j++;
 
-            t_element *actuel = sdl->hst->premier;
+            t_element *actuel = net->hst->premier;
 
             while (i < k && i != 0)
             {
@@ -137,7 +137,7 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *p
             j--;
             int i = 0;
 
-            t_element *actuel = sdl->hst->premier;
+            t_element *actuel = net->hst->premier;
 
             while (i < j - 1)
             {

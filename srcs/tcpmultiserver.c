@@ -139,7 +139,7 @@ Client *add_client(TCPsocket sock, char *name)
 	/* server side info */
 	printf("--> %s\n", name);
 	/* inform all clients, including the new one, of the joined user */
-	send_all(mformat("ss", "/joined ", name));
+	send_all(mformat("ss", "$j ", name));
 	return (&clients[num_clients - 1]);
 }
 
@@ -183,7 +183,7 @@ void remove_client(int i)
 	/* server side info */
 	printf("<-- %s\n", name);
 	/* inform all clients, excluding the old one, of the disconnected user */
-	send_all(mformat("ss", "/quit ", name));
+	send_all(mformat("ss", "$q ", name));
 	if (name)
 		free(name);
 }

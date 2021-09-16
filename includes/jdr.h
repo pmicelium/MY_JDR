@@ -51,6 +51,7 @@
 #define MAP_BACKGROUND_PATH "resource/image/map_background.bmp"
 #define PERSO_BACKGROUND_PATH "resource/image/perso_background.bmp"
 #define PERSO_PP_PATH "resource/image/perso_pp.bmp"
+#define PLAYER_PATH "resource/image/player.bmp"
 
 // font
 #define FONT_SF_OUT_PATH "resource/font/sf-distant-galaxy.outline.ttf"
@@ -64,17 +65,14 @@
 #define FONT_NOVA "resource/font/novamono.ttf"
 
 #define FONT_TAB_SIZE 24
-
 #define FONT_CARAC_SIZE 30
 #define FONT_CARAC_T_SIZE 35
-
 #define FONT_SKILL_G_SIZE 30
 #define FONT_SKILL_SIZE 16
-
 #define FONT_PLUS_SIZE 70
-
 #define FONT_CHAT_SIZE 25
 #define FONT_LOG_SIZE 25
+#define FONT_PLAYER_SIZE 20
 
 // SDL COLOR
 #define MY_GREEN    \
@@ -84,16 +82,16 @@
 
 #define WHEEL_SPEED 30
 
-
 //
 // STRUCT
 //
 
-//  history struct
+//  list  struct
 typedef struct t_element t_element;
 struct t_element
 {
     char *str;
+    SDL_Surface *pp;
     t_element *suivant;
 };
 
@@ -113,6 +111,7 @@ typedef struct s_font
     TTF_Font *plus;
     TTF_Font *message;
     TTF_Font *log;
+    TTF_Font *player;
 } t_font;
 
 // sdl struct
@@ -123,9 +122,7 @@ typedef struct s_sdl
     SDL_Event event;
 
     t_font font;
-    t_list *hst;
 
-    // bool keepWindow;
 } t_sdl;
 
 // sdl_net client
@@ -145,12 +142,12 @@ typedef struct s_my_net
     unsigned int i;
     FILE *log_fd;
     char log[LOG_LEN];
+    t_list *hst;
 
     // wheel
     int log_whell;
     int max_log;
 
-    // int             numready;
     Uint16 port;
     SDLNet_SocketSet set;
     fd_set fdset;
@@ -159,7 +156,6 @@ typedef struct s_my_net
     char *name;
     char *str;
     struct timeval tv;
-    // int done;
 
 } t_my_net;
 
@@ -171,6 +167,15 @@ typedef struct s_sdl_image
     double pos_x;
     double pos_y;
 } t_sdl_image;
+
+// Map struct
+typedef struct s_map
+{
+    t_list *player;
+    int nb_player;
+    SDL_Surface *player_img;
+
+} t_map;
 
 // perso skill
 typedef struct s_skill
@@ -314,6 +319,10 @@ void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y);
 void display_message(t_sdl *sdl, t_my_net *net);
 // display logs on screen
 void display_log(t_sdl *sdl, t_my_net *net);
+// display str on screen
+void display_str(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Color, TTF_Font *font);
+void display_str_blended(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Color, TTF_Font *font);
+void display_str_blended_wrapped(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Color, TTF_Font *font, Uint32 length);
 
 //
 // PERSO
@@ -349,6 +358,16 @@ int putMsg(TCPsocket sock, char *buf);
 int net_thread_main(t_my_net *net);
 
 //
+// MAP
+//
+// display player connected on map
+void display_player(t_sdl *sdl, t_map *map);
+// add connected player to mem
+void add_player(t_map *map, char *name, SDL_Surface *pp);
+// remove a disconnected player from mem
+void remove_player(t_map *map, char *name);
+
+//
 // LIBFT
 //
 void ft_putchar(char c);
@@ -372,6 +391,8 @@ t_list *list_init(void);
 void list_insert(t_list *liste, char *str);
 void list_print(t_list *liste);
 void list_del(t_list *liste);
+void list_del_first(t_list *liste);
+
 
 // gnl
 #define GNL_EOL 1

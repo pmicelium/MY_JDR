@@ -105,7 +105,7 @@ char *mformat(char *format, ...)
 // void fix_nick(char *s)
 // {
 // 	unsigned int i;
-// 
+//
 // 	if ((i = strspn(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ|_=+.,:;/\\?!@#$%^&*()~` ")) != strlen(s))
 // 		s[i] = '\0';
 // }
@@ -243,7 +243,7 @@ void do_command(char *msg, Client *client)
 	// 	if (p && strlen(p))
 	// 	{
 	// 		char *old_name = client->name;
-
+	//
 	// 		fix_nick(p);
 	// 		if (!strlen(p))
 	// 		{
@@ -322,7 +322,7 @@ void do_command(char *msg, Client *client)
 		Uint32 ip;
 		const char *host = NULL;
 
-		putMsg(client->sock, "--- Begin /WHO ");
+		// putMsg(client->sock, "--- Begin /WHO ");
 		for (i = 0; i < num_clients; i++)
 		{
 			ipaddr = SDLNet_TCP_GetPeerAddress(clients[i].sock);
@@ -330,13 +330,14 @@ void do_command(char *msg, Client *client)
 			{
 				ip = SDL_SwapBE32(ipaddr->host);
 				host = SDLNet_ResolveIP(ipaddr);
-				putMsg(client->sock, mformat("sssssdsdsdsdsd", "--- ", clients[i].name,
-											 " ", host ? host : "",
-											 "[", ip >> 24, ".", (ip >> 16) & 0xff, ".", (ip >> 8) & 0xff, ".", ip & 0xff,
-											 "] port ", (Uint32)ipaddr->port));
+				putMsg(client->sock, mformat("ss", "$j ", clients[i].name));
+				// putMsg(client->sock, mformat("sssssdsdsdsdsd", "--- ", clients[i].name,
+				// 							 " ", host ? host : "",
+				// 							 "[", ip >> 24, ".", (ip >> 16) & 0xff, ".", (ip >> 8) & 0xff, ".", ip & 0xff,
+				// 							 "] port ", (Uint32)ipaddr->port));
 			}
 		}
-		putMsg(client->sock, "--- End /WHO");
+		// putMsg(client->sock, "--- End /WHO");
 		return;
 	}
 	/* /HELP : tell the client all the supported commands */
@@ -459,8 +460,8 @@ int main(int argc, char **argv)
 				{
 					Client *client;
 					client = add_client(sock, name);
-					// if (client)
-					// 	do_command("WHO", client);
+					if (client)
+						do_command("WHO", client);
 				}
 				else
 					SDLNet_TCP_Close(sock);

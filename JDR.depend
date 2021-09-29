@@ -399,7 +399,7 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
 	"jdr.h"
 
-1631817662 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
+1631826089 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
 	"jdr.h"
 
 1631798601 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
@@ -879,6 +879,6 @@
 1631824157 source:c:\users\admin\desktop\jdr\jdr\srcs\map\display_player.c
 	"jdr.h"
 
-1631823303 source:c:\users\admin\desktop\jdr\jdr\srcs\map\player.c
+1631826207 source:c:\users\admin\desktop\jdr\jdr\srcs\map\player.c
 	"jdr.h"
 

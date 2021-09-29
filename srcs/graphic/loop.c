@@ -253,10 +253,8 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 if (str[1] == 'j')
                 {
                     //insertion du nouveau player
-
-                    add_player(&map, &str[3], main_player_pp);
                     map.nb_player++;
-                    // list_insert(map.player, &str[3]);
+                    add_player(&map, &str[3], main_player_pp);
                     printf("player %s has joined !\n\n\n", &str[3]);
                 }
                 else if (str[1] == 'q')

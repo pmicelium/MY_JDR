@@ -252,3 +252,20 @@ Porny : allo
 John "Volt" Phyto : $j lol
 John "Volt" Phyto : hmm 
 Porny : $j lol
+player => John "Volt" Phyto
+
+player => John "Volt" Phyto
+
+--- Begin /WHO 
+--- John "Volt" Phyto BigFatMachine[127.0.0.1] port 29695
+--- End /WHO
+--- Begin /WHO 
+--- Porny BigFatMachine[127.0.0.1] port 31743
+--- John "Volt" Phyto BigFatMachine[127.0.0.1] port 33023
+--- End /WHO
+player -> John "Volt" Phyto
+John "Volt" Phyto
+--- Porny BigFatMachine[127.0.0.1] port 7627
+--- John "Volt" Phyto BigFatMachine[127.0.0.1] port 9163
+player Porny
+player John "Volt" Phyto

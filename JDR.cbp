@@ -101,6 +101,21 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
+		<Unit filename="srcs/event/mouse_event.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/event/mouse_event_map.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/event/mouse_event_perso.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="srcs/fonction.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
@@ -136,22 +151,27 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="srcs/graphic/mouse_event.c">
-			<Option compilerVar="CC" />
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="srcs/graphic/mouse_event_perso.c">
-			<Option compilerVar="CC" />
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="srcs/init_jdr.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="srcs/main.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/map/display_map.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/map/display_player.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="srcs/map/player.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
 			<Option target="Release" />

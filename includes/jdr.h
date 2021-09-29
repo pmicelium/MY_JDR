@@ -52,6 +52,8 @@
 #define PERSO_BACKGROUND_PATH "resource/image/perso_background.bmp"
 #define PERSO_PP_PATH "resource/image/perso_pp.bmp"
 #define PLAYER_PATH "resource/image/player.bmp"
+#define MAP_GRID_PATH "resource/image/map_grid.bmp"
+#define TOKEN_PATH "resource/image/token.bmp"
 
 // font
 #define FONT_SF_OUT_PATH "resource/font/sf-distant-galaxy.outline.ttf"
@@ -174,6 +176,9 @@ typedef struct s_map
     t_list *player;
     int nb_player;
     SDL_Surface *player_img;
+
+    SDL_Surface *map_grid;
+    SDL_Surface *token;
 
 } t_map;
 
@@ -312,7 +317,9 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net);
 // display perso tab on screen
 void display_perso(t_sdl *sdl, t_perso *perso);
 // manage mouse event
-void my_mouse_event(t_jdr *jdr, t_perso *perso, int x, int y);
+void my_mouse_event(t_jdr *jdr, t_perso *perso, t_map *map, int x, int y);
+// manage mouse event in map tab
+void mouse_event_map(t_jdr *jdr, t_map *map, int x, int y);
 // manage mouse event in perso tab
 void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y);
 // display the message on screen before it is send
@@ -366,6 +373,8 @@ void display_player(t_sdl *sdl, t_map *map);
 void add_player(t_map *map, char *name, SDL_Surface *pp);
 // remove a disconnected player from mem
 void remove_player(t_map *map, char *name);
+//display the map
+void display_map(t_sdl *sdl, t_map *map);
 
 //
 // LIBFT

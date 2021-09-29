@@ -408,13 +408,13 @@
 1630245028 source:c:\users\admin\desktop\jdr\jdr\srcs\loop.c
 	"jdr.h"
 
-1631823719 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
+1632738291 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
 	"jdr.h"
 
 1631799091 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
 	"jdr.h"
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event.c
+1632422245 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event.c
 	"jdr.h"
 
 1630333136 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\level_up.c
@@ -426,7 +426,7 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
 	"jdr.h"
 
-1631826097 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
+1632422813 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
 	"SDL2\SDL.h"
 	"SDL2\SDL_ttf.h"
 	"SDL2\SDL_net.h"
@@ -849,7 +849,7 @@
 	"jdr.h"
 	"tcputil.h"
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
+1632405363 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
 	"jdr.h"
 
 1631736616 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
@@ -879,6 +879,18 @@
 1631824157 source:c:\users\admin\desktop\jdr\jdr\srcs\map\display_player.c
 	"jdr.h"
 
-1631826207 source:c:\users\admin\desktop\jdr\jdr\srcs\map\player.c
+1631884268 source:c:\users\admin\desktop\jdr\jdr\srcs\map\player.c
+	"jdr.h"
+
+1632422599 source:c:\users\admin\desktop\jdr\jdr\srcs\map\display_map.c
+	"jdr.h"
+
+1632422915 source:c:\users\admin\desktop\jdr\jdr\srcs\event\mouse_event.c
+	"jdr.h"
+
+1632423404 source:c:\users\admin\desktop\jdr\jdr\srcs\event\mouse_event_map.c
+	"jdr.h"
+
+1632422915 source:c:\users\admin\desktop\jdr\jdr\srcs\event\mouse_event_perso.c
 	"jdr.h"
 

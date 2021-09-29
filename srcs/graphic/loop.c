@@ -92,10 +92,22 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     }
     // make all white pixel transparent
     SDL_SetColorKey(map.player_img, SDL_TRUE, SDL_MapRGB(map.player_img->format, 255, 255, 255));
-
     SDL_Surface *main_player_pp = SDL_LoadBMP(PERSO_PP_PATH);
 
-    /* TO DO
+    if (!(map.map_grid = SDL_LoadBMP(MAP_GRID_PATH)))
+    {
+        ft_putendl("load map grid fail");
+        return -1;
+    }
+    if (!(map.token = SDL_LoadBMP(TOKEN_PATH)))
+    {
+        ft_putendl("load token fail");
+        return -1;
+    }
+    // make all white pixel transparent
+    SDL_SetColorKey(map.token, SDL_TRUE, SDL_MapRGB(map.token->format, 255, 255, 255));
+
+        /* TO DO
 
     // essential
 
@@ -106,14 +118,16 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - Add chimie to skill or just to power ??
     - support lunch without serv lunch 
     - escape = option. 
-    - optional : add shell prog, lunchable directly in the prog 
     - check path before start 
     - /GM et /GMRoll not supported
+    - send and received player pp via TCP
+    - cursor in hist 
 
     // optional 
 
+    - optional : add shell prog, lunchable directly in the prog 
+    - explicatif text for skill
     - Change Perso skill font 
-    - better handling of /quit (maybe quit prog )
     - cursor in message with left and right arrow (ttf status je crois)
     - get time and date for LOG (1 / months or 1 / sessions ?? )
     - remove limit in roll => make the output plusieurs messages ==> finsh print_log
@@ -163,7 +177,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 mouse = SDL_GetMouseState(&x, &y);
                 // LEFT BUTTON
                 if ((mouse & SDL_BUTTON_LMASK) != 0)
-                    my_mouse_event(jdr, perso, x, y);
+                    my_mouse_event(jdr, perso, &map, x, y);
                 break;
             }
             case SDL_MOUSEWHEEL:
@@ -295,7 +309,10 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             if (jdr->tab == TAB_PERSO)
                 display_perso(sdl, perso);
             else if (jdr->tab == TAB_MAP)
+            {
+                display_map(sdl, &map);
                 display_player(sdl, &map);
+            }
             // else if (jdr->tab == TAB_INV)
             //     display_inv(sdl);
 

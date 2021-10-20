@@ -1,6 +1,6 @@
 #include "jdr.h"
 
-static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
+static int event_levelup(t_perso *perso, int x, int y, bool cursor)
 {
     // caract
     int y1 = 525;
@@ -9,6 +9,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
     {
         if ((perso->skill.exp >= perso->skill.carrure * 6) && (perso->skill.carrure < 6) && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= perso->skill.carrure * 6;
             perso->skill.carrure++;
         }
@@ -16,6 +18,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 50;
         if ((perso->skill.exp >= perso->skill.charisme * 6) && (perso->skill.charisme < 6) && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= perso->skill.charisme * 6;
             perso->skill.charisme++;
         }
@@ -23,6 +27,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 50;
         if ((perso->skill.exp >= perso->skill.coordination * 6) && (perso->skill.coordination < 6) && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= perso->skill.coordination * 6;
             perso->skill.coordination++;
         }
@@ -30,6 +36,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 50;
         if ((perso->skill.exp >= perso->skill.education * 6) && (perso->skill.education < 6) && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= perso->skill.education * 6;
             perso->skill.education++;
         }
@@ -37,6 +45,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 50;
         if ((perso->skill.exp >= perso->skill.perception * 6) && (perso->skill.perception < 6) && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= perso->skill.perception * 6;
             perso->skill.perception++;
         }
@@ -44,6 +54,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 50;
         if ((perso->skill.exp >= perso->skill.reflexe * 6) && (perso->skill.reflexe < 6) && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= perso->skill.reflexe * 6;
             perso->skill.reflexe++;
         }
@@ -51,6 +63,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 50;
         if ((perso->skill.exp >= perso->skill.sang_froid * 6) && (perso->skill.sang_froid < 6) && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= perso->skill.sang_froid * 6;
             perso->skill.sang_froid++;
         }
@@ -62,6 +76,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         // Pilotage
         if ((perso->skill.exp >= (10 - perso->skill.vehicule_terrestre) * 2) && perso->skill.vehicule_terrestre > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.vehicule_terrestre) * 2;
             perso->skill.vehicule_terrestre--;
         }
@@ -69,6 +85,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.pilotage_Leger) * 2) && perso->skill.pilotage_Leger > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pilotage_Leger) * 2;
             perso->skill.pilotage_Leger--;
         }
@@ -76,6 +94,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.pilotage_combat) * 2) && perso->skill.pilotage_combat > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pilotage_combat) * 2;
             perso->skill.pilotage_combat--;
         }
@@ -85,6 +105,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
              (perso->skill.pilotage_Leger <= 6 || perso->skill.pilotage_Lourd < 9)) &&
             perso->skill.pilotage_Lourd > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pilotage_Lourd) * 2;
             perso->skill.pilotage_Lourd--;
         }
@@ -92,6 +114,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.tourelle) * 2) && perso->skill.tourelle > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.tourelle) * 2;
             perso->skill.tourelle--;
         }
@@ -101,6 +125,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         // physique
         if ((perso->skill.exp >= (10 - perso->skill.athle) * 2) && perso->skill.athle > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.athle) * 2;
             perso->skill.athle--;
         }
@@ -108,6 +134,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.acrobatie) * 2) && perso->skill.acrobatie > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.acrobatie) * 2;
             perso->skill.acrobatie--;
         }
@@ -115,6 +143,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.escalade) * 2) && perso->skill.escalade > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.escalade) * 2;
             perso->skill.escalade--;
         }
@@ -122,6 +152,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.endurence) * 2) && perso->skill.endurence > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.endurence) * 2;
             perso->skill.endurence--;
         }
@@ -131,6 +163,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         // groupe explo
         if ((perso->skill.exp >= (10 - perso->skill.discretion) * 2) && perso->skill.discretion > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.discretion) * 2;
             perso->skill.discretion--;
         }
@@ -138,6 +172,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.fouille) * 2) && perso->skill.fouille > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.fouille) * 2;
             perso->skill.fouille--;
         }
@@ -145,6 +181,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.informatique) * 2) && perso->skill.informatique > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.informatique) * 2;
             perso->skill.informatique--;
         }
@@ -152,6 +190,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if (((perso->skill.exp >= (10 - perso->skill.piratage) * 2) && (perso->skill.informatique <= 6 || perso->skill.piratage < 9)) && perso->skill.piratage > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.piratage) * 2;
             perso->skill.piratage--;
         }
@@ -159,6 +199,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if (((perso->skill.exp >= (10 - perso->skill.decryptage) * 2) && (perso->skill.informatique <= 6 || perso->skill.decryptage < 9)) && perso->skill.decryptage > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.decryptage) * 2;
             perso->skill.decryptage--;
         }
@@ -166,6 +208,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.premier_secour) * 2) && perso->skill.premier_secour > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.premier_secour) * 2;
             perso->skill.premier_secour--;
         }
@@ -175,6 +219,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         // groupe Crafting
         if ((perso->skill.exp >= (10 - perso->skill.brico) * 2) && perso->skill.brico > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.brico) * 2;
             perso->skill.brico--;
         }
@@ -182,6 +228,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.reparation) * 2) && perso->skill.reparation > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.reparation) * 2;
             perso->skill.reparation--;
         }
@@ -189,6 +237,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if (((perso->skill.exp >= (10 - perso->skill.metal) * 2) && (perso->skill.brico <= 6 || perso->skill.metal < 9)) && y > y1 && y < y2 && perso->skill.metal > 2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.metal) * 2;
             perso->skill.metal--;
         }
@@ -196,6 +246,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.cuisine) * 2) && perso->skill.cuisine > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.cuisine) * 2;
             perso->skill.cuisine--;
         }
@@ -203,6 +255,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.survie) * 2) && perso->skill.survie > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.survie) * 2;
             perso->skill.survie--;
         }
@@ -215,6 +269,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         // groupe Arme
         if ((perso->skill.exp >= (10 - perso->skill.poing) * 2) && perso->skill.poing > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.poing) * 2;
             perso->skill.poing--;
         }
@@ -222,6 +278,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.epaule) * 2) && perso->skill.epaule > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.epaule) * 2;
             perso->skill.epaule--;
         }
@@ -229,6 +287,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.pompe) * 2) && perso->skill.pompe > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pompe) * 2;
             perso->skill.pompe--;
         }
@@ -236,6 +296,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if (((perso->skill.exp >= (10 - perso->skill.sniper) * 2) && (perso->skill.epaule <= 6 || perso->skill.sniper < 9)) && y > y1 && y < y2 && perso->skill.sniper > 2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.sniper) * 2;
             perso->skill.sniper--;
         }
@@ -243,6 +305,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.lourde) * 2) && perso->skill.lourde > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.lourde) * 2;
             perso->skill.lourde--;
         }
@@ -250,6 +314,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.explosif) * 2) && perso->skill.explosif > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.explosif) * 2;
             perso->skill.explosif--;
         }
@@ -257,6 +323,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.lancer) * 2) && perso->skill.lancer > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.lancer) * 2;
             perso->skill.lancer--;
         }
@@ -264,6 +332,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.CAC) * 2) && perso->skill.CAC > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.CAC) * 2;
             perso->skill.CAC--;
         }
@@ -271,6 +341,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.contact) * 2) && perso->skill.contact > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.contact) * 2;
             perso->skill.contact--;
         }
@@ -280,6 +352,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 = 515;
         if ((perso->skill.pouvoir1 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir1) * 2)) && perso->skill.pouvoir1 > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pouvoir1) * 2;
             perso->skill.pouvoir1--;
         }
@@ -287,6 +361,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.pouvoir2 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir2) * 2)) && perso->skill.pouvoir2 > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pouvoir2) * 2;
             perso->skill.pouvoir2--;
         }
@@ -294,6 +370,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.pouvoir3 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir3) * 2)) && perso->skill.pouvoir3 > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pouvoir3) * 2;
             perso->skill.pouvoir3--;
         }
@@ -301,6 +379,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.pouvoir4 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir4) * 2)) && perso->skill.pouvoir4 > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pouvoir4) * 2;
             perso->skill.pouvoir4--;
         }
@@ -308,6 +388,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.pouvoir5 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir5) * 2)) && perso->skill.pouvoir5 > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pouvoir5) * 2;
             perso->skill.pouvoir5--;
         }
@@ -315,6 +397,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.pouvoir6 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir6) * 2)) && perso->skill.pouvoir6 > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pouvoir6) * 2;
             perso->skill.pouvoir6--;
         }
@@ -322,6 +406,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.pouvoir7 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir7) * 2)) && perso->skill.pouvoir7 > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pouvoir7) * 2;
             perso->skill.pouvoir7--;
         }
@@ -329,6 +415,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.pouvoir8 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir8) * 2)) && perso->skill.pouvoir8 > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pouvoir8) * 2;
             perso->skill.pouvoir8--;
         }
@@ -336,6 +424,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.pouvoir9 != 0 && (perso->skill.exp >= (10 - perso->skill.pouvoir9) * 2)) && perso->skill.pouvoir9 > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.pouvoir9) * 2;
             perso->skill.pouvoir9--;
         }
@@ -345,6 +435,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 = 915;
         if ((perso->skill.exp >= (10 - perso->skill.eloquence) * 2) && perso->skill.eloquence > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.eloquence) * 2;
             perso->skill.eloquence--;
         }
@@ -352,6 +444,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.intimidation) * 2) && perso->skill.intimidation > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.intimidation) * 2;
             perso->skill.intimidation--;
         }
@@ -359,6 +453,8 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.bluff) * 2) && perso->skill.bluff > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.bluff) * 2;
             perso->skill.bluff--;
         }
@@ -366,13 +462,16 @@ static void event_levelup(t_jdr *jdr, t_perso *perso, int x, int y)
         y2 += 40;
         if ((perso->skill.exp >= (10 - perso->skill.psyco) * 2) && perso->skill.psyco > 2 && y > y1 && y < y2)
         {
+            if (cursor == true)
+                return 1;
             perso->skill.exp -= (10 - perso->skill.psyco) * 2;
             perso->skill.psyco--;
         }
     }
+    return 0;
 }
 
-void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y)
+void mouse_event_perso(t_perso *perso, int x, int y)
 {
     if (x > 175 && x < 360 && y > 980 && y < 1005)
     {
@@ -380,7 +479,7 @@ void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y)
     }
     if (perso->levelup == LEVELUP_O)
     {
-        event_levelup(jdr, perso, x, y);
+        event_levelup(perso, x, y, false);
         if (x > 35 && x < 195 && y > 980 && y < 1005)
         {
             perso->levelup = LEVELUP;
@@ -393,4 +492,23 @@ void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y)
             print_perso(perso);
         }
     }
+}
+
+int change_cursor_perso(t_perso *perso, int x, int y)
+{
+    if (perso->levelup == LEVELUP)
+    {
+        if (x > 175 && x < 360 && y > 980 && y < 1005)
+            return 1;
+    }
+    if (perso->levelup == LEVELUP_O)
+    {
+        if (event_levelup(perso, x, y, true) == 1)
+            return 1;
+        if (x > 35 && x < 195 && y > 980 && y < 1005)
+            return 1;
+        if (x > 335 && x < 500 && y > 980 && y < 1005)
+            return 1;
+    }
+    return 0;
 }

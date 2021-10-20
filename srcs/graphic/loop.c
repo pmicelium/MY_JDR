@@ -115,13 +115,10 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - inventory
     - Little leaks in perso (not much but maybe strong if running 3h)
     - support long ass perso_name
-    - Add chimie to skill or just to power ??
     - support lunch without serv lunch 
     - escape = option. 
     - check path before start 
-    - /GM et /GMRoll not supported
     - send and received player pp via TCP
-    - cursor in chat
 
     // optional 
 
@@ -185,6 +182,12 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                     else if (x > 1885)
                         SDL_SetCursor(sdl->cursor.hand);
                 }
+                if (jdr->tab == TAB_PERSO)
+                {
+                    if (change_cursor_perso(perso, x, y) == 1)
+                        SDL_SetCursor(sdl->cursor.hand);
+                }
+                break;
             }
             case SDL_MOUSEBUTTONDOWN:
             {

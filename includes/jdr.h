@@ -41,8 +41,7 @@
 // t_perso levelup define
 #define LEVELUP 1
 #define LEVELUP_O 2
-#define LEVELUP_R 3
-#define LEVELUP_V 4
+
 
 // resource path
 #define PERSO_PATH "resource/Perso"
@@ -330,7 +329,9 @@ void my_mouse_event(t_jdr *jdr, t_perso *perso, t_map *map, int x, int y);
 // manage mouse event in map tab
 void mouse_event_map(t_jdr *jdr, t_map *map, int x, int y);
 // manage mouse event in perso tab
-void mouse_event_perso(t_jdr *jdr, t_perso *perso, int x, int y);
+void mouse_event_perso(t_perso *perso, int x, int y);
+// change the cursor in perso tab 
+int change_cursor_perso(t_perso *perso, int x, int y);
 // display the message on screen before it is send
 void display_message(t_sdl *sdl, t_my_net *net);
 // display logs on screen

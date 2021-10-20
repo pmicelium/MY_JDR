@@ -19,7 +19,7 @@ void my_mouse_event(t_jdr *jdr, t_perso *perso, t_map *map, int x, int y)
             printf("OPTION\n");
     }
     if (jdr->tab == TAB_PERSO)
-        mouse_event_perso(jdr, perso, x, y);
+        mouse_event_perso(perso, x, y);
     else if (jdr->tab == TAB_MAP)
         mouse_event_map(jdr, map, x, y);
 }

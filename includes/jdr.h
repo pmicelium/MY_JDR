@@ -18,6 +18,7 @@
 #define MY_HOST "localhost"
 #define MAXLEN (10 * 1024) /* 10 KB - adequate for text! */
 #define LOG_LEN 40000
+#define GM_NAME "GalactoMan"
 
 // system include
 #include <stdbool.h>
@@ -116,6 +117,12 @@ typedef struct s_font
     TTF_Font *player;
 } t_font;
 
+typedef struct s_cursor
+{
+    SDL_Cursor *arrow;
+    SDL_Cursor *hand;
+} t_cursor;
+
 // sdl struct
 typedef struct s_sdl
 {
@@ -124,7 +131,7 @@ typedef struct s_sdl
     SDL_Event event;
 
     t_font font;
-
+    t_cursor cursor;
 } t_sdl;
 
 // sdl_net client
@@ -268,7 +275,7 @@ typedef struct s_skill
 typedef struct s_perso
 {
     char *name;
-    t_sdl_image profile_pict;
+    SDL_Surface *pp;
 
     t_skill skill;
     t_skill copy;
@@ -302,6 +309,8 @@ void init_client(t_perso *perso, t_my_net *net);
 void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *perso, bool charb, char c);
 // init ttf_font
 void init_ttf_font(t_sdl *sdl);
+// init cursor
+int init_cursor(t_sdl *sdl);
 // init log
 FILE *init_log(t_my_net *net);
 
@@ -361,6 +370,10 @@ char *getMsg(TCPsocket sock, char **buf);
 /* send a string buffer over a TCP socket with error checking */
 /* returns 0 on any errors, length sent on success */
 int putMsg(TCPsocket sock, char *buf);
+// receive a SDL surface from serv 
+SDL_Surface *getSurf(TCPsocket sock, SDL_Surface **buf);
+// put a SLD surface on serv
+int *putSurf(TCPsocket sock, SDL_Surface *surface);
 // main thread for client
 int net_thread_main(t_my_net *net);
 

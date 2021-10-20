@@ -238,40 +238,41 @@ void do_command(char *msg, Client *client)
 	p = msg;
 	command = strsep(&p, " \t");
 	/* /NICK : change the clients name */
-	// if (!strcasecmp(command, "NICK"))
-	// {
-	// 	if (p && strlen(p))
-	// 	{
-	// 		char *old_name = client->name;
-	//
-	// 		fix_nick(p);
-	// 		if (!strlen(p))
-	// 		{
-	// 			putMsg(client->sock, "--- Invalid Nickname!");
-	// 			return;
-	// 		}
-	// 		if (!unique_nick(p))
-	// 		{
-	// 			putMsg(client->sock, "--- Duplicate Nickname!");
-	// 			return;
-	// 		}
-	// 		client->name = strdup(p);
-	// 		send_all(mformat("ssss", "--- ", old_name, " --> ", p));
-	// 		free(old_name);
-	// 	}
-	// 	else
-	// 		putMsg(client->sock, "--- /NICK nickname");
-	// 	return;
-	// }
+	/* if (!strcasecmp(command, "NICK"))
+	{
+		if (p && strlen(p))
+		{
+			char *old_name = client->name;
+	
+			fix_nick(p);
+			if (!strlen(p))
+			{
+				putMsg(client->sock, "--- Invalid Nickname!");
+				return;
+			}
+			if (!unique_nick(p))
+			{
+				putMsg(client->sock, "--- Duplicate Nickname!");
+				return;
+			}
+			client->name = strdup(p);
+			send_all(mformat("ssss", "--- ", old_name, " --> ", p));
+			free(old_name);
+		}
+		else
+			putMsg(client->sock, "--- /NICK nickname");
+		return;
+	} 
+	// */
 	/* MSG : client to client message */
-	if (!strcasecmp(command, "MSG"))
+	if (!strcasecmp(command, "gm")|| !strcasecmp(command, "gmroll") || !strcasecmp(command, "gmr"))
 	{
 		char *name;
 		int to;
 
 		if (p)
 		{
-			name = strsep(&p, " ");
+			name = GM_NAME;
 			to = find_client_name(name);
 			if (to < 0)
 			{
@@ -280,40 +281,15 @@ void do_command(char *msg, Client *client)
 			}
 			else if (p && strlen(p))
 			{
-				putMsg(client->sock, mformat("ssss", ">", clients[to].name, "< ", p));
-				putMsg(clients[to].sock, mformat("ssss", ">", client->name, "< ", p));
+				if (strcmp(client->name, GM_NAME) != 0)
+					putMsg(client->sock, mformat("ssss", "[TO GM] ", client->name, " : ", p));
+				putMsg(clients[to].sock, mformat("ssss", "[TO GM] ", client->name, " : ", p));
 				return;
 			}
 		}
 		putMsg(client->sock, "--- /MSG nickname message...");
 		return;
 	}
-	/* /ME : emote! to everyone */
-	// if (!strcasecmp(command, "ME"))
-	// {
-	// 	if (p && strlen(p))
-	// 	{
-	// 		send_all(mformat("sss", client->name, " ", p));
-	// 	}
-	// 	else
-	// 		putMsg(client->sock, "--- /ME message...");
-	// 	return;
-	// }
-	/* /QUIT : quit the server with a message */
-	// if (!strcasecmp(command, "QUIT"))
-	// {
-	// 	if (!p || strcasecmp(p, "-h"))
-	// 	{
-	// 		if (p)
-	// 			send_all(mformat("ssss", "--- ", client->name, " quits : ", p));
-	// 		else
-	// 			send_all(mformat("sss", "--- ", client->name, " quits"));
-	// 		remove_client(find_client(client->sock));
-	// 	}
-	// 	else
-	// 		putMsg(client->sock, "--- /QUIT [message...]");
-	// 	return;
-	// }
 	/* /WHO : list the users online back to the client */
 	if (!strcasecmp(command, "WHO"))
 	{
@@ -337,25 +313,8 @@ void do_command(char *msg, Client *client)
 				// 							 "] port ", (Uint32)ipaddr->port));
 			}
 		}
-		// putMsg(client->sock, "--- End /WHO");
 		return;
 	}
-	/* /HELP : tell the client all the supported commands */
-	// if (!strcasecmp(command, "HELP"))
-	// {
-	// 	putMsg(client->sock, "--- Begin /HELP");
-	// 	putMsg(client->sock, "--- /HELP : this text");
-	// 	putMsg(client->sock, "--- /ME message... : emote!");
-	// 	putMsg(client->sock, "--- /MSG nickname message... : personal messaging");
-	// 	putMsg(client->sock, "--- /NICK nickname : change nickaname");
-	// 	putMsg(client->sock, "--- /QUIT [message...] : disconnect this client");
-	// 	putMsg(client->sock, "--- /WHO : list who is logged on");
-	// 	putMsg(client->sock, "--- End /HELP");
-	// 	return;
-	// }
-
-	/* invalid command...respond appropriately */
-	// putMsg(client->sock, mformat("sss", "--- What does the '", command, "' command do?"));
 }
 
 int main(int argc, char **argv)
@@ -478,17 +437,17 @@ int main(int argc, char **argv)
 					numready--;
 					printf("%s : %s\n", clients[i].name, message);
 					/* interpret commands */
-					// if(message[0]=='/' && strlen(message)>1)
-					// {
-					// 	do_command(message+1,&clients[i]);
-					// }
-					// else /* it's a regular message */
-					// {
+					if(message[0]=='/' && strlen(message)>1)
+					{
+						do_command(message+1,&clients[i]);
+					}
+					else /* it's a regular message */
+					{
 					/* forward message to ALL clients... */
 					str = mformat("sss", clients[i].name, " : ", message);
 					if (str)
 						send_all(str);
-					// }
+					}
 					free(message);
 					message = NULL;
 				}

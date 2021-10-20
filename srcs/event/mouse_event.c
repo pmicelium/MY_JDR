@@ -2,7 +2,6 @@
 
 void my_mouse_event(t_jdr *jdr, t_perso *perso, t_map *map, int x, int y)
 {
-    printf("cursor at %d / %d\n", x, y);
     // TAB
     if (y < 30)
     {

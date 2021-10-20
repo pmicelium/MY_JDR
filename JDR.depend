@@ -387,31 +387,31 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\destroy_window.c
 	"jdr.h"
 
-1631629250 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
+1634746738 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\init_window.c
 	"jdr.h"
 
-1631697982 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
+1634742535 source:c:\users\admin\desktop\jdr\jdr\srcs\main.c
 	"jdr.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\print_perso.c
 	"jdr.h"
 
-1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
+1634746622 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
 	"jdr.h"
 
 1631826089 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
 	"jdr.h"
 
-1631798601 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
+1634744815 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
 	"jdr.h"
 
 1630245028 source:c:\users\admin\desktop\jdr\jdr\srcs\loop.c
 	"jdr.h"
 
-1632738291 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
+1634747136 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
 	"jdr.h"
 
-1631799091 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
+1634563710 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
 	"jdr.h"
 
 1632422245 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event.c
@@ -426,7 +426,7 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
 	"jdr.h"
 
-1632422813 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
+1634746915 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
 	"SDL2\SDL.h"
 	"SDL2\SDL_ttf.h"
 	"SDL2\SDL_net.h"
@@ -845,17 +845,17 @@
 	"SDL2/SDL_net.h"
 	"jdr.h"
 
-1631551433 source:c:\users\admin\desktop\jdr\jdr\srcs\client\init_client.c
+1634563710 source:c:\users\admin\desktop\jdr\jdr\srcs\client\init_client.c
 	"jdr.h"
 	"tcputil.h"
 
-1632405363 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
+1634563710 source:c:\users\admin\desktop\jdr\jdr\srcs\client\get_put_message.c
 	"jdr.h"
 
 1631736616 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\get_str_from_keybord.c
 	"jdr.h"
 
-1631669318 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
+1634757220 source:c:\users\admin\desktop\jdr\jdr\srcs\command\command.c
 	"jdr.h"
 
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\command\caracteristic.c
@@ -876,21 +876,29 @@
 1631629868 source:c:\users\admin\desktop\jdr\jdr\srcs\client\net_thread.c
 	"jdr.h"
 
-1631824157 source:c:\users\admin\desktop\jdr\jdr\srcs\map\display_player.c
+1634564182 source:c:\users\admin\desktop\jdr\jdr\srcs\map\display_player.c
 	"jdr.h"
 
 1631884268 source:c:\users\admin\desktop\jdr\jdr\srcs\map\player.c
 	"jdr.h"
 
-1632422599 source:c:\users\admin\desktop\jdr\jdr\srcs\map\display_map.c
+1632927985 source:c:\users\admin\desktop\jdr\jdr\srcs\map\display_map.c
 	"jdr.h"
 
-1632422915 source:c:\users\admin\desktop\jdr\jdr\srcs\event\mouse_event.c
+1634744591 source:c:\users\admin\desktop\jdr\jdr\srcs\event\mouse_event.c
 	"jdr.h"
 
 1632423404 source:c:\users\admin\desktop\jdr\jdr\srcs\event\mouse_event_map.c
 	"jdr.h"
 
 1632422915 source:c:\users\admin\desktop\jdr\jdr\srcs\event\mouse_event_perso.c
+	"jdr.h"
+
+1634757623 source:c:\users\admin\desktop\jdr\jdr\srcs\tcpmultiserver.c
+	<string.h>
+	<stdarg.h>
+	<stdlib.h>
+	"SDL2\SDL.h"
+	"SDL2\SDL_net.h"
 	"jdr.h"
 

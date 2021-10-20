@@ -34,6 +34,15 @@ int main(int argc, char *argv[])
     jdr.ttf = true;
     ft_putendl("TTF font done !");
 
+    // initialisation des cursors
+    if (init_cursor(&sdl) == -1)
+    {
+        printf("init cursor fail\n");
+        exit(EXIT_FAILURE);
+    }
+    printf("cursor init !\n");
+
+
     //  initialisation de SDL_NET
     t_my_net net;
     if (SDLNet_Init() == -1)

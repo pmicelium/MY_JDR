@@ -107,7 +107,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     // make all white pixel transparent
     SDL_SetColorKey(map.token, SDL_TRUE, SDL_MapRGB(map.token->format, 255, 255, 255));
 
-        /* TO DO
+    /* TO DO
 
     // essential
 
@@ -121,11 +121,12 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     - check path before start 
     - /GM et /GMRoll not supported
     - send and received player pp via TCP
-    - cursor in hist 
+    - cursor in chat
 
     // optional 
 
     - optional : add shell prog, lunchable directly in the prog 
+    - add cursor in skill (+)
     - explicatif text for skill
     - Change Perso skill font 
     - cursor in message with left and right arrow (ttf status je crois)
@@ -153,6 +154,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
     Uint8 const *keys;
     int x;
     int y;
+
     while (keepWindow)
     {
         while (SDL_PollEvent(&sdl->event) > 0)
@@ -172,6 +174,18 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             //
             // MOUSE EVENT
             //
+            case SDL_MOUSEMOTION:
+            {
+                mouse = SDL_GetMouseState(&x, &y);
+                SDL_SetCursor(sdl->cursor.arrow);
+                if (y < 30)
+                {
+                    if (x < 940)
+                        SDL_SetCursor(sdl->cursor.hand);
+                    else if (x > 1885)
+                        SDL_SetCursor(sdl->cursor.hand);
+                }
+            }
             case SDL_MOUSEBUTTONDOWN:
             {
                 mouse = SDL_GetMouseState(&x, &y);
@@ -266,6 +280,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
             {
                 if (str[1] == 'j')
                 {
+                    printf("new player detected !\n");
                     //insertion du nouveau player
                     map.nb_player++;
                     add_player(&map, &str[3], main_player_pp);

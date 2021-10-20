@@ -239,12 +239,9 @@ int init_perso(t_perso *perso)
             perso->skill.power9 = strdup(line);
         i++;
     }
-    //  test print_perso
-    // ft_putstr("carrure init : ");
-    // ft_putstr(ft_atoi(perso->skill.carrure));
-    // perso->skill.carrure = 9;
     close(fd);
-    // print_perso(perso);
+
+    perso->name = GM_NAME;
     return 0;
 }
 

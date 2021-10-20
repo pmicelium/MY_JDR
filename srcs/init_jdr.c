@@ -20,6 +20,13 @@ void init_ttf_font(t_sdl *sdl)
     sdl->font.player = TTF_OpenFont(FONT_NOVA, FONT_PLAYER_SIZE); 
 }
 
+int init_cursor(t_sdl *sdl)
+{
+    sdl->cursor.arrow = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
+    sdl->cursor.hand = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND);
+    return 0;
+}
+
 void init_jdr(t_jdr *jdr)
 {
     jdr->perso = false;

@@ -286,7 +286,8 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                     printf("new player detected !\n");
                     //insertion du nouveau player
                     map.nb_player++;
-                    add_player(&map, &str[3], main_player_pp);
+                    char **tab = ft_strsplit(str, '$');
+                    add_player(&map, &str[3], main_player_pp, ft_atoi(tab[1]), ft_atoi(tab[2]), ft_atoi(tab[3]));
                     printf("player %s has joined !\n\n\n", &str[3]);
                 }
                 else if (str[1] == 'q')
@@ -336,9 +337,8 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
 
             // display message and log
             display_message(sdl, net);
-            display_log(sdl, net);
+            display_log(sdl, net, &map);
         }
-
         // update window
         SDL_UpdateWindowSurface(sdl->window);
     }

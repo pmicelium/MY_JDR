@@ -1,6 +1,82 @@
 #include "jdr.h"
 
+// PERSO
+
+void MakeSurfaceTransparent(SDL_Surface *surface, int r, int g, int b)
+{
+	SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, r, g, b));
+}
+
+char *myformat(char *format, ...)
+{
+	va_list ap;
+	Uint32 len = 0;
+	static char *str = NULL;
+	char *p, *s;
+	char c;
+	int d;
+	unsigned int u;
+
+	if (str)
+	{
+		free(str);
+		str = NULL;
+	}
+	if (!format)
+		return (NULL);
+	va_start(ap, format);
+	for (p = format; *p; p++)
+	{
+		switch (*p)
+		{
+		case 's': /* string */
+			s = va_arg(ap, char *);
+			str = (char *)realloc(str, ((len + strlen(s) + 4) / 4) * 4);
+			sprintf(str + len, "%s", s);
+			break;
+		case 'c': /* char */
+			c = (char)va_arg(ap, int);
+			str = (char *)realloc(str, len + 4);
+			sprintf(str + len, "%c", c);
+			break;
+		case 'd': /* int */
+			d = va_arg(ap, int);
+			str = (char *)realloc(str, ((len + 64) / 4) * 4);
+			sprintf(str + len, "%d", d);
+			break;
+		case 'u': /* unsigned int */
+			u = va_arg(ap, unsigned int);
+			str = (char *)realloc(str, ((len + 64) / 4) * 4);
+			sprintf(str + len, "%u", u);
+			break;
+		}
+		/* set len to the new string length */
+		if (str)
+			len = strlen(str);
+		else
+			len = 0;
+	}
+	va_end(ap);
+	return (str);
+}
+
 // LIBFT //
+
+int		ft_strcmp(char const *s1, char const *s2)
+{
+	int		i;
+
+	i = 0;
+	while (s1[i] != '\0' || s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	if (i != 0)
+		i--;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
 
 int exit_char(char *str, int i)
 {

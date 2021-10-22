@@ -66,4 +66,9 @@ Perturbation (8 mana)
 (vide)
 (vide)
 END POWER
+
+// Votre couleur (vous pouvez la changer depuis les options) //
+R : 255
+G : 0
+B : 0
 // merci //

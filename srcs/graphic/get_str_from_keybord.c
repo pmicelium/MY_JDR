@@ -89,7 +89,7 @@ void get_str_from_keybord(t_my_net *net, SDL_Event event, t_sdl *sdl, t_perso *p
             if (net->i != 0 && help != -1)
             {
                 // fprintf(net->log_fd, "in print %s : %s\n", net->name, net->message);
-                //check if message > LENMAX = error or not;
+                // check if message > LENMAX = error or not;
                 putMsg(net->sock, net->message);
 
                 // print_log(net, sdl);

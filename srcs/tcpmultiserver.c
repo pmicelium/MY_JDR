@@ -9,6 +9,9 @@ typedef struct
 {
 	TCPsocket sock;
 	char *name;
+	int r;
+	int g;
+	int b;
 } Client;
 
 int running = 1;
@@ -133,8 +136,11 @@ Client *add_client(TCPsocket sock, char *name)
 		return (NULL);
 	}
 	clients = (Client *)realloc(clients, (num_clients + 1) * sizeof(Client));
+
 	clients[num_clients].name = name;
 	clients[num_clients].sock = sock;
+
+	int i = 0;
 	num_clients++;
 	/* server side info */
 	printf("--> %s\n", name);
@@ -265,7 +271,7 @@ void do_command(char *msg, Client *client)
 	} 
 	// */
 	/* MSG : client to client message */
-	if (!strcasecmp(command, "gm")|| !strcasecmp(command, "gmroll") || !strcasecmp(command, "gmr"))
+	if (!strcasecmp(command, "gm") || !strcasecmp(command, "gmroll") || !strcasecmp(command, "gmr"))
 	{
 		char *name;
 		int to;
@@ -437,16 +443,16 @@ int main(int argc, char **argv)
 					numready--;
 					printf("%s : %s\n", clients[i].name, message);
 					/* interpret commands */
-					if(message[0]=='/' && strlen(message)>1)
+					if (message[0] == '/' && strlen(message) > 1)
 					{
-						do_command(message+1,&clients[i]);
+						do_command(message + 1, &clients[i]);
 					}
 					else /* it's a regular message */
 					{
-					/* forward message to ALL clients... */
-					str = mformat("sss", clients[i].name, " : ", message);
-					if (str)
-						send_all(str);
+						/* forward message to ALL clients... */
+						str = mformat("sss", clients[i].name, " : ", message);
+						if (str)
+							send_all(str);
 					}
 					free(message);
 					message = NULL;

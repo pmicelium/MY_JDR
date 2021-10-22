@@ -77,10 +77,8 @@
 #define FONT_PLAYER_SIZE 20
 
 // SDL COLOR
-#define MY_GREEN    \
-    {               \
-        45, 206, 69 \
-    }
+#define MY_GREEN {45, 206, 69}
+#define BG_COLOR {19, 19, 19}
 
 #define WHEEL_SPEED 30
 
@@ -94,6 +92,9 @@ struct t_element
 {
     char *str;
     SDL_Surface *pp;
+    int r;
+    int g;
+    int b;
     t_element *suivant;
 };
 
@@ -138,6 +139,9 @@ typedef struct s_client
 {
     TCPsocket sock;
     char *name;
+    int r;
+    int g;
+    int b;
 } t_client;
 
 typedef struct s_my_net
@@ -164,6 +168,8 @@ typedef struct s_my_net
     char *name;
     char *str;
     struct timeval tv;
+
+    int nb_player;
 
 } t_my_net;
 
@@ -279,6 +285,11 @@ typedef struct s_perso
     t_skill skill;
     t_skill copy;
 
+    // color
+    int r;
+    int g;
+    int b;
+
     int levelup;
 } t_perso;
 
@@ -335,7 +346,7 @@ int change_cursor_perso(t_perso *perso, int x, int y);
 // display the message on screen before it is send
 void display_message(t_sdl *sdl, t_my_net *net);
 // display logs on screen
-void display_log(t_sdl *sdl, t_my_net *net);
+void display_log(t_sdl *sdl, t_my_net *net, t_map *map);
 // display str on screen
 void display_str(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Color, TTF_Font *font);
 void display_str_blended(t_sdl *sdl, char *str, SDL_Rect *rect, SDL_Color Color, TTF_Font *font);
@@ -384,12 +395,18 @@ int net_thread_main(t_my_net *net);
 // display player connected on map
 void display_player(t_sdl *sdl, t_map *map);
 // add connected player to mem
-void add_player(t_map *map, char *name, SDL_Surface *pp);
+void add_player(t_map *map, char *name, SDL_Surface *pp, int r, int g, int b);
 // remove a disconnected player from mem
 void remove_player(t_map *map, char *name);
 //display the map
 void display_map(t_sdl *sdl, t_map *map);
 
+//
+// PERSO
+//
+//make all pixel colored rgb in surface transparent
+void MakeSurfaceTransparent(SDL_Surface *surface, int r, int g, int b);
+char *myformat(char *format, ...);
 //
 // LIBFT
 //
@@ -408,6 +425,8 @@ void ft_strclr(char *s);
 int ft_isalpha(int c);
 char **ft_strsplit(char const *s, char c);
 char *ft_strnew(size_t size);
+int		ft_strcmp(char const *s1, char const *s2);
+
 
 // list
 t_list *list_init(void);

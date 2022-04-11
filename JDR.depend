@@ -399,7 +399,7 @@
 1634822082 source:c:\users\admin\desktop\jdr\jdr\srcs\perso\init_perso.c
 	"jdr.h"
 
-1634908116 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
+1634919377 source:c:\users\admin\desktop\jdr\jdr\srcs\fonction.c
 	"jdr.h"
 
 1634744815 source:c:\users\admin\desktop\jdr\jdr\srcs\init_jdr.c
@@ -408,7 +408,7 @@
 1630245028 source:c:\users\admin\desktop\jdr\jdr\srcs\loop.c
 	"jdr.h"
 
-1634838929 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
+1634917253 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\loop.c
 	"jdr.h"
 
 1634563710 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_perso.c
@@ -423,10 +423,10 @@
 1631531960 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\mouse_event_perso.c
 	"jdr.h"
 
-1634909250 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
+1634918978 source:c:\users\admin\desktop\jdr\jdr\srcs\graphic\display_chat.c
 	"jdr.h"
 
-1634908378 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
+1634910561 c:\users\admin\desktop\jdr\jdr\includes\jdr.h
 	"SDL2\SDL.h"
 	"SDL2\SDL_ttf.h"
 	"SDL2\SDL_net.h"

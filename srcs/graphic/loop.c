@@ -303,6 +303,7 @@ int loop(t_sdl *sdl, t_jdr *jdr, t_perso *perso, t_my_net *net)
                 strcat(net->log, str);
                 strcat(net->log, "\n");
                 fprintf(net->log_fd, "%s\n", str);
+                // fprintf(net->log_fd, "%s\n", RemoveColorFromName(str));
                 printf("%s\n", str);
             }
         }

@@ -341,6 +341,8 @@ void my_mouse_event(t_jdr *jdr, t_perso *perso, t_map *map, int x, int y);
 void mouse_event_map(t_jdr *jdr, t_map *map, int x, int y);
 // manage mouse event in perso tab
 void mouse_event_perso(t_perso *perso, int x, int y);
+// delete color in name
+char *ParseLineForName(char *line);
 // change the cursor in perso tab 
 int change_cursor_perso(t_perso *perso, int x, int y);
 // display the message on screen before it is send

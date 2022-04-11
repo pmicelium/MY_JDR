@@ -16,7 +16,13 @@ Bon jeu !\n\
     return (fd);
 }
 
-static char *ParseLineForName(char *line)
+// char *RemoveColorFromName(char *str)
+// {
+//     int i = 0;
+//     while (str[i])
+// }
+
+char *ParseLineForName(char *line)
 {
     char *name;
     int i = 0;
@@ -32,7 +38,7 @@ static char *ParseLineForName(char *line)
         name[i] = line[i];
         i++;
     }
-    name[i-1] = '\0';
+    name[i - 1] = '\0';
 
     return (name);
 }
@@ -57,10 +63,6 @@ static SDL_Color GetColorFromPlayer(t_map *map, char *name)
         i++;
         actuel = actuel->suivant;
     }
-    color.r = 0;
-    color.g = 0;
-    color.b = 255;
-    color.a = 255;
     return (color);
 }
 
@@ -82,17 +84,16 @@ void display_log(t_sdl *sdl, t_my_net *net, t_map *map)
     rect.x = 1640;
     rect.y = 45;
     rect.h = 950;
-    
 
     if ((fd = open(LOG_PATH, O_RDONLY)) < 0)
         return exit_char("cannot open perso_skill", -1);
-    int i = 0;
 
     rect.h = 950;
     rect.x = 1640;
 
     SDL_Surface *log = SDL_CreateRGBSurface(0, 269, 930, 8, 0, 0, 0, 0);
 
+    int i = 0;
     while (gnl(fd, &line))
     {
         name = ParseLineForName(line);

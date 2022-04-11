@@ -139,6 +139,24 @@ static char *ft_get_after(char **line, char *after)
 	return (NULL);
 }
 
+int gnlFromStr(char *str, char **line)
+{
+	int ret;
+	static char *after;
+
+	int i = 0;
+	while (str[i])
+	{
+		after = str;
+		if (strchr(after, '\n'))
+			break;
+		i++;
+	}
+	if ((after = ft_get_after(line, after)))
+		return (1);
+	return 0;
+}
+
 int gnl(int fd, char **line)
 {
 	int ret;
